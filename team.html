@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>团队风采 | 上海石化林德气体有限责任公司 | 核心团队</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --red: #c8102e;
+            --blue: #00539b;
+            --gray: #f5f7fa;
+            --dark: #1e2a36;
+            --text: #4a5568;
+            --linde-blue: #002855;
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.05), 0 2px 6px rgba(0,0,0,0.03);
+            --shadow-md: 0 12px 28px rgba(0,0,0,0.08);
+        }
+
+        body {
+            color: var(--dark);
+            background: #fff;
+            padding-top: 90px;
+            font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Roboto, sans-serif;
+            line-height: 1.5;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--linde-blue);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            z-index: 999;
+            padding: 14px 0;
+        }
+        .nav-wrap {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .logo-icon {
+            display: flex;
+            gap: 12px;
+        }
+        .logo-icon img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            font-size: 16px;
+        }
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 36px;
+            color: var(--blue);
+            margin-bottom: 48px;
+            position: relative;
+            font-weight: 600;
+        }
+        .title::after {
+            content: '';
+            width: 90px;
+            height: 4px;
+            background: var(--red);
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* 核心团队布局 */
+        /* 顶部总经理并排区域 */
+        .top-leaders {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 56px;
+        }
+        .top-leaders .team-card {
+            flex: 1;
+            min-width: 280px;
+            max-width: 380px;
+        }
+
+        /* 其他部门经理网格：一排4个 (自动响应) */
+        .executive-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            margin-bottom: 20px;
+        }
+
+        .team-card {
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            cursor: pointer;
+            border: 1px solid rgba(0,83,155,0.1);
+        }
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .team-card-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            background-color: #eef2f8;
+            transition: 0.2s;
+        }
+        .team-card h4 {
+            margin-top: 18px;
+            font-size: 1.3rem;
+            color: var(--linde-blue);
+            font-weight: 650;
+            letter-spacing: 1px;
+        }
+        .team-card .position {
+            font-size: 0.9rem;
+            color: var(--red);
+            font-weight: 500;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+        .team-card .brief {
+            padding: 12px 16px 20px;
+            font-size: 0.85rem;
+            color: var(--text);
+            line-height: 1.45;
+            border-top: 1px solid #edf2f7;
+            margin-top: 12px;
+        }
+
+        /* 部门合影样式 - 修改为每行四个网格 */
+        .dept-group {
+            margin: 70px 0;
+        }
+        .dept-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            justify-items: center;
+        }
+        .dept-item {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.25s;
+            cursor: pointer;
+            background: #fff;
+        }
+        .dept-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            background-color: #eef2f8;
+        }
+        .dept-item p {
+            text-align: center;
+            padding: 14px 0;
+            color: var(--blue);
+            font-weight: 600;
+            font-size: 1rem;
+            margin: 0;
+            background: #fff;
+            border-top: 1px solid #f0f2f5;
+        }
+        .dept-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* 员工风采 / 活动 画廊样式 */
+        .gallery-title {
+            margin-top: 70px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+            margin-bottom: 20px;
+        }
+        .g-item {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.25s;
+            cursor: pointer;
+            background: #fff;
+        }
+        .g-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        .g-item img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+        }
+
+        footer {
+            background: var(--dark);
+            color: #fff;
+            text-align: center;
+            padding: 28px 20px;
+            font-size: 14px;
+            margin-top: 60px;
+        }
+
+        /* 模态框 (图片放大) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .modal-img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 16px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .modal-desc {
+            color: #fff;
+            font-size: 1rem;
+            margin-top: 20px;
+            text-align: center;
+            background: rgba(0,0,0,0.6);
+            padding: 10px 24px;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+        }
+        .close-btn {
+            position: absolute;
+            top: -48px;
+            right: 0;
+            color: #fff;
+            font-size: 38px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: 0.2s;
+            background: rgba(0,0,0,0.5);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .close-btn:hover {
+            background: var(--red);
+            transform: scale(1.05);
+        }
+
+        /* 响应式：平板及手机屏幕下每行显示2个或1个 */
+        @media (max-width: 1024px) {
+            .executive-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 28px;
+            }
+            .dept-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body { padding-top: 80px; }
+            .container { padding: 40px 20px; }
+            .logo-icon img { height: 32px; }
+            .nav-wrap { padding: 0 20px; flex-wrap: wrap; gap: 10px; }
+            .nav-links { gap: 16px; flex-wrap: wrap; justify-content: center; }
+            .logo-box { font-size: 14px; }
+            .title { font-size: 28px; }
+            .team-card-img { height: 240px; }
+            .g-item img { height: 200px; }
+            .modal-desc { font-size: 14px; }
+            .top-leaders .team-card {
+                min-width: 260px;
+            }
+            .executive-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .dept-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .dept-item img {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <div class="nav-wrap">
+        <div class="logo-box">
+            <div class="logo-icon">
+                <img src="spclogo.jpg" alt="中国石化">
+                <img src="lindelogo.jpg" alt="林德">
+            </div>
+                <div>上海石化林德气体有限责任公司 <span style="font-size:14px;">✦ 20周年 ✦</span></div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+                <a href="about.html"><i class="fas fa-building"></i> 公司简介</a>
+                <a href="team.html"><i class="fas fa-users"></i> 团队风采</a>
+                <a href="history.html"><i class="fas fa-timeline"></i> 发展历程</a>
+                <a href="culture.html"><i class="fas fa-leaf"></i> 企业文化</a>
+                <a href="honor.html"><i class="fas fa-medal"></i> 荣誉积累</a>
+                <a href="end.html"><i class="fas fa-medal"></i> 廿载寄语</a>
+            </div>
+        </div>
+    </div>
+
+<div class="container">
+    <!-- 核心团队板块：总经理与副总经理并排在最上方 -->
+    <h2 class="title">核心管理团队</h2>
+    
+    <!-- 总经理 + 外方总经理 并排独立区域 -->
+    <div class="top-leaders" id="topLeadersContainer"></div>
+    
+    <!-- 其他部门经理（人事行政、生产工艺、设备维修、财务、销售、采购、HSE、工会主席）一排四个 -->
+    <div class="other-leaders" id="otherLeadersContainer"></div>
+
+    <!-- 部门合影栏目：每行四个，现在增加电工班A和电工班B，使部门合影更加完整 -->
+    <div class="dept-group">
+        <h2 class="title">部门合影</h2>
+        <div class="dept-grid" id="deptGallery">
+            <!-- 通过JS动态生成：包含管理团队 + 原有核心部门(7个) + 生产运行甲乙丙丁(4个) + 新增电工班A + 电工班B = 共14项，完美适配4列布局(首行4,次行4,第三行4,第四行2)但CSS会自动换行且视觉整洁 -->
+        </div>
+    </div>
+
+    <!-- 员工风采 (保留原有照片及活动图片) -->
+    <h2 class="title gallery-title">员工风采</h2>
+    <div class="gallery" id="staffGallery"></div>
+
+    <!-- 各类活动板块已迁移到culture.html -->
+</div>
+
+<!-- 图片放大模态框 -->
+<div class="modal" id="imgModal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <img class="modal-img" id="modalImg" src="" alt="放大图片">
+        <div class="modal-desc" id="modalDesc"></div>
+    </div>
+</div>
+
+<footer>
+    <p>上海石化林德气体有限责任公司 • 合资20周年纪念 ©2026</p>
+</footer>
+
+<script>
+    // ---------- 核心团队成员数据 ----------
+    // 顶部两位总经理 (中方总经理 + 外方总经理)
+    const topExecutives = [
+        { 
+            name: "沈国强", 
+            position: "上海石化委派总经理", 
+            brief: "全面负责公司战略发展及运营管理，带领公司持续创新突破，兼顾生产维稳，推动数字化与绿色低碳转型。", 
+            img: "总经理沈国强.jpg", 
+            alt: "中方总经理" 
+        },
+        { 
+            name: "郑保才", 
+            position: "林德集团委派总经理", 
+            brief: "统管生产运营与安全环保，推动精益生产与数字化转型，确保供应高效稳定，主导多个重大空分技改项目。", 
+            img: "副总经理郑保才.jpg", 
+            alt: "外方总经理" 
+        }
+    ];
+
+    // 其他核心部门经理 + 工会主席，总共8位
+    const otherManagers = [
+        { name: "钟卫国", position: "总工程师  生产工艺部经理", brief: "主导空分装置工艺优化与产品创新，实现节能降耗与质量标杆，保障气、液体产品高纯度供应。", img: "b000.jpg", alt: "钟总" },
+        { name: "余毅骏", position: "人事行政部经理", brief: "负责人力资源战略、行政综合及企业文化建设，打造高凝聚力团队，完善人才发展体系。", img: "人事行政经理余毅骏.jpg", alt: "余经理" },
+        { name: "徐军", position: "设备维修部经理", brief: "负责全厂设备维保、预防性维修及可靠性提升，保障装置长周期稳定运行，降低非计划停机。", img: "b03.jpg", alt: "设备维修部经理" },
+        { name: "俞叶锋", position: "财务部经理", brief: "统筹财务管理、成本控制以及数字化项目，以专业分析支撑公司战略决策，优化资本结构。", img: "b044.jpg", alt: "财务经理" },
+        { name: "杨永生", position: "销售部经理", brief: "负责液体市场与客户关系，深耕气体领域，抓手产品质量，兼顾与政府沟通及项目扩展。", img: "b05.jpg", alt: "销售部经理" },
+        { name: "张廉", position: "采购经理", brief: "管理供应链与战略采购，优化成本结构，确保备件高效供应，建立韧性供应链。", img: "b006.jpg", alt: "采购经理" },
+        { name: "徐铮", position: "HSE经理", brief: "构建安全、环保与职业健康体系，推进安全文化，实现零事故目标，护航可持续发展。", img: "b07.jpg", alt: "HSE经理" },
+        { name: "胡雪赟", position: "工会主席 人事行政部副经理", brief: "负责工会组织建设、职工权益保障及文体活动开展，搭建员工与企业沟通桥梁，营造和谐奋进的大家庭氛围。", img: "b08.jpg", alt: "工会主席" }
+    ];
+
+    // 员工风采图片集
+    const staffImages = [
+        { img: "001.jpg", desc: "岗位上认真工作的员工，以高度的责任心完成每一项任务，严谨把控生产细节。" },
+        { img: "001.jpg", desc: "团队协作完成项目攻坚，展现了良好的团队凝聚力，跨部门协同攻克技术难题。" },
+        { img: "001.jpg", desc: "技术人员现场调试设备，确保生产工艺稳定运行，提升装置智能化水平。" },
+        { img: "001.jpg", desc: "客服人员耐心解答客户问题，提供优质的售后服务，持续提升客户满意度。" },
+        { img: "001.jpg", desc: "安全巡检人员日常排查安全隐患，筑牢安全防线，杜绝违章行为。" },
+        { img: "001.jpg", desc: "行政人员精心组织公司各类活动，保障员工福利，营造和谐职场氛围。" }
+    ];
+
+    // 部门合影数据: 为了满足客户要求 "部门合影里面缺了两个，加入电工班a和电工班b"
+    // 原始包含：管理团队 + 生产工艺部 + 人事行政部 + 设备维修部 + 财务部 + 销售部 + HSE部 + 采购部 + 生产运行甲乙丙丁 = 共12项。
+    // 现在增加电工班A和电工班B => 总共14项，保证所有团队都包含且每行四列的自然流式布局仍然整齐美观。
+    const deptPhotos = [
+        // 1. 管理团队合影
+        { name: "管理团队", img: "001.jpg", desc: "管理团队合影：公司核心管理层汇聚一堂，引领企业战略航向，共绘高质量发展蓝图。", defaultPic: "https://picsum.photos/id/104/600/400" },
+        // 原有7个核心部门（全部保留）
+        { name: "生产工艺部", img: "日班合照.png", desc: "生产工艺部合影：精耕细作，精益求精，保障生产工艺稳定。", defaultPic: "https://picsum.photos/id/20/600/400" },
+        { name: "人事行政部", img: "001.jpg", desc: "人事行政部合影：团结协作，高效服务，支撑公司整体运营。", defaultPic: "https://picsum.photos/id/21/600/400" },
+        { name: "设备维修部", img: "001.jpg", desc: "设备维修部合影：专业保障，快速响应，守护设备稳定运行。", defaultPic: "https://picsum.photos/id/22/600/400" },
+        { name: "财务部", img: "a04.jpg", desc: "财务部合影：精准把控，合规运营，为公司发展保驾护航。", defaultPic: "https://picsum.photos/id/23/600/400" },
+        { name: "销售部", img: "b01.jpg", desc: "销售部合影：抓质量，稳充装，建立销售条线。", defaultPic: "https://picsum.photos/id/24/600/400" },
+        { name: "HSE部", img: "c07.jpg", desc: "HSE部合影：安全第一，预防为主，筑牢安全生产防线。", defaultPic: "https://picsum.photos/id/25/600/400" },
+        { name: "采购部", img: "001.jpg", desc: "采购部合影：高效协同，降本增效，保障供应链稳定。", defaultPic: "https://picsum.photos/id/26/600/400" },
+        // 四个生产运行班组
+        { name: "生产运行-甲班", img: "甲班合照.jpg", desc: "生产运行甲班合影：恪尽职守，精细操作，保障装置安全平稳长周期运行。", defaultPic: "https://picsum.photos/id/29/600/400" },
+        { name: "生产运行-乙班", img: "乙班合照.jpg", desc: "生产运行乙班合影：严谨工艺，高效协同，全天候守护气体供应稳定。", defaultPic: "https://picsum.photos/id/39/600/400" },
+        { name: "生产运行-丙班", img: "丙班合照.jpg", desc: "生产运行丙班合影：技能精湛，快速响应，争创一流生产班组。", defaultPic: "https://picsum.photos/id/49/600/400" },
+        { name: "生产运行-丁班", img: "丁班合照.jpg", desc: "生产运行丁班合影：责任为先，团结奋进，筑牢生产一线基石。", defaultPic: "https://picsum.photos/id/59/600/400" },
+        // 新增：电工班A 和 电工班B (按客户要求增加)
+        { name: "电工班A", img: "001.jpg", desc: "电工班A合影：技术精湛，保障全厂电气设备稳定运行，快速响应电力故障，为安全生产提供坚实电力后盾。", defaultPic: "https://picsum.photos/id/11/600/400" },
+        { name: "电工班B", img: "001.jpg", desc: "电工班B合影：一丝不苟，专注电气系统预防性维护，提升电气安全水平，助力公司节能降耗与平稳供电。", defaultPic: "https://picsum.photos/id/14/600/400" }
+    ];
+
+    // 通用函数：创建团队卡片DOM
+    function createTeamCard(member, fullDesc) {
+        const card = document.createElement('div');
+        card.className = 'team-card';
+        const descForModal = fullDesc || `${member.name} · ${member.position}：${member.brief}`;
+        card.setAttribute('data-img', member.img);
+        card.setAttribute('data-desc', descForModal);
+        card.innerHTML = `
+            <img class="team-card-img" src="${member.img}" alt="${member.alt}" loading="lazy" onerror="this.src='https://picsum.photos/id/1/600/600'">
+            <h4>${member.name}</h4>
+            <div class="position">${member.position}</div>
+            <div class="brief">${member.brief.length > 75 ? member.brief.substring(0, 75) + '…' : member.brief}</div>
+        `;
+        card.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openModal(member.img, descForModal);
+        });
+        return card;
+    }
+
+    // 渲染顶部并排领导
+    function renderTopLeaders() {
+        const container = document.getElementById('topLeadersContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        topExecutives.forEach(exec => {
+            const fullDesc = `${exec.name} · ${exec.position}：${exec.brief}`;
+            const card = createTeamCard(exec, fullDesc);
+            container.appendChild(card);
+        });
+    }
+
+    // 渲染其他部门经理 + 工会主席
+    function renderOtherLeaders() {
+        const container = document.getElementById('otherLeadersContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        const gridWrapper = document.createElement('div');
+        gridWrapper.className = 'executive-grid';
+        otherManagers.forEach(manager => {
+            const fullDesc = `${manager.name} · ${manager.position}：${manager.brief}`;
+            const card = createTeamCard(manager, fullDesc);
+            gridWrapper.appendChild(card);
+        });
+        container.appendChild(gridWrapper);
+    }
+
+    // 渲染部门合影: 包含管理团队+原部门+生产运行四班+新增电工班A/B，共14项，grid自动每行四个完美换行
+    function renderDeptGallery() {
+        const galleryContainer = document.getElementById('deptGallery');
+        if (!galleryContainer) return;
+        galleryContainer.innerHTML = '';
+        deptPhotos.forEach(dept => {
+            const deptDiv = document.createElement('div');
+            deptDiv.className = 'dept-item';
+            // 处理图片地址，如果有真实图片就用，否则用随机占位图，确保显示
+            const imgSrc = dept.img && dept.img !== '' ? dept.img : dept.defaultPic;
+            deptDiv.setAttribute('data-img', imgSrc);
+            deptDiv.setAttribute('data-desc', dept.desc);
+            deptDiv.innerHTML = `
+                <img src="${imgSrc}" alt="${dept.name}" loading="lazy" onerror="this.src='${dept.defaultPic}'">
+                <p>${dept.name}</p>
+            `;
+            deptDiv.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openModal(imgSrc, dept.desc);
+            });
+            galleryContainer.appendChild(deptDiv);
+        });
+    }
+
+    // 渲染员工风采画廊
+    function renderStaffGallery() {
+        const galleryContainer = document.getElementById('staffGallery');
+        if (!galleryContainer) return;
+        galleryContainer.innerHTML = '';
+        staffImages.forEach(item => {
+            const galItem = document.createElement('div');
+            galItem.className = 'g-item';
+            galItem.setAttribute('data-img', item.img);
+            galItem.setAttribute('data-desc', item.desc);
+            galItem.innerHTML = `<img src="${item.img}" alt="员工风采" loading="lazy" onerror="this.src='https://picsum.photos/id/1/600/400'">`;
+            galItem.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openModal(item.img, item.desc);
+            });
+            galleryContainer.appendChild(galItem);
+        });
+    }
+
+    // ---------- 模态框逻辑 ----------
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalDesc = document.getElementById('modalDesc');
+    const closeBtn = document.getElementById('closeBtn');
+
+    function openModal(imgSrc, descText) {
+        if (!modal || !modalImg) return;
+        modalImg.src = imgSrc;
+        modalImg.alt = descText || '团队风采照片';
+        modalDesc.textContent = descText || '上海石化林德气体珍贵影像';
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        if (modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                if (modalImg) modalImg.src = '';
+            }, 200);
+        }
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeModal();
+        });
+    }
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+            closeModal();
+        }
+    });
+
+    // 页面加载完成后渲染所有板块
+    window.addEventListener('DOMContentLoaded', () => {
+        renderTopLeaders();     
+        renderOtherLeaders();   
+        renderDeptGallery();    // 渲染部门合影(包含管理团队+原有部门+生产运行甲乙丙丁+电工班A/电工班B)
+        renderStaffGallery();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公司简介 | 上海石化林德气体有限责任公司（BSG）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+        }
+        :root {
+            --red: #c8102e;
+            --blue: #00539b;
+            --gray: #f5f7fa;
+            --dark: #333;
+            --text: #666;
+            --linde-blue: #002855;
+        }
+        body {
+            color: var(--dark);
+            background: #fff;
+            padding-top: 90px;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--linde-blue);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            z-index: 999;
+            padding: 14px 0;
+        }
+        .nav-wrap {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .logo-icon {
+            display: flex;
+            gap: 12px;
+        }
+        .logo-icon img {
+            height: 45px;
+            width: auto;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+        .nav-links a:hover {
+            color: #f0f0f0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        .title {
+            text-align: center;
+            font-size: 36px;
+            color: var(--blue);
+            margin-bottom: 48px;
+            position: relative;
+            font-weight: 600;
+        }
+        .title::after {
+            content: '';
+            width: 90px;
+            height: 4px;
+            background: var(--red);
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        .about-main {
+            display: flex;
+            gap: 48px;
+            align-items: center;
+            background: var(--gray);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
+        }
+        .about-text {
+            flex: 1;
+            line-height: 1.9;
+            color: var(--text);
+            font-size: 16px;
+        }
+        .about-text p {
+            margin-bottom: 16px;
+        }
+        .about-text strong {
+            color: var(--blue);
+            font-weight: 600;
+        }
+        .about-text h3 {
+            color: var(--blue);
+            font-size: 18px;
+            margin: 24px 0 12px;
+            font-weight: 600;
+        }
+        .about-text ul {
+            margin-left: 20px;
+            margin-bottom: 16px;
+            line-height: 1.9;
+        }
+        .about-img {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* 股权结构整体容器 - 文字+图片一体化 */
+        .equity-wrapper {
+            background: var(--gray);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
+        }
+        .equity-text {
+            margin-bottom: 24px;
+        }
+        .equity-text h3 {
+            color: var(--blue);
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .equity-text p {
+            color: var(--text);
+            font-size: 16px;
+            line-height: 1.9;
+        }
+        .equity-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: block;
+        }
+        /* 股东介绍样式优化 - 新增图文布局 */
+        .share-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .share-card {
+            background:#fff; 
+            padding:40px; 
+            border-radius:12px;
+            box-shadow:0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .share-card h3 {
+            color:var(--blue); 
+            margin-bottom: 8px; 
+            font-size:24px;
+        }
+        .share-card .text-content {
+            line-height:1.8; 
+            color:var(--text);
+        }
+        .share-card .text-content p {
+            margin-bottom: 16px;
+        }
+        /* 股东图片容器样式 */
+        .share-img-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .share-img-group img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .share-img-group img:hover {
+            transform: scale(1.02);
+        }
+        footer {
+            background: var(--dark);
+            color: #fff;
+            text-align: center;
+            padding: 20px 20px;
+            font-size: 14px;
+            margin-top: 60px;
+        }
+        /* 响应式适配优化 */
+        @media (max-width:992px) {
+            .share-img-group img {
+                height: 160px;
+            }
+        }
+        @media (max-width:768px) {
+            .about-main { flex-direction: column; }
+            .share-box { grid-template-columns:1fr; }
+            .logo-icon img { height: 35px; }
+            .nav-wrap { padding: 0 20px; }
+            .nav-links { gap: 14px; font-size: 14px; }
+            .share-img-group {
+                grid-template-columns: 1fr;
+            }
+            .share-img-group img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <div class="nav-wrap">
+        <div class="logo-box">
+            <div class="logo-icon">
+                <img src="spclogo.jpg" alt="中国石化">
+                <img src="lindelogo.jpg" alt="林德">
+            </div>
+                <div>上海石化林德气体有限责任公司 <span style="font-size:14px;">✦ 20周年 ✦</span></div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+                <a href="about.html"><i class="fas fa-building"></i> 公司简介</a>
+                <a href="team.html"><i class="fas fa-users"></i> 团队风采</a>
+                <a href="history.html"><i class="fas fa-timeline"></i> 发展历程</a>
+                <a href="culture.html"><i class="fas fa-leaf"></i> 企业文化</a>
+                <a href="honor.html"><i class="fas fa-medal"></i> 荣誉积累</a>
+                <a href="end.html"><i class="fas fa-medal"></i> 廿载寄语</a>
+            </div>
+        </div>
+    </div>
+
+<div class="container">
+    <h2 class="title">公司简介</h2>
+    <div class="about-main">
+        <div class="about-text">
+            <p><strong>上海石化林德气体有限责任公司（简称BSG公司）</strong>成立于2006年5月31日，由<strong>中国石化上海石化股份有限公司</strong>与<strong>林德集团</strong>按<strong>50%:50%</strong>比例合资成立，占地面积<strong>57658平方米</strong>。</p>
+            <p>2006年7月4日正式投入商业运行，投资总额超过<strong>8000万美金</strong>，注册资本3200万美元，是专业生产、储存、销售氧、氮、氩等气体与液态气体的现代化工业企业。</p>
+            <p>公司依托大型空分装置生产运行管理经验，秉承“兼容并蓄，中外交融”的企业理念，吸收和发扬股东双方优秀的企业文化，坚持“安全第一，确保供应”的工作原则，强调“可靠性运行与改进”。</p>
+            <p>主要设备：精馏塔、大型气体压缩机、超低温液体泵、常温泵、压力容器等，为工业生产提供稳定可靠的气体保障。</p>
+            <p>地址：上海市金山区石化金一路700号</p>
+
+            <h3>公司愿景</h3>
+            <ul>
+                <li>为上海石化提供安全、稳定、可靠的气体供应，并对外提供一个主要的液体供应资源；</li>
+                <li>以盈利为目标，满足股东双方的投资回报；</li>
+                <li>通过公司的成功运作，加强中国石化集团与林德集团之间合作关系，及合作开发未来的业务机会；</li>
+                <li>为员工创造团结、和谐，能实现自己理想的空间。</li>
+            </ul>
+        </div>
+        <div class="about-img">
+            <img src="https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/cd25b49f8abd41a682249f92acbfb6e0.jpg~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=202605261203428A58A1986FFFD1237149&rrcfp=d52e923b&x-expires=1780373022&x-signature=vIIDF8AgHBX0Imh7pcWACrL0OY4%3D" alt="厂区实景">
+        </div>
+    </div>
+
+    <h2 class="title">股权结构</h2>
+    <!-- 一体化股权结构区域 -->
+    <div class="equity-wrapper">
+        <div class="equity-text">
+            <h3>股权结构与控制权</h3>
+            <p>合资方：上海石化投资发展有限公司（中方）与林德（中国）投资有限公司（外资方）共同投资，双方各持股50%，属于国有参股企业。</p>
+        </div>
+        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/9cbc10fc6801418c93ff5144c4d7ee0d.png~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=20260526135519D2CFAB0447383D45B17C&rrcfp=d52e923b&x-expires=1780379719&x-signature=ULC7LlkD46R%2BVBXWs%2BBbNuHa5h0%3D" alt="股权结构合作图" class="equity-img">
+    </div>
+
+    <h2 class="title" style="margin-top:60px;">合资双方股东介绍</h2>
+    <div class="share-box">
+        <!-- 上海石化股东卡片 -->
+        <div class="share-card">
+            <h3>中国石化上海石化股份有限公司</h3>
+            <div class="text-content">
+                <p>上海石化是中国石油化工股份有限公司控股子公司，地处上海金山区，是国内大型炼油化工一体化综合性石油化工企业，也是重要的成品油、石化产品、合成树脂及合成纤维生产企业，拥有完善的公用工程、环保系统与多式联运配套设施。</p>
+                <p>公司以“金山精神”凝聚团队，秉承“挑战先进，精细管理”的理念，依托创新文化推动企业高质量发展；坚持求实进取、精益求精的发展作风，践行职业行为规范，实现企业、员工与社会的协同发展、互利共赢。</p>
+            </div>
+            <div class="share-img-group">
+                <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/d63ea1a14b0147d5b83de4b2539e2b5c.jpg~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=202605261456520BA0D95D0D094C71514A&rrcfp=d52e923b&x-expires=1780383413&x-signature=dWCXhCGicstETCWMQdvittGPh%2Bg%3D" alt="林德集团中国区总部">
+                <img src="https://p6-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/2316c7255cdb4c589a47700fdaaf1525.png~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=202605261456520BA0D95D0D094C71514A&rrcfp=d52e923b&x-expires=1780383413&x-signature=PA9QZ4RguUjPR3z2Jmkf76er3hg%3D" alt="上海石化厂区大门">
+            </div>
+        </div>
+        <!-- 林德集团股东卡片 -->
+        <div class="share-card">
+            <h3>林德集团</h3>
+            <div class="text-content">
+                <p>林德是全球领先的工业气体和工程企业，业务覆盖全球100多个国家和地区，拥有5万名员工，2010年全球销售额超128亿欧元，大中华区销售额达5.76亿欧元，以收益为核心实现可持续全球化发展。</p>
+                <p>林德于上世纪80年代进入中国，大中华区总部位于上海，布局约50家全资及合资公司、100多个生产现场，深耕多领域头部客户；坚守安全、环保、品质承诺，以零事故为目标，为客户提供高效、可靠、绿色可持续的气体解决方案。</p>
+            </div>
+            <div class="share-img-group">
+                <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/c23714ba9d4f4e5aa3f82fb8d3801d4a.jpg~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=202605261456520BA0D95D0D094C71514A&rrcfp=d52e923b&x-expires=1780383413&x-signature=UWNJ7FAlbnBrUX4DvWGfcZsjfiU%3D" alt="上海石化办公大楼">
+                <img src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/63139c5e7d00444991467d4b851b5b60.png~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=202605261456520BA0D95D0D094C71514A&rrcfp=d52e923b&x-expires=1780383413&x-signature=DB2DatY9jn9MTW5d353gIVxQA1U%3D" alt="林德集团生产基地">
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>上海石化林德气体有限责任公司（BSG）• 合资20周年纪念 ©2026</p>
+    <p style="margin-top:8px;"></p>
+</footer>
+</body>
+</html>

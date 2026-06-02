@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>荣誉沉淀 | 上海石化林德气体有限责任公司（BSG）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+        }
+        :root {
+            --red: #c8102e;
+            --blue: #00539b;
+            --gray: #f5f7fa;
+            --dark: #333;
+            --text: #666;
+            --linde-blue: #002855;
+        }
+        body {
+            color: var(--dark);
+            background: #fff;
+            padding-top: 90px;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--linde-blue);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            z-index: 999;
+            padding: 14px 0;
+        }
+        .nav-wrap {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .logo-icon {
+            display: flex;
+            gap: 12px;
+        }
+        .logo-icon img {
+            height: 45px;
+            width: auto;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+        .nav-links a:hover {
+            color: #f0f0f0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        .title {
+            text-align: center;
+            font-size: 36px;
+            color: var(--blue);
+            margin-bottom: 48px;
+            position: relative;
+            font-weight: 600;
+        }
+        .title::after {
+            content: '';
+            width: 90px;
+            height: 4px;
+            background: var(--red);
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        .honor-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+        .honor-item {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-weight: 600;
+            color: var(--blue);
+            font-size: 18px;
+        }
+        .safety-content {
+            line-height: 1.9;
+            color: var(--text);
+            font-size: 16px;
+            background: var(--gray);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
+        }
+        .safety-content strong {
+            color: var(--red);
+            font-weight: 600;
+        }
+        /* 新增荣誉照片样式 */
+        .honor-photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .photo-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .photo-card:hover {
+            transform: translateY(-5px);
+        }
+        .photo-img {
+            width: 100%;
+            height: 200px;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .photo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: scale 0.3s;
+        }
+        .photo-card:hover .photo-img img {
+            scale: 1.05;
+        }
+        .photo-desc {
+            padding: 15px 20px;
+            color: var(--text);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .photo-desc strong {
+            color: var(--blue);
+            font-size: 15px;
+        }
+        footer {
+            background: var(--dark);
+            color: #fff;
+            text-align: center;
+            padding: 20px 20px;
+            font-size: 14px;
+            margin-top: 60px;
+        }
+        @media (max-width:768px) {
+            .logo-icon img { height: 35px; }
+            .nav-wrap { padding: 0 20px; }
+            .nav-links { gap: 14px; font-size: 14px; }
+            .honor-item { font-size: 16px; padding: 15px 20px; }
+            .container { padding: 60px 20px; }
+            .honor-photos { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+            .photo-img { height: 160px; }
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <div class="nav-wrap">
+        <div class="logo-box">
+            <div class="logo-icon">
+                <img src="spclogo.jpg" alt="中国石化">
+                <img src="lindelogo.jpg" alt="林德">
+            </div>
+            <div>上海石化林德气体有限责任公司 <span style="font-size:14px;">✦ 20周年 ✦</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+            <a href="about.html"><i class="fas fa-building"></i> 公司简介</a>
+            <a href="team.html"><i class="fas fa-users"></i> 团队风采</a>
+            <a href="history.html"><i class="fas fa-timeline"></i> 发展历程</a>
+            <a href="culture.html"><i class="fas fa-leaf"></i> 企业文化</a>
+            <a href="honor.html"><i class="fas fa-medal"></i> 荣誉积累</a>
+            <a href="end.html"><i class="fas fa-medal"></i> 廿载寄语</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="title">荣誉殿堂</h2>
+    <div class="honor-list">
+        <div class="honor-item">金山区首家医用氧生产企业</div>
+        <div class="honor-item">安全标准化达标企业</div>
+        <div class="honor-item">节能改造示范项目</div>
+        <div class="honor-item">安全生产先进单位</div>
+        <div class="honor-item">诚信经营示范单位</div>
+        <div class="honor-item">优秀合资企业奖</div>
+        <div class="honor-item">质量体系认证企业</div>
+        <div class="honor-item">环保先进单位</div>
+    </div>
+
+    <h2 class="title" style="margin-top:80px;">荣誉照片</h2>
+    <div class="safety-content">
+        <p><strong>2026年6月1日</strong>，......................................</p>
+        <p style="margin-top:16px;">........................................................</p>
+        <p style="margin-top:16px;">....................................................</p>
+    </div>
+
+    <!-- 新增10个荣誉照片栏 -->
+    <div class="honor-photos">
+        <!-- 照片1 -->
+        <div class="photo-card">
+            <div class="photo-img">
+                <img src="001.jpg" alt="111">
+            </div>
+            <div class="photo-desc">
+                <strong>2021年泄漏应急演练</strong><br>
+                8#空分2000M³液氧储槽充装现场泄漏应急演练总指挥部署工作
+            </div>
+        </div>
+        <!-- 照片2 -->
+        <div class="photo-card">
+            <div class="photo-img">
+                <img src="001.jpg" alt="111">
+            </div>
+            <div class="photo-desc">
+                <strong>安全标准化达标授牌</strong><br>
+                公司荣获安全标准化达标企业称号，相关领导出席授牌仪式
+            </div>
+        </div>
+        <!-- 照片3 -->
+        <div class="photo-card">
+            <div class="photo-img">
+                <img src="001.jpg" alt="111">
+            </div>
+            <div class="photo-desc">
+                <strong>医用氧生产资质认证</strong><br>
+                成为金山区首家获得医用氧生产企业资质的授牌现场
+            </div>
+        </div>
+        <!-- 照片4 -->
+        <div class="photo-card">
+            <div class="photo-img">
+                <img src="001.jpg" alt="111">
+            </div>
+            <div class="photo-desc">
+                <strong>节能改造示范项目验收</strong><br>
+                节能改造示范项目顺利通过验收，专家团队现场核查
+            </div>
+        </div>
+        <!-- 照片5 -->
+        <div class="photo-card">
+            <div class="photo-img">
+                <img src="001.jpg" alt="111">
+            </div>
+            <div class="photo-desc">
+                <strong>安全生产先进单位表彰</strong><br>
+                年度安全生产先进单位表彰大会，公司代表上台领奖
+            </div>
+        </div>
+        <!-- 照片6 -->
+        <div class="photo-card">
+            <div class="photo-img">
+                <img src="001.jpg" alt="111">
+            </div>
+            <div class="photo-desc">
+                <strong>诚信经营示范单位授牌</strong><br>
+                荣获年度诚信经营示范单位，政府部门领导现场授牌
+            </div>
+        </div>
+        <!-- 照片7 -->
+        <div class="photo-card">
+            <div class="photo-img">
+                <img src="001.jpg" alt="111">
+            </div>
+            <div class="photo-desc">
+                <strong>优秀合资企业奖颁奖</strong><br>
+                荣获优秀合资企业奖，中外方管理层共同出席颁奖盛典
+            </div>
+        </div>
+        <!-- 照片8 -->
+        <div class="photo-card">
+            <div class="photo-img">
+                <img src="001.jpg" alt="111">
+            </div>
+            <div class="photo-desc">
+                <strong>质量体系认证审核</strong><br>
+                质量体系认证现场审核，审核组与公司管理层沟通交流
+            </div>
+        </div>
+        <!-- 照片9 -->
+        <div class="photo-card">
+            <div class="photo-img">
+                <img src="001.jpg" alt="111">
+            </div>
+            <div class="photo-desc">
+                <strong>环保先进单位表彰</strong><br>
+                获评环保先进单位，代表上台分享环保治理经验
+            </div>
+        </div>
+        <!-- 照片10 -->
+        <div class="photo-card">
+            <div class="photo-img">
+                <img src="001.jpg" alt="111">
+            </div>
+            <div class="photo-desc">
+                <strong>20周年合资纪念仪式</strong><br>
+                公司合资20周年纪念仪式，中外方股东代表共同见证
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>上海石化林德气体有限责任公司（BSG）• 合资20周年纪念 ©2026</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>发展历程 | 上海石化林德气体有限责任公司 | 合资20周年</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --red: #c8102e;
+            --blue: #00539b;
+            --gray: #f5f7fa;
+            --dark: #1e2a36;
+            --text: #4a5568;
+            --linde-blue: #002855;
+            --light-bg: #fafcff;
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.05), 0 2px 6px rgba(0,0,0,0.03);
+            --shadow-md: 0 12px 28px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 35px -12px rgba(0,0,0,0.2);
+        }
+
+        body {
+            color: var(--dark);
+            background: #fff;
+            padding-top: 90px;
+            font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Roboto, sans-serif;
+            line-height: 1.5;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--linde-blue);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            z-index: 999;
+            padding: 14px 0;
+        }
+        .nav-wrap {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .logo-icon {
+            display: flex;
+            gap: 12px;
+        }
+        .logo-icon img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            font-size: 16px;
+        }
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        .title {
+            text-align: center;
+            font-size: 36px;
+            color: var(--blue);
+            margin-bottom: 48px;
+            position: relative;
+            font-weight: 600;
+        }
+        .title::after {
+            content: '';
+            width: 90px;
+            height: 4px;
+            background: var(--red);
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* 时间线布局 - 经典左右交替 */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--blue), #7aa9c4);
+            border-radius: 2px;
+        }
+        .t-item {
+            width: 50%;
+            padding: 20px 40px;
+            position: relative;
+            margin-bottom: 30px;
+            clear: both;
+        }
+        /* 左侧条目 */
+        .t-left {
+            left: 0;
+            text-align: left;
+            padding-right: 50px;
+        }
+        /* 右侧条目 */
+        .t-right {
+            left: 50%;
+            text-align: left;
+            padding-left: 50px;
+        }
+        /* 统一圆点样式 */
+        .t-item::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: #fff;
+            border: 4px solid var(--red);
+            border-radius: 50%;
+            top: 28px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 2;
+            transition: 0.2s;
+        }
+        /* 左侧圆点位于右边缘 */
+        .t-left::after {
+            right: -12px;
+        }
+        /* 右侧圆点位于左边缘 */
+        .t-right::after {
+            left: -12px;
+        }
+        .t-box {
+            padding: 24px 26px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border: 1px solid rgba(0,83,155,0.08);
+        }
+        .t-box:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        .t-box h3 {
+            color: var(--red);
+            margin-bottom: 12px;
+            font-size: 1.35rem;
+            font-weight: 650;
+            letter-spacing: -0.2px;
+        }
+        .t-box p {
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* 历史照片样式 - 可点击放大 */
+        .t-photo {
+            width: 100%;
+            height: auto;
+            max-height: 220px;
+            object-fit: cover;
+            border-radius: 14px;
+            margin-top: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid #e9edf2;
+        }
+        .t-photo:hover {
+            transform: scale(1.01);
+            box-shadow: 0 8px 22px rgba(0,0,0,0.15);
+            filter: brightness(1.02);
+        }
+
+        /* 图片预览模态框 (lightbox) */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.2s, opacity 0.25s ease;
+            cursor: pointer;
+        }
+        .lightbox.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .lightbox-img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: transform 0.2s;
+        }
+        .close-lightbox {
+            position: absolute;
+            top: 28px;
+            right: 38px;
+            color: white;
+            font-size: 42px;
+            font-weight: 300;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            font-family: monospace;
+        }
+        .close-lightbox:hover {
+            background: var(--red);
+            transform: scale(1.05);
+        }
+        .lightbox-caption {
+            position: absolute;
+            bottom: 28px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #eee;
+            background: rgba(0,0,0,0.6);
+            padding: 8px 18px;
+            width: fit-content;
+            margin: 0 auto;
+            border-radius: 40px;
+            font-size: 14px;
+            backdrop-filter: blur(4px);
+            pointer-events: none;
+        }
+
+        /* 核心数据 */
+        .data-box {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 80px;
+        }
+        .data-card {
+            background: #fff;
+            padding: 40px 20px;
+            border-radius: 28px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+            border: 1px solid #eef2f8;
+        }
+        .data-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .data-card h2 {
+            font-size: 44px;
+            color: var(--red);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .data-card p {
+            font-size: 16px;
+            color: var(--text);
+            letter-spacing: 1px;
+        }
+        footer {
+            background: var(--dark);
+            color: #fff;
+            text-align: center;
+            padding: 28px 20px;
+            font-size: 14px;
+            margin-top: 60px;
+            letter-spacing: 0.5px;
+        }
+
+        /* 响应式: 移动端改为单列，线在左侧样式优雅 */
+        @media (max-width: 860px) {
+            body { padding-top: 80px; }
+            .container { padding: 40px 20px; }
+            .timeline::before {
+                left: 24px;
+            }
+            .t-item {
+                width: 100%;
+                padding-left: 60px !important;
+                padding-right: 20px !important;
+                left: 0 !important;
+                text-align: left !important;
+            }
+            .t-left::after, .t-right::after {
+                left: 12px !important;
+                right: auto !important;
+            }
+            .t-box { padding: 18px; }
+            .data-box { grid-template-columns: 1fr 1fr; gap: 18px; }
+            .logo-icon img { height: 32px; }
+            .nav-wrap { padding: 0 20px; flex-wrap: wrap; gap: 10px; }
+            .nav-links { gap: 16px; flex-wrap: wrap; justify-content: center; }
+            .logo-box { font-size: 14px; }
+            .title { font-size: 28px; }
+            .t-photo {
+                max-height: 200px;
+            }
+        }
+        @media (max-width: 480px) {
+            .data-card h2 { font-size: 32px; }
+            .data-card { padding: 24px 12px; }
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <div class="nav-wrap">
+        <div class="logo-box">
+            <div class="logo-icon">
+                <img src="spclogo.jpg" alt="中国石化">
+                <img src="lindelogo.jpg" alt="林德">
+            </div>
+                <div>上海石化林德气体有限责任公司 <span style="font-size:14px;">✦ 20周年 ✦</span></div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+                <a href="about.html"><i class="fas fa-building"></i> 公司简介</a>
+                <a href="team.html"><i class="fas fa-users"></i> 团队风采</a>
+                <a href="history.html"><i class="fas fa-timeline"></i> 发展历程</a>
+                <a href="culture.html"><i class="fas fa-leaf"></i> 企业文化</a>
+                <a href="honor.html"><i class="fas fa-medal"></i> 荣誉积累</a>
+                <a href="end.html"><i class="fas fa-medal"></i> 廿载寄语</a>
+            </div>
+        </div>
+    </div>
+
+<div class="container">
+    <h2 class="title">发展历程</h2>
+    <div class="timeline">
+        <!-- 严格遵循左右交替样式，恢复到中心线两侧，原有条目全部保留，并按正确左右交错排布 -->
+        <!-- 2005年 左 -->
+        <div class="t-item t-left">
+            <div class="t-box">
+                <h3>2005年07月12日</h3>
+                <p>8#空分项目正式开工</p>
+                <img src="000.jpg" alt="8#空分项目正式开工" class="t-photo" data-caption="8#空分项目开工仪式，合资建设序幕拉开">
+            </div>
+        </div>
+
+        <!-- 2006年04月12日 右 -->
+        <div class="t-item t-right"><div class="t-box"><h3>2006年04月12日</h3><p>上海石化与比欧西（中国）投资有限公司签署合资经营合同</p></div></div>
+        
+        <!-- 2006年05月31日 左 -->
+        <div class="t-item t-left">
+            <div class="t-box">
+                <h3>2006年05月31日</h3>
+                <p>上海石化比欧西气体有限责任公司正式注册成立</p>
+                <img src="公司成立.jpg" alt="2006年公司注册成立揭牌仪式" class="t-photo" data-caption="2006年5月31日 公司注册成立揭牌留念">
+            </div>
+        </div>
+        
+        <!-- 2006年06月28日 右 -->
+        <div class="t-item t-right">
+            <div class="t-box">
+                <h3>2006年06月28日</h3>
+                <p>一届一次董事会召开</p>
+                <img src="003.jpg" alt="一届一次董事会召开" class="t-photo" data-caption="一届一次董事会召开，奠定治理架构">
+            </div>
+        </div>
+        
+        <!-- 2006年07月04日 左 -->
+        <div class="t-item t-left"><div class="t-box"><h3>2006年07月04日</h3><p>合资公司正式投入商业运营</p></div></div>
+        
+        <!-- 2006年07月12日 右 -->
+        <div class="t-item t-right"><div class="t-box"><h3>2006年07月12日</h3><p>合资公司党支部和工会（筹）宣布成立</p></div></div>
+        
+        <!-- 2006年09月 左 -->
+        <div class="t-item t-left">
+            <div class="t-box">
+                <h3>2006年09月</h3>
+                <p>林德（德国）与比欧西（英国）合并成为林德集团</p>
+                <img src="008.jpg" alt="林德（德国）与比欧西（英国）合并成为林德集团" class="t-photo" data-caption="林德（德国）与比欧西（英国）合并成为林德集团">
+            </div>
+        </div>
+        
+        <!-- 2006年09月05日 右 -->
+        <div class="t-item t-right">
+            <div class="t-box">
+                <h3>2006年09月05日</h3>
+                <p>8#空分项目变电站正式受电</p>
+                <img src="001.jpg" alt="8#空分项目变电站正式受电" class="t-photo" data-caption="8#空分项目变电站受电关键节点">
+            </div>
+        </div>
+        
+        <!-- 2006年11月21日 左 -->
+        <div class="t-item t-left">
+            <div class="t-box">
+                <h3>2006年11月21日</h3>
+                <p>8#空分项目进行中交验收</p>
+                <img src="123.jpg" alt="2006年8#空分项目中交验收现场" class="t-photo" data-caption="2006年11月 8#空分项目中交验收">
+            </div>
+        </div>
+        
+        <!-- 2007年04月08日 右 -->
+        <div class="t-item t-right"><div class="t-box"><h3>2007年04月08日</h3><p>8#空分项目试车出氧</p></div></div>
+        
+        <!-- 2007年05月01日 左 -->
+        <div class="t-item t-left">
+            <div class="t-box">
+                <h3>2007年05月01日</h3>
+                <p>8#空分投入生产运行，生产能力提升，产品能耗大幅下降</p>
+                <img src="124.jpg" alt="2007年8#空分装置投产运行" class="t-photo" data-caption="2007年5月 8#空分投产运行里程碑">
+            </div>
+        </div>
+        
+        <!-- 2007年05月24日 右 -->
+        <div class="t-item t-right">
+            <div class="t-box">
+                <h3>2007年05月24日</h3>
+                <p>合资公司首届工会成立</p>
+                <img src="工会成立.jpg" alt="2007年工会第一次会员大会" class="t-photo" data-caption="2007年首届工会成立大会合影">
+            </div>
+        </div>
+        
+        <!-- 2008年03月10日 左 -->
+        <div class="t-item t-left">
+            <div class="t-box">
+                <h3>2008年03月10日</h3>
+                <p>合资公司首届职工代表大会召开</p>
+                <img src="第一届职工代表大会.jpg" alt="2008年首届职工代表大会" class="t-photo" data-caption="2008年首届职代会现场">
+            </div>
+        </div>
+        
+        <!-- 2008年05月16日 右 -->
+        <div class="t-item t-right">
+            <div class="t-box">
+                <h3>2008年05月16日</h3>
+                <p>8#空分后备系统完善项目试车投用</p>
+                <img src="125.jpg" alt="2008年8#空分后备系统完善项目" class="t-photo" data-caption="8#空分后备系统投用现场">
+            </div>
+        </div>
+        
+        <!-- 2008年11月03日 左 -->
+        <div class="t-item t-left">
+            <div class="t-box">
+                <h3>2008年11月03日</h3>
+                <p>SAP项目成功上线</p>
+                <img src="130.jpg" alt="2008年SAP项目上线" class="t-photo" data-caption="SAP系统上线重要时刻">
+            </div>
+        </div>
+        
+        <!-- 2009年03月25日 右 -->
+        <div class="t-item t-right">
+            <div class="t-box">
+                <h3>2009年03月25日</h3>
+                <p>公司一届二次职代会召开</p>
+                <img src="002.jpg" alt="公司一届二次职代会召开" class="t-photo" data-caption="公司一届二次职代会召开">
+            </div>
+        </div>
+        
+        <!-- 2009年09月08日 左 -->
+        <div class="t-item t-left">
+            <div class="t-box">
+                <h3>2009年09月08日</h3>
+                <p>通过医用氧GMP认证，成为金山区首家医用氧生产企业</p>
+                <img src="005.jpg" alt="通过医用氧GMP认证，成为金山区首家医用氧生产企业" class="t-photo" data-caption="通过医用氧GMP认证，成为金山区首家医用氧生产企业">
+            </div>
+        </div>
+
+        <!-- 2009年11月05日 右 -->
+        <div class="t-item t-right">
+            <div class="t-box">
+                <h3>2009年11月05日</h3>
+                <p>第一批合规医用氧产品正式对外销售</p>
+                <img src="006.jpg" alt="第一批合规医用氧产品正式对外销售" class="t-photo" data-caption="第一批合规医用氧产品正式对外销售">
+            </div>
+        </div>
+
+        
+        <!-- 2010年07月22日 左 -->
+        <div class="t-item t-left">
+            <div class="t-box">
+                <h3>2010年07月22日</h3>
+                <p>召开第一次工代会和二届一次职代会</p>
+                <img src="004.jpg" alt="召开第一次工代会和二届一次职代会" class="t-photo" data-caption="召开第一次工代会和二届一次职代会">
+            </div>
+        </div>
+
+        <!-- 2011年03月20日 右 -->
+        <div class="t-item t-right"><div class="t-box"><h3>2011年03月20日</h3><p>召开二届二次职代会</p></div></div>
+        
+        <!-- 2011年05月18日 左 -->
+        <div class="t-item t-left">
+            <div class="t-box">
+                <h3>2011年05月18日</h3>
+                <p>林德大中华区总裁与上海石化高层会晤</p>
+                <img src="林德高层拜访上海石化会晤.jpg" alt="2011年林德大中华区总裁与上海石化高层会晤" class="t-photo" data-caption="林德高层与上海石化战略会晤">
+            </div>
+        </div>
+        
+        <!-- 2011年12月26日 右 -->
+        <div class="t-item t-right"><div class="t-box"><h3>2011年12月26日</h3><p>两台氮压机更新改造项目投用，获上海市财政奖励</p></div></div>
+        
+        <!-- 2012年06月 左 -->
+        <div class="t-item t-left"><div class="t-box"><h3>2012年06月</h3><p>获上海市重点用能单位职工节能减排优秀技术创新成果一等奖</p></div></div>
+        
+        <!-- 2012年12月31日 右 -->
+        <div class="t-item t-right">
+            <div class="t-box">
+                <h3>2012年12月31日</h3>
+                <p>连续206万工作小时无员工损失工时事故</p>
+                <img src="007.jpg" alt="连续206万工作小时无员工损失工时事故" class="t-photo" data-caption="连续206万工作小时无员工损失工时事故">
+            </div>
+        </div>
+
+        
+        <!-- 2013年06月09日 左 -->
+        <div class="t-item t-left"><div class="t-box"><h3>2013年06月09日</h3><p>取得安全生产标准化三级企业达标证书</p></div></div>
+        
+        <!-- 2013年11月06日 右 -->
+        <div class="t-item t-right">
+            <div class="t-box">
+                <h3>2013年11月06日</h3>
+                <p>董事会批准公司对4#5#空分进行报废处置</p>
+                <img src="126.jpg" alt="2013年4#5#空分报废处置审批" class="t-photo" data-caption="4#5#空分装置报废处置会议记录">
+            </div>
+        </div>
+        
+        <!-- 2014年11月20日 左 -->
+        <div class="t-item t-left"><div class="t-box"><h3>2014年11月20日</h3><p>实施8#空分单套运行的生产供应模式，降低生产成本</p></div></div>
+        
+        <!-- 2014年12月18日 右 -->
+        <div class="t-item t-right"><div class="t-box"><h3>2014年12月18日</h3><p>上海石化将所持股权全部转让给上海石化投资发展有限公司</p></div></div>
+        
+        <!-- 2015年05月05日 左 -->
+        <div class="t-item t-left"><div class="t-box"><h3>2015年05月05日</h3><p>签署新的《合资合同》《章程》（中/英文）</p></div></div>
+        
+        <!-- 2020年11月06日 右 -->
+        <div class="t-item t-right">
+            <div class="t-box">
+                <h3>2020年11月06日</h3>
+                <p>外方股东“比欧西（中国）投资有限公司”更名“林德（中国）投资有限公司</p>
+                <img src="009.jpg" alt="外方股东“比欧西（中国）投资有限公司”更名“林德（中国）投资有限公司" class="t-photo" data-caption="外方股东“比欧西（中国）投资有限公司”更名“林德（中国）投资有限公司">
+            </div>
+        </div>
+
+        
+        <!-- 2021年06月01日 左 -->
+        <div class="t-item t-left"><div class="t-box"><h3>2021年06月01日</h3><p>公司正式更名为上海石化林德气体有限责任公司，新营业执照生效</p></div></div>
+        
+        <!-- 2024年02月 右 -->
+        <div class="t-item t-right"><div class="t-box"><h3>2024年02月</h3><p>上海石化第七期项目通过上海市发改委审批，新空分建设推进中</p></div></div>
+        
+        <!-- 2026年 左（二十周年压轴） -->
+        <div class="t-item t-left"><div class="t-box"><h3>2026年</h3><p>合资二十周年，迈向高质量发展新征程</p></div></div>
+    </div>
+
+    <h2 class="title" style="margin-top:80px;">核心数据速览</h2>
+    <div class="data-box">
+        <div class="data-card"><h2>20</h2><p>合资周年</p></div>
+        <div class="data-card"><h2>8000万+</h2><p>美金总投资</p></div>
+        <div class="data-card"><h2>100%</h2><p>安全稳定运行</p></div>
+        <div class="data-card"><h2>3</h2><p>大类气体产品</p></div>
+    </div>
+</div>
+
+<footer>
+    <p>上海石化林德气体有限责任公司 • 合资20周年纪念 ©2026</p>
+</footer>
+
+<!-- 图片点击放大 Lightbox 模态框 -->
+<div id="lightbox" class="lightbox">
+    <span class="close-lightbox" id="closeLightboxBtn">&times;</span>
+    <img id="lightboxImg" class="lightbox-img" src="" alt="放大图片">
+    <div id="lightboxCaption" class="lightbox-caption"></div>
+</div>
+
+<script>
+    (function() {
+        // 获取所有带 .t-photo 类图片元素
+        const photos = document.querySelectorAll('.t-photo');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const captionEl = document.getElementById('lightboxCaption');
+        
+        function openLightbox(imgSrc, altText, captionText) {
+            if (!lightbox || !lightboxImg) return;
+            lightboxImg.src = imgSrc;
+            lightboxImg.alt = altText || '历史影像';
+            let displayCaption = captionText || altText || '公司发展珍贵影像';
+            captionEl.textContent = displayCaption;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            if (lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+                setTimeout(() => {
+                    if (lightboxImg) lightboxImg.src = '';
+                    if (captionEl) captionEl.textContent = '';
+                }, 200);
+            }
+        }
+        
+        photos.forEach(photo => {
+            photo.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const src = photo.getAttribute('src');
+                if (!src) return;
+                const alt = photo.getAttribute('alt') || '公司历史照片';
+                let caption = photo.getAttribute('data-caption') || '';
+                if (!caption && alt) caption = alt;
+                if (!caption) caption = '上海石化林德气体珍贵留影';
+                openLightbox(src, alt, caption);
+            });
+        });
+        
+        if (lightbox) {
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox || e.target.classList.contains('close-lightbox')) {
+                    closeLightbox();
+                }
+            });
+            const closeBtn = document.getElementById('closeLightboxBtn');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    closeLightbox();
+                });
+            }
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+        
+        if (lightboxImg) {
+            lightboxImg.addEventListener('click', (e) => e.stopPropagation());
+        }
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上海石化林德气体有限责任公司 | 合资20周年纪念</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+        }
+        :root {
+            --red: #c8102e;
+            --blue: #00539b;
+            --gray: #f5f7fa;
+            --dark: #333;
+            --text: #666;
+            --linde-blue: #002855;
+        }
+        body {
+            color: var(--dark);
+            background: #fff;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--linde-blue);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            z-index: 999;
+            padding: 14px 0;
+        }
+        .nav-wrap {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .logo-icon {
+            display: flex;
+            gap: 12px;
+        }
+        .logo-icon img {
+            height: 45px;
+            width: auto;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+        .nav-links a:hover {
+            color: #f0f0f0;
+        }
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding-top: 22vh;
+        }
+        .hero-slides {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .hero-slide.active {
+            opacity: 1;
+        }
+        /* 6张轮播图 - 使用本地照片 (请确保 1.jpg ~ 6.jpg 存放在相同目录) */
+        .slide1 {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                              url('a02.jpg');
+        }
+        .slide2 {
+            background-image: linear-gradient(rgba(0,83,155,0.2), rgba(200,16,46,0.2)),
+                              url('a00.jpg');
+        }
+        .slide3 {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                              url('a05.jpg');
+        }
+        .slide4 {
+            background-image: linear-gradient(rgba(0,83,155,0.1), rgba(200,16,46,0.1)),
+                              url('a01.jpg');
+        }
+        .slide5 {
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
+                              url('a06.jpg');
+        }
+        .slide6 {
+            background-image: linear-gradient(rgba(0,83,155,0.3), rgba(200,16,46,0.3)),
+                              url('300.png');
+        }
+        .hero-overlay {
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            width: 100%;
+        }
+        .hero-box h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+            line-height: 1.2;
+        }
+        .hero-box p {
+            font-size: 36px;
+            margin-bottom: 40px;
+            letter-spacing: 3px;
+        }
+        .btn-box {
+            position: absolute;
+            bottom: 120px;
+            right: 80px;
+            z-index: 3;
+        }
+        .btn {
+            padding: 18px 48px;
+            background: rgba(200,16,46,0.9);
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            letter-spacing: 2px;
+        }
+        .btn:hover {
+            background: #c8102e;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            text-align: center;
+            padding: 15px 20px;
+            font-size: 14px;
+            z-index: 10;
+        }
+        @media (max-width:768px) {
+            .hero { padding-top: 18vh; }
+            .logo-icon img { height: 35px; }
+            .hero-box h1 { font-size: 42px; letter-spacing: 4px; }
+            .hero-box p { font-size: 24px; }
+            .btn-box {
+                bottom: 80px;
+                right: 20px;
+            }
+            .btn { padding: 14px 32px; font-size: 16px; }
+            .nav-wrap { padding: 0 20px; }
+            .nav-links { gap: 14px; font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-wrap">
+            <div class="logo-box">
+                <div class="logo-icon">
+                    <img src="https://p6-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/9ad36038d3dc4783a64d81eefa2979dc.jpg~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=20260526124347961CDC94E2C0BB19C68A&rrcfp=d52e923b&x-expires=1780375428&x-signature=fgXbRef%2BhlRnnCFFB52JIgwn2Ps%3D" alt="中国石化">
+                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/06d2c3af60fc4196bba456ed26a643da.jpg~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=20260526124347961CDC94E2C0BB19C68A&rrcfp=d52e923b&x-expires=1780375428&x-signature=Rvh4jnQgcybkVppsANLYOD3P0ig%3D" alt="林德">
+                </div>
+                <div>上海石化林德气体有限责任公司 <span style="font-size:14px;">✦ 20周年 ✦</span></div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+                <a href="about.html"><i class="fas fa-building"></i> 公司简介</a>
+                <a href="team.html"><i class="fas fa-users"></i> 团队风采</a>
+                <a href="history.html"><i class="fas fa-timeline"></i> 发展历程</a>
+                <a href="culture.html"><i class="fas fa-leaf"></i> 企业文化</a>
+                <a href="honor.html"><i class="fas fa-medal"></i> 荣誉积累</a>
+                <a href="end.html"><i class="fas fa-medal"></i> 廿载寄语</a>
+            </div>
+        </div>
+    </div>
+
+<section class="hero">
+    <div class="hero-slides">
+        <div class="hero-slide slide1 active"></div>
+        <div class="hero-slide slide2"></div>
+        <div class="hero-slide slide3"></div>
+        <div class="hero-slide slide4"></div>
+        <div class="hero-slide slide5"></div>
+        <div class="hero-slide slide6"></div>
+    </div>
+    <div class="hero-overlay">
+        <div class="hero-box">
+            <h1>携手廿载 共筑华章</h1>
+            <p>上海石化林德气体有限责任公司 • 合资20周年纪念</p>
+        </div>
+    </div>
+    <div class="btn-box">
+        <a href="about.html" class="btn">走进我们</a>
+    </div>
+</section>
+
+<footer>
+    <p>上海石化林德气体有限责任公司 • 合资20周年纪念 ©2026</p>
+</footer>
+
+<script>
+    // 背景轮播 6张本地图片，3秒切换一次
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+    if (slides.length) {
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 3000);
+    }
+</script>
+</body>
+</html>

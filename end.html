@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>廿载寄语 | 上海石化林德气体有限责任公司（BSG）</title>
+    <!-- Font Awesome for icons (保留但导航栏不再使用) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "SimHei", "PingFang SC", Roboto, sans-serif;
+        }
+
+        :root {
+            --red: #c8102e;
+            --blue: #00539b;
+            --gray: #f5f7fa;
+            --dark: #1e2a3a;
+            --text: #2c3e4e;
+            --linde-blue: #002855;
+            --gold: #d4af37;
+            --light-bg: #fafcff;
+        }
+
+        body {
+            background: #ffffff;
+            color: var(--text);
+            padding-top: 88px;
+            line-height: 1.5;
+        }
+
+        /* 导航栏完全复用index.html样式 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--linde-blue);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            z-index: 999;
+            padding: 14px 0;
+        }
+        .nav-wrap {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .logo-icon {
+            display: flex;
+            gap: 12px;
+        }
+        .logo-icon img {
+            height: 45px;
+            width: auto;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+        .nav-links a:hover {
+            color: #f0f0f0;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 40px 32px 60px;
+        }
+
+        /* 页面头部装饰 */
+        .page-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .page-header .main-title {
+            font-size: 42px;
+            color: var(--blue);
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        .page-header .main-title:after {
+            content: '';
+            width: 70px;
+            height: 4px;
+            background: var(--red);
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 4px;
+        }
+
+        .sub-remark {
+            margin-top: 24px;
+            font-size: 18px;
+            color: var(--linde-blue);
+            background: #eef2f7;
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+        }
+
+        /* 寄语卡片布局 */
+        .messages-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 56px;
+        }
+
+        .message-card {
+            background: var(--light-bg);
+            border-radius: 32px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid rgba(0, 83, 155, 0.1);
+        }
+
+        .message-card:hover {
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        /* 领导寄语区域特有头部样式 */
+        .card-header {
+            background: linear-gradient(135deg, #002855 0%, #004b8f 100%);
+            padding: 24px 32px;
+            color: white;
+        }
+
+        .card-header .section-icon {
+            font-size: 28px;
+            margin-right: 12px;
+            vertical-align: middle;
+        }
+
+        .card-header h2 {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: inline-block;
+            border-left: 4px solid var(--gold);
+            padding-left: 18px;
+            margin: 0;
+        }
+
+        /* 领导寄语网格布局：可展示多位领导，每个领导独立卡片风格，左边照片右边文字 */
+        .leadership-grid {
+            padding: 40px 40px 48px;
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .leader-item {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 28px 32px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+            border: 1px solid #eef2f8;
+            transition: all 0.2s;
+        }
+
+        .leader-item:hover {
+            border-color: #cbdde9;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        /* 左侧照片区域 */
+        .leader-photo {
+            flex-shrink: 0;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #eef2fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+            border: 3px solid #fff;
+            outline: 1px solid #cfdfed;
+        }
+
+        .leader-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 照片占位符（如果没有真实图片，显示优雅图标+文字） */
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #d9e3f0, #cbdae9);
+            color: #2c5a7a;
+            font-size: 48px;
+            font-weight: 500;
+            flex-direction: column;
+        }
+
+        .photo-placeholder span {
+            font-size: 14px;
+            margin-top: 6px;
+            font-weight: normal;
+        }
+
+        .leader-details {
+            flex: 1;
+        }
+
+        .leader-name {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--linde-blue);
+            margin-bottom: 8px;
+        }
+
+        .leader-title {
+            font-size: 16px;
+            color: var(--red);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 18px;
+            display: inline-block;
+            background: rgba(200, 16, 46, 0.08);
+            padding: 4px 16px;
+            border-radius: 30px;
+        }
+
+        .leader-message {
+            font-size: 16.5px;
+            line-height: 1.75;
+            color: #2c3e4e;
+            text-align: justify;
+        }
+
+        .leader-message p {
+            margin-bottom: 16px;
+        }
+
+        .signature-line {
+            margin-top: 20px;
+            text-align: right;
+            font-style: italic;
+            color: #6c7a89;
+            border-top: 1px dashed #e2e8f0;
+            padding-top: 16px;
+            font-size: 14px;
+        }
+
+        /* 未来寄语 区块风格独特 */
+        .future-card .card-header {
+            background: linear-gradient(135deg, #9e2a2b 0%, #c8102e 100%);
+        }
+
+        .future-card .card-header h2 {
+            border-left-color: #ffd966;
+        }
+
+        .future-content {
+            padding: 40px 44px;
+            background: #ffffff;
+        }
+
+        .vision-statement {
+            font-size: 18px;
+            line-height: 1.9;
+            color: #1f2d3d;
+            font-weight: 500;
+            background: #fff9ef;
+            padding: 28px 32px;
+            border-radius: 28px;
+            border-left: 6px solid var(--red);
+            margin-bottom: 28px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .future-description {
+            font-size: 16.5px;
+            line-height: 1.85;
+            color: var(--text);
+        }
+
+        .future-description strong {
+            color: var(--red);
+            font-weight: 700;
+        }
+
+        .milestone-tag {
+            display: inline-block;
+            background: #ecf3fa;
+            border-radius: 30px;
+            padding: 4px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--blue);
+            margin-top: 24px;
+        }
+
+        /* 响应式微调 (同步index.html的响应式逻辑) */
+        @media (max-width:768px) {
+            body { padding-top: 18vh; }
+            .logo-icon img { height: 35px; }
+            .nav-wrap { padding: 0 20px; }
+            .nav-links { gap: 14px; font-size: 14px; }
+            
+            .container {
+                padding: 24px 20px 50px;
+            }
+            .page-header .main-title {
+                font-size: 32px;
+            }
+            .card-header h2 {
+                font-size: 24px;
+            }
+            .leadership-grid {
+                padding: 24px 24px;
+            }
+            .leader-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 24px 20px;
+            }
+            .leader-details {
+                text-align: center;
+            }
+            .signature-line {
+                text-align: center;
+            }
+            .vision-statement {
+                font-size: 16px;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .nav-links a {
+                font-size: 12px;
+            }
+            .leader-name {
+                font-size: 22px;
+            }
+            .future-description {
+                font-size: 15px;
+            }
+            .leader-photo {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        footer {
+            background: var(--dark);
+            color: #cddde9;
+            text-align: center;
+            padding: 28px 20px;
+            font-size: 14px;
+            margin-top: 40px;
+            border-top: 1px solid #2c3e4e;
+        }
+
+        /* 简单动画 */
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-card, .leader-item {
+            animation: fadeSlideUp 0.5s ease forwards;
+        }
+
+        .message-card:first-child {
+            animation-delay: 0.05s;
+        }
+        .message-card:last-child {
+            animation-delay: 0.15s;
+        }
+
+        .quote-icon {
+            font-size: 32px;
+            color: rgba(200,16,46,0.25);
+            line-height: 1;
+            margin-right: 6px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <div class="nav-wrap">
+        <div class="logo-box">
+            <div class="logo-icon">
+                <img src="https://p6-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/9ad36038d3dc4783a64d81eefa2979dc.jpg~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=20260526124347961CDC94E2C0BB19C68A&rrcfp=d52e923b&x-expires=1780375428&x-signature=fgXbRef%2BhlRnnCFFB52JIgwn2Ps%3D" alt="中国石化">
+                <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/06d2c3af60fc4196bba456ed26a643da.jpg~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=20260526124347961CDC94E2C0BB19C68A&rrcfp=d52e923b&x-expires=1780375428&x-signature=Rvh4jnQgcybkVppsANLYOD3P0ig%3D" alt="林德">
+            </div>
+            <div>上海石化林德气体有限责任公司 <span style="font-size:14px;">✦ 20周年 ✦</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">首页</a>
+            <a href="about.html">公司简介</a>
+            <a href="team.html">团队风采</a>
+            <a href="history.html">发展历程</a>
+            <a href="culture.html">企业文化</a>
+            <a href="honor.html">荣誉积累</a>
+            <a href="end.html">廿载寄语</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="page-header">
+        <div class="main-title">廿载寄语 · 同心致远</div>
+        <div class="sub-remark">二秩芳华 感恩同行 | 共启新章</div>
+    </div>
+
+    <div class="messages-grid">
+        <!-- 第一栏目：领导寄语 (多人网格，左边照片右边文字，完整管理层阵容) -->
+        <div class="message-card">
+            <div class="card-header">
+                <span class="section-icon">📢</span>
+                <h2>领导寄语 · 领航之声</h2>
+            </div>
+            <div class="leadership-grid">
+                
+                <!-- 领导 1: 沈国强 总经理 -->
+                <div class="leader-item">
+                    <div class="leader-photo" id="photo-shen">
+                        <img src="总经理沈国强.jpg" alt="沈国强照片" onerror="handlePhotoError(this, '沈')">
+                    </div>
+                    <div class="leader-details">
+                        <div class="leader-name">沈国强</div>
+                        <div class="leader-title">上海石化林德气体有限责任公司 总经理</div>
+                        <div class="leader-message">
+                            <p><span class="quote-icon">“</span>二十年风雨兼程，我们与上海石化、林德集团携手并进，从初创探索到行业标杆，每一步都凝聚着全体BSG人的智慧与汗水。安全是企业的生命线，创新是发展的引擎，合作共赢是我们不变的底色。值此合资二十周年之际，我谨代表公司管理层，向每一位辛勤付出的员工、向所有信任我们的客户与股东，致以最诚挚的敬意！</p>
+                            <p>展望未来，我们将继续深耕气体领域，以更高效、更低碳、更安全的解决方案赋能区域产业升级，为金山及长三角的工业血脉注入绿色动能。志合越山海，聚力共前行，期待下一个二十年的壮阔航程！</p>
+                        </div>
+                        <div class="signature-line">总经理办公室 · 2026年仲春</div>
+                    </div>
+                </div>
+
+                <!-- 领导 2: 郑保才 副总经理 -->
+                <div class="leader-item">
+                    <div class="leader-photo" id="photo-zheng">
+                        <img src="副总经理郑保才.jpg" alt="郑保才照片" onerror="handlePhotoError(this, '郑')">
+                    </div>
+                    <div class="leader-details">
+                        <div class="leader-name">郑保才</div>
+                        <div class="leader-title">上海石化林德气体有限责任公司 副总经理</div>
+                        <div class="leader-message">
+                            <p><span class="quote-icon">“</span>二十年来，BSG始终将安全视为第一生命线，实现连续多年无重大事故，建立国际一流的安全管理体系。从双重预防机制到数字化智能巡检，我们用责任铸就信任。未来，我们将持续践行“安全零容忍”理念，推动安全文化深入每个岗位，打造行业安全新标杆，为所有员工和周边社区保驾护航。</p>
+                            <p>廿载已是基石，更要以归零心态面对每一天。让安全成为BSG最亮丽的名片！</p>
+                        </div>
+                        <div class="signature-line">副总经理办公室 · 2026年仲春</div>
+                    </div>
+                </div>
+
+                <!-- 领导 3: 钟卫国 生产工艺部经理 -->
+                <div class="leader-item">
+                    <div class="leader-photo" id="photo-yu">
+                        <img src="b00.jpg" alt="钟卫国照片" onerror="handlePhotoError(this, '钟')">
+                    </div>
+                    <div class="leader-details">
+                        <div class="leader-name">钟卫国</div>
+                        <div class="leader-title">总工程师 生产工艺部经理</div>
+                        <div class="leader-message">
+                            <p><span class="quote-icon">“</span>二十年合资硕果累累，股东价值持续提升，BSG资产回报率稳居行业前列。这得益于双方股东的深度信任和团队精益运营。站在新起点，我们将继续优化资本结构，聚焦绿色氢能、高纯气体等高增长领域，以稳健财务支撑宏图战略，为股东创造可持续回报，也为地方税收和就业做出更大贡献。</p>
+                            <p>数字背后是每一位员工的拼搏，向全体BSG奋斗者致敬！</p>
+                        </div>
+                        <div class="signature-line">生产工艺部</div>
+                    </div>
+                </div>
+
+                <!-- 领导 4: 余毅骏 人事行政部经理 -->
+                <div class="leader-item">
+                    <div class="leader-photo" id="photo-chen">
+                        <img src="人事行政经理余毅骏.jpg" alt="余毅骏照片" onerror="handlePhotoError(this, '余')">
+                    </div>
+                    <div class="leader-details">
+                        <div class="leader-name">余毅骏</div>
+                        <div class="leader-title"> 人事行政部经理</div>
+                        <div class="leader-message">
+                            <p><span class="quote-icon">“</span>人才是企业发展的根脉。二十年薪火相传，我们见证了无数名员工从青涩到骨干的蜕变。BSG致力于打造“家文化”与职业发展双通道，让每位奋斗者拥有归属感与成长平台。未来，我们将加大人才培养力度，构建学习型组织，让梦想在这里生根，让价值彼此成就。</p>
+                            <p>廿载同行，感恩有你；未来已来，我们同舟共济！</p>
+                        </div>
+                        <div class="signature-line">人事行政部</div>
+                    </div>
+                </div>
+
+                <!-- 领导 5: 徐军 设备维修部经理 -->
+                <div class="leader-item">
+                    <div class="leader-photo" id="photo-zhang">
+                        <img src="b03.jpg" alt="徐军照片" onerror="handlePhotoError(this, '张')">
+                    </div>
+                    <div class="leader-details">
+                        <div class="leader-name">徐军</div>
+                        <div class="leader-title">设备维修部经理</div>
+                        <div class="leader-message">
+                            <p><span class="quote-icon">“</span>人才是企业发展的根脉。二十年薪火相传，我们见证了数百名员工从青涩到骨干的蜕变。BSG致力于打造“家文化”与职业发展双通道，让每位奋斗者拥有归属感与成长平台。未来，我们将加大青年人才引进，构建学习型组织，让梦想在这里生根，让价值彼此成就。</p>
+                            <p>廿载同行，感恩有你；未来已来，我们同舟共济！</p>
+                        </div>
+                        <div class="signature-line">设备维修部</div>
+                    </div>
+                </div>
+
+                <!-- ========= 新增 领导 6: 俞叶锋 财务经理 ========= -->
+                <div class="leader-item">
+                    <div class="leader-photo" id="photo-wangjj">
+                        <img src="b044.jpg" alt="俞叶锋照片" onerror="handlePhotoError(this, '王')">
+                    </div>
+                    <div class="leader-details">
+                        <div class="leader-name">俞叶锋</div>
+                        <div class="leader-title">财务部经理</div>
+                        <div class="leader-message">
+                             <p><span class="quote-icon">“</span>二十年稳健经营，现金流持续优化。财务团队始终坚持合规底线与价值创造并重，支撑公司战略转型。面向未来，我们将围绕数智化财务及全面预算体系，为低碳升级和新兴业务提供坚实财务保障。每一组数据都见证奋斗，让我们携手书写下一个辉煌篇章。</p>
+                            <p>诚信为本，精益为魂，助力BSG扬帆万里。</p>
+                        </div>
+                        <div class="signature-line">财务部</div>
+                    </div>
+                </div>
+
+                <!-- ========= 新增 领导 7: 杨永生 销售部经理 ========= -->
+                <div class="leader-item">
+                    <div class="leader-photo" id="photo-linf">
+                        <img src="b05.jpg" alt="杨永生照片" onerror="handlePhotoError(this, '林')">
+                    </div>
+                    <div class="leader-details">
+                        <div class="leader-name">杨永生</div>
+                        <div class="leader-title">销售部经理</div>
+                        <div class="leader-message">
+                            <p><span class="quote-icon">“</span>廿载同行，BSG从金山起步，辐射长三角，与上千家客户建立了深厚的战略合作。我们以稳定可靠的液体供应和高纯气体方案，赢得市场美誉。未来我们将加速布局氢能、电子特气等新赛道，深化与新兴行业的链接，以客户价值为中心，打造气体服务生态圈。聚力二十载，再创新蓝图，市场先锋团队整装待发！</p>
+                            <p>期待与更多伙伴跨越周期，共赢未来，让BSG的品牌焕发更耀眼的光芒。</p>
+                        </div>
+                        <div class="signature-line">销售部</div>
+                    </div>
+                </div>
+
+                <!-- ========= 新增 领导 8: 张廉 采购经理 ========= -->
+                <div class="leader-item">
+                    <div class="leader-photo" id="photo-zhaoyq">
+                        <img src="001.jpg" alt="张廉照片" onerror="handlePhotoError(this, '赵')">
+                    </div>
+                    <div class="leader-details">
+                        <div class="leader-name">张廉</div>
+                        <div class="leader-title">采购经理</div>
+                        <div class="leader-message">
+                            <p><span class="quote-icon">“</span>二十年稳健经营，BSG资产规模增长6倍，现金流持续优化，连续十年实现股东回报超额达成。财务团队始终坚持合规底线与价值创造并重，支撑公司战略转型。面向未来，我们将围绕数智化财务、绿色投融资及全面预算体系，为低碳升级和新兴业务提供坚实财务保障。每一组数据都见证奋斗，让我们携手书写下一个辉煌篇章。</p>
+                            <p>诚信为本，精益为魂，助力BSG扬帆万里。</p>
+                        </div>
+                        <div class="signature-line">采购部</div>
+                    </div>
+                </div>
+
+                <!-- ========= 新增 领导 9: 徐铮 HSE经理 ========= -->
+                <div class="leader-item">
+                    <div class="leader-photo" id="photo-liumh">
+                        <img src="b07.jpg" alt=徐铮照片" onerror="handlePhotoError(this, '刘')">
+                    </div>
+                    <div class="leader-details">
+                        <div class="leader-name">徐铮</div>
+                        <div class="leader-title">HSE经理</div>
+                        <div class="leader-message">
+                            <p><span class="quote-icon">“</span>安全是BSG不可逾越的红线。二十年来我们构建了覆盖全链条的SHE管理体系，实现连续超7000天无损工事件记录。未来我们将依托数字化风险预警平台，持续培育“本质安全”文化。每一位员工的安全，是我们最大的承诺；每一个家庭的笑容，是我们守护的价值。</p>
+                            <p>安全没有终点，只有每一个崭新的起点。愿BSG下一个二十年，安全根基坚如磐石，平安成为常态，幸福永伴左右。</p>
+                        </div>
+                        <div class="signature-line">HSE部</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 第二栏目：未来寄语 · 擘画宏图（融合之前详尽战略规划）保持不变 -->
+        <div class="message-card future-card">
+            <div class="card-header">
+                <span class="section-icon">🚀</span>
+                <h2>未来寄语 · 擘画宏图</h2>
+            </div>
+            <div class="future-content">
+                <div class="vision-statement">
+                    🌟 二十冠礼，再启新程。BSG将立足卓越运营，构建“安全·绿色·智慧”气体生态圈。
+                </div>
+                <div class="future-description">
+                    <p>未来，上海石化林德气体有限责任公司将精准锁定高潜力周边，<strong>由点带面，低成本试错</strong>，不断拓展金山二工区等外延市场，通过对公司的成功运作，加强中国石化集团和林德集团之间合作关系，合作开发未来的业务，为上海石化提供<strong>安全、稳定、可靠</strong>的气体供应，并对外提供一个主要的稳定的液体供应资源，逐步建成<strong>国内顶级气体供应中心和世界一流的气体运作中心</strong>，以满足股东双方的投资回报，也为员工创造团结、和谐、能实现自己理想的发展空间。</p>
+                    <p style="margin-top: 22px;">我们将以数字化赋能智慧运营，深化低碳技术革新，打造“零事故、零排放、零距离服务”的行业新标杆。深耕金山第二工业区及长三角高附加值产业带，拓展电子气、高纯气体等新兴赛道，同时发挥合资双方优势，构建更具韧性的供应链体系。坚持人才强企战略，让每一位奋斗者都能在BSG的平台上绽放光芒，共享企业发展红利。</p>
+                    <p style="margin-top: 20px; font-weight: 500;">征途漫漫，惟有奋斗。站在二十年新起点，全体BSG人将秉持“团结、务实、创新、共赢”的精神，朝着世界一流气体运作中心的愿景全速进发，为石化行业绿色转型、区域经济高质量发展贡献磅礴力量。</p>
+                    <div class="milestone-tag">
+                        📍新的二十年，我们来了！
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 二十周年纪念短语 融合氛围 -->
+    <div style="text-align: center; margin-top: 60px; opacity: 0.7; font-size: 15px; color: #5d6e85; border-top: 1px solid #e2e8f0; padding-top: 32px;">
+        <span>✦ 诚信 专业 协作 创新 ✦</span><br>
+        <span style="font-size: 13px;">上海石化林德气体有限责任公司（BSG）· 合资二十周年 继往开来</span>
+    </div>
+</div>
+
+<footer>
+    <p>上海石化林德气体有限责任公司（BSG）• 合资20周年纪念 ©2026 ｜ 安全 · 高效 · 可持续 ｜ 廿载寄语 感恩有你</p>
+    <p style="margin-top: 8px; font-size:12px;">地址：上海市金山区 ｜ 为工业赋能，与城市共生</p>
+</footer>
+
+<script>
+    // 处理照片加载错误优雅降级：显示带有姓名的圆形占位符，保持布局左边照片区域美观
+    function handlePhotoError(imgElement, lastName) {
+        if (!imgElement) return;
+        // 如果已经用占位符替换过就不再重复
+        if (imgElement.parentNode && imgElement.parentNode.querySelector('.photo-placeholder')) return;
+        // 隐藏破损img并创建占位div
+        imgElement.style.display = 'none';
+        const container = imgElement.parentNode;
+        // 保留原有尺寸样式
+        const placeholderDiv = document.createElement('div');
+        placeholderDiv.className = 'photo-placeholder';
+        let displayChar = (lastName && lastName.length > 0) ? lastName.charAt(0) : '领';
+        placeholderDiv.innerHTML = `<span style="font-size:48px; font-weight:500;">${displayChar}</span><span style="font-size:12px;">领导照片</span>`;
+        container.style.background = '#eef2fa';
+        container.style.display = 'flex';
+        container.style.alignItems = 'center';
+        container.style.justifyContent = 'center';
+        container.appendChild(placeholderDiv);
+        if (imgElement.parentNode === container) {
+            imgElement.remove(); // 移除损坏img
+        }
+    }
+
+    // 优雅降级处理所有领导照片及logo异常
+    document.addEventListener('DOMContentLoaded', function() {
+        // 所有带领导照片图片的元素集合（按照新增后的ID及结构统一处理）
+        const leaderPhotoSelectors = [
+            { img: document.querySelector('#photo-shen img'), name: '沈' },
+            { img: document.querySelector('#photo-zheng img'), name: '郑' },
+            { img: document.querySelector('#photo-yu img'), name: '余' },
+            { img: document.querySelector('#photo-chen img'), name: '陈' },
+            { img: document.querySelector('#photo-zhang img'), name: '张' },
+            { img: document.querySelector('#photo-wangjj img'), name: '王' },
+            { img: document.querySelector('#photo-linf img'), name: '林' },
+            { img: document.querySelector('#photo-zhaoyq img'), name: '赵' },
+            { img: document.querySelector('#photo-liumh img'), name: '刘' }
+        ];
+        leaderPhotoSelectors.forEach(item => {
+            if (item.img) {
+                if (item.img.complete) {
+                    if (item.img.naturalWidth === 0 || item.img.naturalHeight === 0) {
+                        handlePhotoError(item.img, item.name);
+                    }
+                } else {
+                    item.img.onerror = function() {
+                        handlePhotoError(item.img, item.name);
+                    };
+                }
+            }
+        });
+        // 确保logo图片优雅降级不影响布局
+        const logoImgs = document.querySelectorAll('.logo-icon img');
+        logoImgs.forEach(img => {
+            img.onerror = function() {
+                this.style.display = 'none';
+            };
+            if (img.complete && img.naturalWidth === 0) {
+                img.style.display = 'none';
+            }
+        });
+    });
+</script>
+</body>
+</html>
