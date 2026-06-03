@@ -387,11 +387,11 @@
     <!-- 其他部门经理（人事行政、生产工艺、设备维修、财务、销售、采购、HSE、工会主席）一排四个 -->
     <div class="other-leaders" id="otherLeadersContainer"></div>
 
-    <!-- 部门合影栏目：每行四个，现在增加电工班A和电工班B，使部门合影更加完整 -->
+    <!-- 部门合影栏目：每行四个，现包含管理团队+原有核心部门+生产运行甲乙丙丁+电工班A、电工班B、电工班C，共15项，完美适配4列布局(首行4,次行4,第三行4,第四行3) CSS自动换行且视觉整洁 -->
     <div class="dept-group">
         <h2 class="title">部门合影</h2>
         <div class="dept-grid" id="deptGallery">
-            <!-- 通过JS动态生成：包含管理团队 + 原有核心部门(7个) + 生产运行甲乙丙丁(4个) + 新增电工班A + 电工班B = 共14项，完美适配4列布局(首行4,次行4,第三行4,第四行2)但CSS会自动换行且视觉整洁 -->
+            <!-- 通过JS动态生成：包含管理团队、生产工艺、人事行政、设备维修、财务部、销售部、HSE部、采购部、生产运行甲乙丙丁、电工班A、电工班B、电工班C = 合计15项 -->
         </div>
     </div>
 
@@ -447,7 +447,7 @@
         { name: "胡雪赟", position: "工会主席 人事行政部副经理", brief: "负责工会组织建设、职工权益保障及文体活动开展，搭建员工与企业沟通桥梁，营造和谐奋进的大家庭氛围。", img: "b08.jpg", alt: "工会主席" }
     ];
 
-    // 员工风采图片集
+    // 员工风采图片集（保留原有设计，统一使用占位图展示风采氛围）
     const staffImages = [
         { img: "001.jpg", desc: "岗位上认真工作的员工，以高度的责任心完成每一项任务，严谨把控生产细节。" },
         { img: "001.jpg", desc: "团队协作完成项目攻坚，展现了良好的团队凝聚力，跨部门协同攻克技术难题。" },
@@ -457,31 +457,32 @@
         { img: "001.jpg", desc: "行政人员精心组织公司各类活动，保障员工福利，营造和谐职场氛围。" }
     ];
 
-    // 部门合影数据: 为了满足客户要求 "部门合影里面缺了两个，加入电工班a和电工班b"
-    // 原始包含：管理团队 + 生产工艺部 + 人事行政部 + 设备维修部 + 财务部 + 销售部 + HSE部 + 采购部 + 生产运行甲乙丙丁 = 共12项。
-    // 现在增加电工班A和电工班B => 总共14项，保证所有团队都包含且每行四列的自然流式布局仍然整齐美观。
+    // 部门合影数据：按照要求增加电工班C，使部门展示更加完整全面
+    // 原始基础包含：管理团队 + 生产工艺部 + 人事行政部 + 设备维修部 + 财务部 + 销售部 + HSE部 + 采购部 + 生产运行甲乙丙丁（4个） + 电工班A + 电工班B
+    // 现在新增“电工班C”，合计15项。每一项不仅涵盖核心团队，也彰显不同专业班组风采，4列网格布局下显示美观。
     const deptPhotos = [
         // 1. 管理团队合影
         { name: "管理团队", img: "001.jpg", desc: "管理团队合影：公司核心管理层汇聚一堂，引领企业战略航向，共绘高质量发展蓝图。", defaultPic: "https://picsum.photos/id/104/600/400" },
-        // 原有7个核心部门（全部保留）
-        { name: "生产工艺部", img: "日班合照.png", desc: "生产工艺部合影：精耕细作，精益求精，保障生产工艺稳定。", defaultPic: "https://picsum.photos/id/20/600/400" },
-        { name: "人事行政部", img: "001.jpg", desc: "人事行政部合影：团结协作，高效服务，支撑公司整体运营。", defaultPic: "https://picsum.photos/id/21/600/400" },
-        { name: "设备维修部", img: "001.jpg", desc: "设备维修部合影：专业保障，快速响应，守护设备稳定运行。", defaultPic: "https://picsum.photos/id/22/600/400" },
-        { name: "财务部", img: "a04.jpg", desc: "财务部合影：精准把控，合规运营，为公司发展保驾护航。", defaultPic: "https://picsum.photos/id/23/600/400" },
-        { name: "销售部", img: "b01.jpg", desc: "销售部合影：抓质量，稳充装，建立销售条线。", defaultPic: "https://picsum.photos/id/24/600/400" },
-        { name: "HSE部", img: "c07.jpg", desc: "HSE部合影：安全第一，预防为主，筑牢安全生产防线。", defaultPic: "https://picsum.photos/id/25/600/400" },
-        { name: "采购部", img: "001.jpg", desc: "采购部合影：高效协同，降本增效，保障供应链稳定。", defaultPic: "https://picsum.photos/id/26/600/400" },
+        // 原有7个核心部门
+        { name: "生产工艺部", img: "日班合照.png", desc: "生产工艺部合影：精耕细作，精益求精，保障生产工艺稳定，持续优化装置效能。", defaultPic: "https://picsum.photos/id/20/600/400" },
+        { name: "人事行政部", img: "001.jpg", desc: "人事行政部合影：团结协作，高效服务，支撑公司整体运营，打造充满活力的职场文化。", defaultPic: "https://picsum.photos/id/21/600/400" },
+        { name: "设备维修部", img: "001.jpg", desc: "设备维修部合影：专业保障，快速响应，守护设备稳定运行，降低故障率提升可靠性。", defaultPic: "https://picsum.photos/id/22/600/400" },
+        { name: "财务部", img: "a04.jpg", desc: "财务部合影：精准把控，合规运营，为公司发展保驾护航，严控成本创造价值。", defaultPic: "https://picsum.photos/id/23/600/400" },
+        { name: "销售部", img: "b01.jpg", desc: "销售部合影：抓质量，稳充装，建立高效销售条线，持续拓展气体市场版图。", defaultPic: "https://picsum.photos/id/24/600/400" },
+        { name: "HSE部", img: "c07.jpg", desc: "HSE部合影：安全第一，预防为主，筑牢安全生产防线，实现零事故安全目标。", defaultPic: "https://picsum.photos/id/25/600/400" },
+        { name: "采购部", img: "001.jpg", desc: "采购部合影：高效协同，降本增效，保障供应链稳定，战略采购支撑生产需求。", defaultPic: "https://picsum.photos/id/26/600/400" },
         // 四个生产运行班组
-        { name: "生产运行-甲班", img: "甲班合照.jpg", desc: "生产运行甲班合影：恪尽职守，精细操作，保障装置安全平稳长周期运行。", defaultPic: "https://picsum.photos/id/29/600/400" },
-        { name: "生产运行-乙班", img: "乙班合照.jpg", desc: "生产运行乙班合影：严谨工艺，高效协同，全天候守护气体供应稳定。", defaultPic: "https://picsum.photos/id/39/600/400" },
-        { name: "生产运行-丙班", img: "丙班合照.jpg", desc: "生产运行丙班合影：技能精湛，快速响应，争创一流生产班组。", defaultPic: "https://picsum.photos/id/49/600/400" },
-        { name: "生产运行-丁班", img: "丁班合照.jpg", desc: "生产运行丁班合影：责任为先，团结奋进，筑牢生产一线基石。", defaultPic: "https://picsum.photos/id/59/600/400" },
-        // 新增：电工班A 和 电工班B (按客户要求增加)
-        { name: "电工班A", img: "001.jpg", desc: "电工班A合影：技术精湛，保障全厂电气设备稳定运行，快速响应电力故障，为安全生产提供坚实电力后盾。", defaultPic: "https://picsum.photos/id/11/600/400" },
-        { name: "电工班B", img: "001.jpg", desc: "电工班B合影：一丝不苟，专注电气系统预防性维护，提升电气安全水平，助力公司节能降耗与平稳供电。", defaultPic: "https://picsum.photos/id/14/600/400" }
+        { name: "生产运行-甲班", img: "甲班合照.jpg", desc: "生产运行甲班合影：恪尽职守，精细操作，保障装置安全平稳长周期运行，高标准完成生产任务。", defaultPic: "https://picsum.photos/id/29/600/400" },
+        { name: "生产运行-乙班", img: "乙班合照.jpg", desc: "生产运行乙班合影：严谨工艺，高效协同，全天候守护气体供应稳定，展现卓越执行力。", defaultPic: "https://picsum.photos/id/39/600/400" },
+        { name: "生产运行-丙班", img: "丙班合照.jpg", desc: "生产运行丙班合影：技能精湛，快速响应，争创一流生产班组，积极推进节能降耗。", defaultPic: "https://picsum.photos/id/49/600/400" },
+        { name: "生产运行-丁班", img: "丁班合照.jpg", desc: "生产运行丁班合影：责任为先，团结奋进，筑牢生产一线基石，持续优化操作指标。", defaultPic: "https://picsum.photos/id/59/600/400" },
+        // 电工班A 和 电工班B 和 新增电工班C （完全满足客户要求）
+        { name: "电工班A", img: "电气1.jpg", desc: "电工班A合影：技术精湛，保障全厂电气设备稳定运行，快速响应电力故障，为安全生产提供坚实电力后盾。", defaultPic: "https://picsum.photos/id/11/600/400" },
+        { name: "电工班B", img: "001.jpg", desc: "电工班B合影：一丝不苟，专注电气系统预防性维护，提升电气安全水平，助力公司节能降耗与平稳供电。", defaultPic: "https://picsum.photos/id/14/600/400" },
+        { name: "电工班C", img: "电气2.jpg", desc: "电工班C合影：严谨务实，高效协作，承担厂区关键电气检修任务，强化应急预案与值班响应，为生产保驾护航。", defaultPic: "https://picsum.photos/id/15/600/400" }
     ];
 
-    // 通用函数：创建团队卡片DOM
+    // 通用函数：创建团队卡片DOM（用于核心团队个人卡）
     function createTeamCard(member, fullDesc) {
         const card = document.createElement('div');
         card.className = 'team-card';
@@ -528,7 +529,7 @@
         container.appendChild(gridWrapper);
     }
 
-    // 渲染部门合影: 包含管理团队+原部门+生产运行四班+新增电工班A/B，共14项，grid自动每行四个完美换行
+    // 渲染部门合影: 包含管理团队+原部门+生产运行四班+电工班A/B/C，总计15项，grid自动每行四个完美换行，第四行三个视觉平衡
     function renderDeptGallery() {
         const galleryContainer = document.getElementById('deptGallery');
         if (!galleryContainer) return;
@@ -536,7 +537,7 @@
         deptPhotos.forEach(dept => {
             const deptDiv = document.createElement('div');
             deptDiv.className = 'dept-item';
-            // 处理图片地址，如果有真实图片就用，否则用随机占位图，确保显示
+            // 处理图片地址：优先使用真实图片路径，如果没有则用随机占位图，确保显示不报错
             const imgSrc = dept.img && dept.img !== '' ? dept.img : dept.defaultPic;
             deptDiv.setAttribute('data-img', imgSrc);
             deptDiv.setAttribute('data-desc', dept.desc);
@@ -571,7 +572,7 @@
         });
     }
 
-    // ---------- 模态框逻辑 ----------
+    // ---------- 模态框逻辑（轻量优雅放大图片及描述）----------
     const modal = document.getElementById('imgModal');
     const modalImg = document.getElementById('modalImg');
     const modalDesc = document.getElementById('modalDesc');
@@ -615,11 +616,11 @@
         }
     });
 
-    // 页面加载完成后渲染所有板块
+    // 页面加载完成后渲染所有板块（核心团队、部门合影含电工班C、员工风采）
     window.addEventListener('DOMContentLoaded', () => {
         renderTopLeaders();     
         renderOtherLeaders();   
-        renderDeptGallery();    // 渲染部门合影(包含管理团队+原有部门+生产运行甲乙丙丁+电工班A/电工班B)
+        renderDeptGallery();    // 部门合影现在包含15项（管理团队、核心部门、四运行班组、电工班A/B/C）
         renderStaffGallery();
     });
 </script>
