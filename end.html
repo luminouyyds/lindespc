@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>廿载寄语 | 上海石化林德气体有限责任公司（BSG）</title>
-    <!-- Font Awesome for icons (保留但导航栏不再使用) -->
+    <!-- Font Awesome for icons (保留但导航栏不再使用图标) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -32,55 +32,85 @@
             line-height: 1.5;
         }
 
-        /* 导航栏完全复用index.html样式 */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: var(--linde-blue);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-            z-index: 999;
-            padding: 14px 0;
-        }
-        .nav-wrap {
-            max-width: 100%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 40px;
-        }
-        .logo-box {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
-        }
-        .logo-icon {
-            display: flex;
-            gap: 12px;
-        }
-        .logo-icon img {
-            height: 45px;
-            width: auto;
-        }
-        .nav-links {
-            display: flex;
-            gap: 28px;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: 500;
-            transition: color 0.3s;
-            font-size: 16px;
-        }
-        .nav-links a:hover {
-            color: #f0f0f0;
-        }
+/* 导航栏 - 修复垂直居中问题 */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--linde-blue);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    z-index: 999;
+    padding: 12px 0;
+}
+.nav-wrap {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    flex-wrap: wrap;
+}
+.logo-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1.2;
+}
+.logo-icon {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+.logo-icon img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+.nav-links {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: opacity 0.3s;
+    font-size: 16px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+}
+.nav-links a:hover {
+    opacity: 0.8;
+}
+/* 高亮新项目签约按钮 */
+.nav-links a:last-child {
+    background: var(--red);
+    padding: 6px 14px;
+    border-radius: 40px;
+    transition: all 0.3s;
+}
+.nav-links a:last-child:hover {
+    background: #a00d26;
+    opacity: 1;
+}
 
+/* 响应式适配 */
+@media (max-width: 768px) {
+    .navbar { padding: 10px 0; }
+    .nav-wrap { padding: 0 20px; gap: 12px; justify-content: center; }
+    .logo-icon img { height: 32px; }
+    .logo-box { font-size: 14px; }
+    .nav-links { gap: 12px; justify-content: center; margin-top: 0; }
+    .nav-links a:last-child { padding: 4px 12px; font-size: 14px; }
+}
         /* 主容器 */
         .container {
             max-width: 1280px;
@@ -433,8 +463,8 @@
     <div class="nav-wrap">
         <div class="logo-box">
             <div class="logo-icon">
-                <img src="https://p6-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/9ad36038d3dc4783a64d81eefa2979dc.jpg~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=20260526124347961CDC94E2C0BB19C68A&rrcfp=d52e923b&x-expires=1780375428&x-signature=fgXbRef%2BhlRnnCFFB52JIgwn2Ps%3D" alt="中国石化">
-                <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/06d2c3af60fc4196bba456ed26a643da.jpg~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=20260526124347961CDC94E2C0BB19C68A&rrcfp=d52e923b&x-expires=1780375428&x-signature=Rvh4jnQgcybkVppsANLYOD3P0ig%3D" alt="林德">
+                <img src="spclogo.jpg" alt="中国石化">
+                <img src="lindelogo.jpg" alt="林德">
             </div>
             <div>上海石化林德气体有限责任公司 <span style="font-size:14px;">✦ 20周年 ✦</span></div>
         </div>
@@ -446,6 +476,7 @@
             <a href="culture.html">企业文化</a>
             <a href="honor.html">荣誉积累</a>
             <a href="end.html">廿载寄语</a>
+            <a href="program.html" style="background: var(--red); padding: 6px 14px; border-radius: 40px;">✨ 6.2 新空分项目签约仪式</a>
         </div>
     </div>
 </div>
@@ -596,7 +627,7 @@
                 <!-- ========= 新增 领导 9: 徐铮 HSE经理 ========= -->
                 <div class="leader-item">
                     <div class="leader-photo" id="photo-liumh">
-                        <img src="b07.jpg" alt=徐铮照片" onerror="handlePhotoError(this, '刘')">
+                        <img src="b07.jpg" alt="徐铮照片" onerror="handlePhotoError(this, '刘')">
                     </div>
                     <div class="leader-details">
                         <div class="leader-name">徐铮</div>

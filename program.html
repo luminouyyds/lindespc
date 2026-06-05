@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>新项目签约仪式 | 上海石化林德气体有限责任公司</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --red: #c8102e;
+            --blue: #00539b;
+            --gray: #f5f7fa;
+            --dark: #1e2a36;
+            --text: #4a5568;
+            --linde-blue: #002855;
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.05), 0 2px 6px rgba(0,0,0,0.03);
+            --shadow-md: 0 12px 28px rgba(0,0,0,0.08);
+        }
+
+        body {
+            color: var(--dark);
+            background: #fff;
+            padding-top: 90px;
+            font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Roboto, sans-serif;
+            line-height: 1.5;
+        }
+
+        /* 导航栏 - 修复垂直居中问题 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--linde-blue);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            z-index: 999;
+            padding: 12px 0;
+        }
+        .nav-wrap {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            flex-wrap: wrap;
+        }
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            line-height: 1.2;
+        }
+        .logo-icon {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .logo-icon img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            font-size: 16px;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+        }
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        /* 高亮新项目签约按钮 */
+        .nav-links a:last-child {
+            background: var(--red);
+            padding: 6px 14px;
+            border-radius: 40px;
+            transition: all 0.3s;
+        }
+        .nav-links a:last-child:hover {
+            background: #a00d26;
+            opacity: 1;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 36px;
+            color: var(--blue);
+            margin-bottom: 48px;
+            position: relative;
+            font-weight: 600;
+        }
+        .title::after {
+            content: '';
+            width: 90px;
+            height: 4px;
+            background: var(--red);
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* 签约仪式文本区域 - 左右布局（文字+图片） */
+        .ceremony-wrapper {
+            background: linear-gradient(145deg, #f8fafc 0%, #ffffff 100%);
+            border-radius: 32px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 56px;
+            border-left: 6px solid var(--red);
+            overflow: hidden;
+        }
+        .ceremony-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            padding: 40px 48px;
+        }
+        .ceremony-text {
+            flex: 2;
+            min-width: 260px;
+        }
+        .ceremony-text h3 {
+            font-size: 28px;
+            color: var(--linde-blue);
+            margin-bottom: 20px;
+            font-weight: 650;
+        }
+        .ceremony-text .date {
+            color: var(--red);
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+        .ceremony-text p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+        .ceremony-text strong {
+            color: var(--linde-blue);
+        }
+        /* 右侧图片区域 */
+        .ceremony-image-side {
+            flex: 1.2;
+            min-width: 260px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            background: #fff;
+            align-self: center;
+        }
+        .ceremony-image-side:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .ceremony-image-side img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 4 / 3;
+            transition: transform 0.4s;
+        }
+        .ceremony-image-side:hover img {
+            transform: scale(1.02);
+        }
+        .image-caption {
+            text-align: center;
+            padding: 12px 16px;
+            background: #fff;
+            color: var(--text);
+            font-size: 0.85rem;
+            border-top: 1px solid #edf2f7;
+        }
+
+        /* 视频展示区 */
+        .video-section {
+            margin-bottom: 56px;
+        }
+        .video-wrapper {
+            background: #000;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            aspect-ratio: 16 / 9;
+            width: 100%;
+        }
+        .video-wrapper iframe,
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border: none;
+        }
+
+        /* 照片画廊 - 21个格子 */
+        .photo-gallery {
+            margin-top: 20px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
+        }
+        .gallery-card {
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .gallery-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .gallery-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background-color: #eef2f8;
+            display: block;
+        }
+        .gallery-card .caption {
+            padding: 16px 20px;
+            font-size: 0.9rem;
+            color: var(--text);
+            border-top: 1px solid #edf2f7;
+            background: #fff;
+        }
+        .gallery-card .caption strong {
+            color: var(--blue);
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+
+        /* 模态框（图片放大） */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.94);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .modal-img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 20px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.4);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .modal-desc {
+            color: #fff;
+            font-size: 1rem;
+            margin-top: 20px;
+            text-align: center;
+            background: rgba(0,0,0,0.6);
+            padding: 10px 24px;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+        }
+        .close-btn {
+            position: absolute;
+            top: -48px;
+            right: 0;
+            color: #fff;
+            font-size: 38px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: 0.2s;
+            background: rgba(0,0,0,0.5);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .close-btn:hover {
+            background: var(--red);
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: var(--dark);
+            color: #fff;
+            text-align: center;
+            padding: 28px 20px;
+            font-size: 14px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .ceremony-flex {
+                flex-direction: column;
+                padding: 28px 24px;
+            }
+            .ceremony-image-side {
+                max-width: 100%;
+                order: -1;  /* 移动端图片显示在上方更符合阅读习惯 */
+                margin-bottom: 8px;
+            }
+        }
+        @media (max-width: 768px) {
+            body { padding-top: 80px; }
+            .container { padding: 40px 20px; }
+            .logo-icon img { height: 32px; }
+            .nav-wrap { padding: 0 20px; gap: 12px; justify-content: center; }
+            .nav-links { gap: 12px; justify-content: center; margin-top: 0; }
+            .logo-box { font-size: 14px; }
+            .title { font-size: 28px; }
+            .ceremony-text h3 { font-size: 22px; }
+            .gallery-grid { gap: 20px; }
+            .gallery-card img { height: 180px; }
+            .nav-links a:last-child { padding: 4px 12px; font-size: 14px; }
+            .navbar { padding: 10px 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <div class="nav-wrap">
+        <div class="logo-box">
+            <div class="logo-icon">
+                <img src="spclogo.jpg" alt="中国石化">
+                <img src="lindelogo.jpg" alt="林德">
+            </div>
+            <div>上海石化林德气体有限责任公司 <span style="font-size:14px;">✦ 20周年 ✦</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">首页</a>
+            <a href="about.html">公司简介</a>
+            <a href="team.html">团队风采</a>
+            <a href="history.html">发展历程</a>
+            <a href="culture.html">企业文化</a>
+            <a href="honor.html">荣誉积累</a>
+            <a href="end.html">廿载寄语</a>
+            <a href="program.html" style="background: var(--red); padding: 6px 14px; border-radius: 40px;">✨ 6.2 新空分项目签约仪式</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- 项目签约仪式文本板块：左右布局，文字左侧，图片右侧，无小图标 -->
+    <div class="ceremony-wrapper">
+        <div class="ceremony-flex">
+            <div class="ceremony-text">
+                <h3>上海石化与林德新空分项目签约仪式</h3>
+                <div class="date">2026年6月2日 | 中国·上海</div>
+                <p><strong>中国石化上海石油化工股份有限公司</strong> 与 <strong>林德（中国）投资有限公司</strong> 于2026年6月2日正式签署《9号空分项目合作意向书》。本次签约标志着双方在工业气体供应领域的合作迈入全新阶段，将共同推动合资公司上海石化林德气体有限责任公司（BSG）新建9号空分装置，为上海石化提供更坚实的气体保障。</p>
+                <p>双方将秉持平等互利、风险共担、合作共赢的原则，在现有气体供应合同到期前完成修订续约谈判，并商定9号空分装置的建设、运营及相关商务技术条款。双方同意成立联合工作组，共同沟通协调推进项目落地，最终以经各方有权机构批准签署的新气体供应合同为准。</p>
+               <p>本次签约仪式由上海市金山区委副书记、代理区长杨元飞，上海市经济和信息化委员会新材料处处长陆寅，中国石化上海石油化工股份有限公司党委书记、董事长郭晓军，林德全球首席运营官Sean Durbin，林德大中华区总裁李臻旻，林德大中华区副总裁林文威等多方代表，以及合资公司中外方总经理沈国强、郑保才共同出席。由上海石化副总经理杜军与林德大中华区副总裁鲁荣代表双方签署《9号空分项目合作意向书》。<p>
+                <p>合作双方表示：“二十年精诚合作，9号空分项目是双方战略协同的又一里程碑。我们将以最高标准打造安全、高效、绿色的空分装置，为工业气体保供及低碳转型注入新动能。”</p>
+</div>
+        <div class="ceremony-image-side" style="cursor: pointer;" onclick="openModal(this.querySelector('img').src, '两位法定代表人签字 | 政府代表及中外方代表共同见证')">
+            <img src="qy00.jpg" alt="签约仪式全景现场" onerror="this.src='https://picsum.photos/id/20/800/600'">
+            <div class="image-caption">📸 两位法定代表人签字 | 政府代表及中外方代表共同见证</div>
+        </div>
+    </div>
+</div>
+
+    <!-- 项目签约仪式视频栏目 -->
+    <div class="video-section">
+        <h2 class="title">签约仪式现场视频</h2>
+        <div class="video-wrapper">
+            <video controls autoplay muted loop playsinline poster="fengmian.jpg">
+                <source src="2026.6.2林德签约仪式视频.mp4" type="video/mp4">
+                您的浏览器不支持视频播放。请升级浏览器或 <a href="s01.mp4">下载视频</a> 观看。
+            </video>
+        </div>
+        <p style="text-align: center; margin-top: 16px; color: var(--text); font-size: 14px;">🎥 新空分项目签约全程纪实 |  上海石化 ＆林德集团</p>
+    </div>
+
+    <!-- 签约仪式照片栏目：一共21个精彩瞬间 -->
+    <div class="photo-gallery">
+        <h2 class="title">签约仪式精彩瞬间</h2>
+        <div class="gallery-grid" id="ceremonyGallery">
+            <!-- 动态生成21张签约仪式照片，展示全流程 -->
+        </div>
+    </div>
+</div>
+
+<!-- 图片放大模态框 -->
+<div class="modal" id="imgModal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <img class="modal-img" id="modalImg" src="" alt="放大影像">
+        <div class="modal-desc" id="modalDesc"></div>
+    </div>
+</div>
+
+<footer>
+    <p>上海石化林德气体有限责任公司（BSG）• 合资20周年纪念 ©2026 | 新空分项目 智启未来</p>
+</footer>
+
+<script>
+    // 签约仪式照片数据：共21张，涵盖签约、握手、致辞、现场花絮、双方交流、装置效果等丰富环节
+    const ceremonyPhotos = [
+        { img: "z01.jpg", title: "签约仪式大合影", desc: "新空分项目意向书顺利完成签约，参会人员集体合影留念，标志着战略合作迈入崭新阶段。" },
+        { img: "z02.jpg", title: "..", desc: ".." },
+        { img: "z03.jpg", title: "..", desc: ".." },
+        { img: "z04.jpg", title: "..", desc: ".." },
+        { img: "z05.jpg", title: "..", desc: ".." },
+        { img: "z06.jpg", title: "..", desc: ".." },
+        { img: "z07.jpg", title: ".", desc: ".." },
+        { img: "z00.jpg", title: "..", desc: ".." },
+        { img: "z08.jpg", title: "..", desc: ".." },
+        { img: "z09.jpg", title: "..", desc: ".." },
+        { img: "z10.jpg", title: "..", desc: ".." },
+        { img: "z11.jpg", title: "..", desc: ".." },
+        { img: "z12.jpg", title: "..", desc: ".." },
+        { img: "z13.jpg", title: "..", desc: ".." },
+        { img: "z14.jpg", title: "..", desc: "..." },
+        { img: "z15.jpg", title: "..", desc: ".." },
+        { img: "z16.jpg", title: "..", desc: ".." },
+        { img: "z18.jpg", title: "..", desc: ".." },
+        { img: "z20.jpg", title: "..", desc: ".." },
+        { img: "z21.jpg", title: "..", desc: ".." },
+        { img: "z24.jpg", title: "..", desc: ".." }
+    ];
+
+    // 渲染签约照片画廊 (21格)
+    function renderCeremonyGallery() {
+        const galleryContainer = document.getElementById('ceremonyGallery');
+        if (!galleryContainer) return;
+        galleryContainer.innerHTML = '';
+        ceremonyPhotos.forEach(photo => {
+            const card = document.createElement('div');
+            card.className = 'gallery-card';
+            card.setAttribute('data-img', photo.img);
+            card.setAttribute('data-desc', `${photo.title}：${photo.desc}`);
+            card.innerHTML = `
+                <img src="${photo.img}" alt="${photo.title}" loading="lazy" onerror="this.src='https://picsum.photos/id/1/600/400'">
+                <div class="caption">
+                    <strong>${photo.title}</strong>
+                    ${photo.desc}
+                </div>
+            `;
+            card.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openModal(photo.img, `${photo.title} · ${photo.desc}`);
+            });
+            galleryContainer.appendChild(card);
+        });
+    }
+
+    // 模态框逻辑 (图片放大)
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalDesc = document.getElementById('modalDesc');
+    const closeBtn = document.getElementById('closeBtn');
+
+    function openModal(imgSrc, descText) {
+        if (!modal || !modalImg) return;
+        modalImg.src = imgSrc;
+        modalImg.alt = descText || '签约仪式影像';
+        modalDesc.textContent = descText || '上海石化林德气体新项目签约珍贵时刻';
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        modalImg.onerror = function() {
+            this.src = "https://picsum.photos/id/42/800/600";
+            modalDesc.textContent = descText + " (图片加载中，此为辅助影像)";
+        };
+    }
+
+    function closeModal() {
+        if (modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                if (modalImg) modalImg.src = '';
+            }, 200);
+        }
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', (e) => { e.stopPropagation(); closeModal(); });
+    if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+            closeModal();
+        }
+    });
+
+    // 页面加载完成
+    window.addEventListener('DOMContentLoaded', () => {
+        renderCeremonyGallery();       // 生成21张照片网格
+        
+        // 处理视频加载失败时的友好提示
+        const video = document.querySelector('.video-wrapper video');
+        if (video) {
+            video.muted = true;
+            video.play().catch(e => console.log('自动播放被阻止，用户交互后可播放'));
+            video.addEventListener('error', function() {
+                const wrapper = this.parentElement;
+                if (!wrapper.querySelector('.error-fallback')) {
+                    const errorMsg = document.createElement('div');
+                    errorMsg.className = 'error-fallback';
+                    errorMsg.style.cssText = 'display:flex; align-items:center; justify-content:center; height:100%; background:#1a1a2e; color:#fff; text-align:center; flex-direction:column; gap:12px;';
+                    errorMsg.innerHTML = '<span style="font-size:2rem;">📹</span><p>签约仪式视频即将上线，敬请期待<br>或联系行政部门获取完整记录</p>';
+                    if (wrapper && this.parentNode) {
+                        this.style.display = 'none';
+                        wrapper.appendChild(errorMsg);
+                    }
+                }
+            });
+        }
+
+        // 大图优雅降级
+        const mainImg = document.querySelector('.ceremony-image-side img');
+        if (mainImg && mainImg.complete && mainImg.naturalWidth === 0) {
+            mainImg.src = 'https://picsum.photos/id/104/800/600';
+        }
+    });
+</script>
+</body>
+</html>

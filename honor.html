@@ -24,52 +24,84 @@
             background: #fff;
             padding-top: 90px;
         }
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: var(--linde-blue);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-            z-index: 999;
-            padding: 14px 0;
-        }
-        .nav-wrap {
-            max-width: 100%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 40px;
-        }
-        .logo-box {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
-        }
-        .logo-icon {
-            display: flex;
-            gap: 12px;
-        }
-        .logo-icon img {
-            height: 45px;
-            width: auto;
-        }
-        .nav-links {
-            display: flex;
-            gap: 28px;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: 500;
-            transition: color 0.3s;
-            font-size: 16px;
-        }
-        .nav-links a:hover {
-            color: #f0f0f0;
+/* 导航栏 - 修复垂直居中问题 */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--linde-blue);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    z-index: 999;
+    padding: 12px 0;
+}
+.nav-wrap {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    flex-wrap: wrap;
+}
+.logo-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1.2;
+}
+.logo-icon {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+.logo-icon img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+.nav-links {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: opacity 0.3s;
+    font-size: 16px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+}
+.nav-links a:hover {
+    opacity: 0.8;
+}
+/* 高亮新项目签约按钮 */
+.nav-links a:last-child {
+    background: var(--red);
+    padding: 6px 14px;
+    border-radius: 40px;
+    transition: all 0.3s;
+}
+.nav-links a:last-child:hover {
+    background: #a00d26;
+    opacity: 1;
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+    .navbar { padding: 10px 0; }
+    .nav-wrap { padding: 0 20px; gap: 12px; justify-content: center; }
+    .logo-icon img { height: 32px; }
+    .logo-box { font-size: 14px; }
+    .nav-links { gap: 12px; justify-content: center; margin-top: 0; }
+    .nav-links a:last-child { padding: 4px 12px; font-size: 14px; }
         }
         .container {
             max-width: 1200px;
@@ -207,6 +239,7 @@
             <a href="culture.html"><i class="fas fa-leaf"></i> 企业文化</a>
             <a href="honor.html"><i class="fas fa-medal"></i> 荣誉积累</a>
             <a href="end.html"><i class="fas fa-medal"></i> 廿载寄语</a>
+            <a href="program.html" style="background: var(--red); padding: 6px 14px; border-radius: 40px;">✨ 6.2 新空分项目签约仪式</a>
         </div>
     </div>
 </div>
