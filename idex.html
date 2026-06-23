@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2020-2025生产运行与经营效益 | 上海石化林德气体</title>
-  <!-- Font Awesome for icons (保留但导航栏不再使用图标) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -21,6 +20,87 @@
             --text: #666;
             --linde-blue: #002855;
         }
+        /* 权限提示样式 */
+        .permission-tip {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            font-size: 24px;
+            color: #666;
+            text-align: center;
+            padding: 20px;
+        }
+        /* 隐藏按钮样式 */
+        .secret-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            opacity: 0.05;
+            transition: opacity 0.3s;
+            z-index: 999999;
+        }
+        .secret-btn:hover {
+            opacity: 0.2;
+        }
+        /* 密码弹窗样式 */
+        .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999999;
+        }
+        .password-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-width: 300px;
+        }
+        .password-box input {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .password-box button {
+            padding: 12px;
+            background: var(--blue);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .password-box button:hover {
+            background: #00468a;
+        }
+        .error-tip {
+            color: var(--red);
+            font-size: 14px;
+            display: none;
+        }
+
         body {
             color: var(--dark);
             background: #fff;
@@ -255,259 +335,344 @@
             font-size: 14px;
             margin-top: 40px;
         }
-/* 新增：下拉菜单样式 */
-.dropdown {
-    position: relative;
-}
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: var(--linde-blue);
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 9999;
-    min-width: 200px;
-    padding: 8px 0;
-    margin-top: 8px;
-}
-.dropdown-menu::before {
-    /* 下拉菜单小三角 */
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 20px;
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid var(--linde-blue);
-}
-.dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    margin-top: 0;
-}
-.dropdown-menu a {
-    display: block;
-    padding: 10px 20px;
-    font-size: 14px;
-    white-space: nowrap;
-}
-.dropdown-menu a:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-}
+        /* 新增：下拉菜单样式 */
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--linde-blue);
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 9999;
+            min-width: 200px;
+            padding: 8px 0;
+            margin-top: 8px;
+        }
+        .dropdown-menu::before {
+            /* 下拉菜单小三角 */
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid var(--linde-blue);
+        }
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 0;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        .dropdown-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
 
- .nav-drop-title {
-                color: #fff !important;
-                font-weight: 500;
-                font-size: 16px;
-                padding: 8px 0;
-                cursor: pointer;
-                display: inline-flex;
-                align-items: center;
-                gap: 4px;
+        .nav-drop-title {
+            color: #fff !important;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 0;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .nav-drop-title .arrow-icon {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+        .dropdown:hover .nav-drop-title .arrow-icon {
+            transform: rotate(180deg);
+        }
+        .nav-drop-title:hover {
+            color: #f0f0f0 !important;
+        }
+        .nav-drop-titlee {
+            color: #fff !important;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 0;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .nav-drop-titlee .arrow-icon {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+        .dropdown:hover .nav-drop-titlee .arrow-icon {
+            transform: rotate(180deg);
+        }
+        /* 移动端适配下拉 */
+        @media (max-width:768px) {
+            .dropdown-menu {
+                min-width: 160px;
             }
- .nav-drop-title .arrow-icon {
+            .dropdown-menu a {
                 font-size: 12px;
-                transition: transform 0.3s ease;
+                padding: 8px 15px;
             }
- .dropdown:hover .nav-drop-title .arrow-icon {
-                transform: rotate(180deg);
+            .nav-drop-title .arrow-icon,
+            .nav-drop-titlee .arrow-icon {
+                font-size: 10px;
             }
-            .nav-drop-title:hover {
-                color: #f0f0f0 !important;
-}
- .nav-drop-titlee {
-                color: #fff !important;
-                font-weight: 500;
-                font-size: 16px;
-                padding: 8px 0;
-                cursor: pointer;
-                display: inline-flex;
-                align-items: center;
-                gap: 4px;
-            }
- .nav-drop-titlee .arrow-icon {
-                font-size: 12px;
-                transition: transform 0.3s ease;
-            }
- .dropdown:hover .nav-drop-titlee .arrow-icon {
-                transform: rotate(180deg);
-            }
-/* 移动端适配下拉 */
-@media (max-width:768px) {
-    .dropdown-menu {
-        min-width: 160px;
-    }
-    .dropdown-menu a {
-        font-size: 12px;
-        padding: 8px 15px;
-    }
-    .nav-drop-title .arrow-icon,
-    .nav-drop-titlee .arrow-icon {
-        font-size: 10px;
-    }
-}
-
+        }
     </style>
 </head>
 <body>
-<div class="navbar">
-    <div class="nav-wrap">
-        <div class="logo-box">
-            <div class="logo-icon">
-                <img src="spclogo.jpg" alt="中国石化">
-                <img src="lindelogo.jpg" alt="林德">
-            </div>
-            <div>上海石化林德气体有限责任公司 <span style="font-size:14px;">✦ 20周年 ✦</span></div>
-        </div>
-        <div class="nav-links">
-            <a href="index.html">首页</a>
-            <a href="about.html">公司简介</a>
-            <a href="team.html">团队风采</a>
-            <!-- 改造发展历程为下拉菜单 -->
-            <div class="dropdown">
-                <span class="nav-drop-title">发展历程 <i class="fas fa-chevron-down arrow-icon"></i></span>
-                <div class="dropdown-menu">
-                    <a href="history.html"><i class="fas fa-sitemap"></i> 历年大事件</a>
-                    <a href="idex.html"><i class="fas fa-chart-line"></i> 2020-2025生产运行近况</a>
-                </div>
-            </div>
-            <!-- 改造公司二十周年庆为下拉菜单 -->
-            <div class="dropdown">
-                <span class="nav-drop-titlee">✨20周年大事件与活动 <i class="fas fa-chevron-down arrow-icon"></i></span>
-                <div class="dropdown-menu">
-                    <a href="red.html">✨5.22党建、团建、妇女节活动</a>
-                    <a href="program.html">✨6.2新空分项目签约仪式</a>
-                    <a href="retiree.html">✨6.18退休职工恳谈会</a>
-                </div>
-            </div>
-            <!-- 改造公司文化为下拉菜单 -->
-            <div class="dropdown">
-                <span class="nav-drop-title">公司文化 <i class="fas fa-chevron-down arrow-icon"></i></span>
-                <div class="dropdown-menu">
-                    <a href="culture.html"></i> 核心文化</a>
-                    <a href="honor.html"></i> 荣誉积累</a>
-                </div>
-            </div>
-            <a href="picture.html">照片放映厅</a>
-            <a href="end.html">廿载寄语</a>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <h2 class="title">2020–2025 生产运行与经营效益</h2>
-
-    <!-- 固定：整体概况 → 左文右图 -->
-    <div class="static-section">
-        <div class="static-text">
-            <p>过去六年，我们始终坚持8#空分单套主力运行、6#、7#空分冷态备用的成熟生产模式，全程守住安全生产底线。</p>
-            </p>期间无重大生产事故、无产品短供事故，稳稳保障了上海石化氧、氮气的供应，同时根据设备工况、气候环境、用户需求持续优化生产，实现了从平稳稳产、承压攻坚到提质增效的稳步进阶。</p>
-        </div>
-        <img class="static-img" src="a00.jpg" onclick="openModal(this.src)">
+    <!-- 权限提示层 -->
+    <div class="permission-tip" id="permissionTip">
+        <p>您无权限查看此内容，请联系管理员</p>
     </div>
 
-    <!-- 2020-2021 → 右图左文 -->
-    <div class="accordion">
-        <div class="accordion-header">2020–2021 高位稳产盈利</div>
-        <div class="accordion-body">
-            <div class="accordion-content">
-                <div class="row-right">
-                    <div class="col-text">
-                        <p>2020年装置运行平稳，成功处置8#空分膨胀机仪控故障，联合厂家溯源整改，稳住核心装置运行工况。全年总产量达到<strong style="color:#c8102e">百万吨</strong>，各类氧、氮、液氩产品产出充足、供需稳定，全年实现收入<strong style="color:#c8102e">数亿元</strong>、利润总额<strong style="color:#c8102e">过亿</strong>，整体效益处于高位水平。</p>
-                        <p>2021年是六年里装置运行质量和经营效益的双标杆年份，全年设备缺陷治理超100项，高效完成8#空分计划性检修、并网复产，妥善处置多起仪控故障、设备波动隐患，成功规避多起非计划停车。三套空分操作正确率基本实现100%，工艺平稳率保持高位。6#空分超计划运行近4个月，依然精准管控能耗，稳产提质、降本成效突出。全年收入小幅上涨至<strong style="color:#c8102e">数千万</strong>，利润总额攀升<strong style="color:#c8102e">千万</strong>，创下六年中利润峰值。</p>
+    <!-- 隐藏触发按钮 -->
+    <button class="secret-btn" id="secretBtn" title="验证权限"></button>
+
+    <!-- 密码验证弹窗 -->
+    <div class="password-modal" id="passwordModal">
+        <div class="password-box">
+            <input type="password" id="passwordInput" placeholder="请输入访问密码">
+            <div class="error-tip" id="errorTip">密码错误，请重新输入</div>
+            <button onclick="checkPassword()">验证密码</button>
+        </div>
+    </div>
+
+    <!-- 原有页面内容 -->
+    <div class="navbar">
+        <div class="nav-wrap">
+            <div class="logo-box">
+                <div class="logo-icon">
+                    <img src="spclogo.jpg" alt="中国石化">
+                    <img src="lindelogo.jpg" alt="林德">
+                </div>
+                <div>上海石化林德气体有限责任公司 <span style="font-size:14px;">✦ 20周年 ✦</span></div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="about.html">公司简介</a>
+                <a href="team.html">团队风采</a>
+                <!-- 改造发展历程为下拉菜单 -->
+                <div class="dropdown">
+                    <span class="nav-drop-title">发展历程 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                    <div class="dropdown-menu">
+                        <a href="history.html"><i class="fas fa-sitemap"></i> 历年大事件</a>
+                        <a href="idex.html"><i class="fas fa-chart-line"></i> 2020-2025生产运行近况</a>
                     </div>
-                    <img class="col-img" src="a05.jpg" onclick="openModal(this.src)">
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 2022-2024 → 左文右图 -->
-    <div class="accordion">
-        <div class="accordion-header">2022–2024 经营压力显现</div>
-        <div class="accordion-body">
-            <div class="accordion-content">
-                <div class="row-left">
-                    <div class="col-text">
-                        <p>2022至2024年，公司遭遇内外双重压力，效益连续三年探底。</p>
-                         </p>核心原因是上海石化用气需求大幅萎缩：2022年上海石化“6·18”事件造成1#乙二醇装置停车，核心用氧负荷流失；2023年起1#、2#乙二醇全面检修。直至2024年4月，2#乙二醇才低负荷复产，长达两年多用气缺口，导致氧气放散增加、产能利用率不足、营收持续下滑。叠加装置逐年老化，电网波动、保供成本上升，经营压力持续加大。</p>
-                         </p>面对困境，我们主动挖潜对冲风险，2023年实现<strong style="color:#c8102e">千万元</strong>级降本增收；2024年完成膨胀机冷却器消缺技改，液体日产量创新高，全年增效<strong style="color:#c8102e">数千万元</strong>，超额完成年度指标<strong style="color:#c8102e">202.81%</strong>，有效遏制效益进一步下滑。</p>
+                <!-- 改造公司二十周年庆为下拉菜单 -->
+                <div class="dropdown">
+                    <span class="nav-drop-titlee">✨20周年大事件与活动 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                    <div class="dropdown-menu">
+                        <a href="red.html">✨5.22党建、团建、妇女节活动</a>
+                        <a href="program.html">✨6.2新空分项目签约仪式</a>
+                        <a href="retiree.html">✨6.18退休职工恳谈会</a>
                     </div>
-                    <img class="col-img" src="a09.jpg" onclick="openModal(this.src)">
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 2025 → 左文右图 -->
-    <div class="accordion">
-        <div class="accordion-header">2025 强势反弹回升</div>
-        <div class="accordion-body">
-            <div class="accordion-content">
-                <div class="row-left">
-                    <div class="col-text">
-                        <p>2025年，我们全面突围，实现经营强势反弹。</p>
-                        </p>本年度高质量完成8#空分大修，消除设备隐患；同步升级7#空分氮气品质，达到碳纤维高端用气标准，仅检修期间就节约外采液氮成本<strong style="color:#c8102e">数百万元</strong>。通过优化工况、压降能耗、抢抓上海石化装置复产机遇，大幅减少氧气放散、提升产品销量。</p>
-                        </p>全年总产量<strong style="color:#c8102e">百万吨</strong>，累计降本增效<strong style="color:#c8102e">数千万元</strong>，收入回升<strong style="color:#c8102e">过亿</strong>，利润总额大幅反弹<strong style="color:#c8102e">数千万元</strong>，较2024年增长超<strong style="color:#c8102e">200%</strong>，成功扭转连续三年下滑态势。</p>
+                <!-- 改造公司文化为下拉菜单 -->
+                <div class="dropdown">
+                    <span class="nav-drop-title">公司文化 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                    <div class="dropdown-menu">
+                        <a href="culture.html"></i> 核心文化</a>
+                        <a href="honor.html"></i> 荣誉积累</a>
                     </div>
-                    <img class="col-img" src="a06.jpg" onclick="openModal(this.src)">
                 </div>
+                <a href="picture.html">照片放映厅</a>
+                <a href="end.html">廿载寄语</a>
             </div>
         </div>
     </div>
 
-    <!-- 新增：2026 廿载展望未来 → 右图左文 -->
-    <div class="accordion">
-        <div class="accordion-header">2026 · 廿载征程 展望未来</div>
-        <div class="accordion-body">
-            <div class="accordion-content">
-                <div class="row-right">
-                    <div class="col-text">
-                        <p>二十载风雨兼程，二十载砥砺前行。站在新起点，我们将以新空分项目建设为契机，持续推进技术升级、精益运营、安全保供。</p>
-                        <p>未来，公司将聚焦高质量发展，深化降本增效，提升核心竞争力，携手共创更加稳健、高效、可持续的发展新篇章，为股东、客户与员工创造更大价值。</p>
+    <div class="container">
+        <h2 class="title">2020–2025 生产运行与经营效益</h2>
+
+        <!-- 固定：整体概况 → 左文右图 -->
+        <div class="static-section">
+            <div class="static-text">
+                <p>过去六年，我们始终坚持8#空分单套主力运行、6#、7#空分冷态备用的成熟生产模式，全程守住安全生产底线。</p>
+                <p>期间无重大生产事故、无产品短供事故，稳稳保障了上海石化氧、氮气的供应，同时根据设备工况、气候环境、用户需求持续优化生产，实现了从平稳稳产、承压攻坚到提质增效的稳步进阶。</p>
+            </div>
+            <img class="static-img" src="a00.jpg" onclick="openModal(this.src)">
+        </div>
+
+        <!-- 2020-2021 → 右图左文 -->
+        <div class="accordion">
+            <div class="accordion-header">2020–2021 高位稳产盈利</div>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    <div class="row-right">
+                        <div class="col-text">
+                            <p>2020年装置运行平稳，成功处置8#空分膨胀机仪控故障，联合厂家溯源整改，稳住核心装置运行工况。全年总产量达到<strong style="color:#c8102e">122.48万吨</strong>，各类氧、氮、液氩产品产出充足、供需稳定，全年实现收入<strong style="color:#c8102e">4.20亿元</strong>、利润总额<strong style="color:#c8102e">1.04亿元</strong>，整体效益处于高位水平。</p>
+                            <p>2021年是六年里装置运行质量和经营效益的双标杆年份，全年设备缺陷治理超100项，高效完成8#空分计划性检修、并网复产，妥善处置多起仪控故障、设备波动隐患，成功规避多起非计划停车。三套空分操作正确率基本实现100%，工艺平稳率保持高位。6#空分超计划运行近4个月，依然精准管控能耗，稳产提质、降本成效突出。全年收入小幅上涨至<strong style="color:#c8102e">4.29亿元</strong>，利润总额攀升至<strong style="color:#c8102e">1.16亿元</strong>，创下六年中利润峰值。</p>
+                        </div>
+                        <img class="col-img" src="a05.jpg" onclick="openModal(this.src)">
                     </div>
-                    <img class="col-img" src="z24.jpg" onclick="openModal(this.src)">
+                </div>
+            </div>
+        </div>
+
+        <!-- 2022-2024 → 左文右图 -->
+        <div class="accordion">
+            <div class="accordion-header">2022–2024 经营压力显现</div>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    <div class="row-left">
+                        <div class="col-text">
+                            <p>2022至2024年，公司遭遇内外双重压力，效益连续三年探底。</p>
+                            <p>核心原因是上海石化用气需求大幅萎缩：2022年上海石化“6·18”事件造成1#乙二醇装置停车，核心用氧负荷流失；2023年起1#、2#乙二醇全面检修。直至2024年4月，2#乙二醇才低负荷复产，长达两年多用气缺口，导致氧气放散增加、产能利用率不足、营收持续下滑。叠加装置逐年老化，电网波动、保供成本上升，经营压力持续加大。</p>
+                            <p>2022年收入3.76亿元、利润总额0.58亿元；2023年收入3.67亿元、利润总额0.45亿元；2024年收入3.24亿元、利润总额0.17亿元。</p>
+                            <p>面对困境，我们主动挖潜对冲风险，2023年实现千万元级降本增收；2024年完成膨胀机冷却器消缺技改，液体日产量创新高，全年增效<strong style="color:#c8102e">1744.2万元</strong>，超额完成年度指标<strong style="color:#c8102e">202.81%</strong>，有效遏制效益进一步下滑。</p>
+                        </div>
+                        <img class="col-img" src="a09.jpg" onclick="openModal(this.src)">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2025 → 左文右图 -->
+        <div class="accordion">
+            <div class="accordion-header">2025 强势反弹回升</div>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    <div class="row-left">
+                        <div class="col-text">
+                            <p>2025年，我们全面突围，实现经营强势反弹。</p>
+                            <p>本年度高质量完成8#空分大修，消除设备隐患；同步升级7#空分氮气品质，达到碳纤维高端用气标准，仅检修期间就节约外采液氮成本<strong style="color:#c8102e">375万元</strong>。通过优化工况、压降能耗、抢抓上海石化装置复产机遇，大幅减少氧气放散、提升产品销量。</p>
+                            <p>全年总产量106.81万吨，累计降本增效<strong style="color:#c8102e">3656.6万元</strong>，收入回升至<strong style="color:#c8102e">3.42亿元</strong>，利润总额大幅反弹至<strong style="color:#c8102e">0.53亿元</strong>，较2024年增长超<strong style="color:#c8102e">200%</strong>，成功扭转连续三年下滑态势。</p>
+                        </div>
+                        <img class="col-img" src="a06.jpg" onclick="openModal(this.src)">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 新增：2026 廿载展望未来 → 右图左文 -->
+        <div class="accordion">
+            <div class="accordion-header">2026 · 廿载征程 展望未来</div>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    <div class="row-right">
+                        <div class="col-text">
+                            <p>二十载风雨兼程，二十载砥砺前行。站在新起点，我们将以新空分项目建设为契机，持续推进技术升级、精益运营、安全保供。</p>
+                            <p>未来，公司将聚焦高质量发展，深化降本增效，提升核心竞争力，携手共创更加稳健、高效、可持续的发展新篇章，为股东、客户与员工创造更大价值。</p>
+                        </div>
+                        <img class="col-img" src="z24.jpg" onclick="openModal(this.src)">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- 图片放大 -->
-<div id="imgModal" class="modal" onclick="closeModal()">
-    <span class="close">&times;</span>
-    <img id="modalImg">
-</div>
+    <!-- 图片放大 -->
+    <div id="imgModal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img id="modalImg">
+    </div>
 
-<footer>
-    <p>上海石化林德气体有限责任公司 • 合资20周年 ©2026</p>
-</footer>
+    <footer>
+        <p>上海石化林德气体有限责任公司 • 合资20周年 ©2026</p>
+    </footer>
 
-<script>
-    const headers = document.querySelectorAll('.accordion-header');
-    headers.forEach(header => {
-        header.addEventListener('click', () => {
-            header.classList.toggle('active');
-            const body = header.nextElementSibling;
-            body.style.maxHeight = body.style.maxHeight ? null : body.scrollHeight + 400 + 'px';
+    <script>
+        // 密码验证核心逻辑
+        const permissionTip = document.getElementById('permissionTip');
+        const secretBtn = document.getElementById('secretBtn');
+        const passwordModal = document.getElementById('passwordModal');
+        const passwordInput = document.getElementById('passwordInput');
+        const errorTip = document.getElementById('errorTip');
+        
+        // 预设密码（可自行修改）
+        const AUTH_PASSWORD = '57950505access';
+
+        // 点击隐藏按钮打开密码弹窗
+        secretBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            passwordModal.style.display = 'flex';
+            passwordInput.focus();
         });
-    });
 
-    function openModal(src) {
-        document.getElementById("imgModal").style.display = "flex";
-        document.getElementById("modalImg").src = src;
-    }
-    function closeModal() {
-        document.getElementById("imgModal").style.display = "none";
-    }
-</script>
+        // 点击弹窗外区域关闭弹窗
+        passwordModal.addEventListener('click', function(e) {
+            if (e.target === passwordModal) {
+                passwordModal.style.display = 'none';
+                errorTip.style.display = 'none';
+                passwordInput.value = '';
+            }
+        });
 
+        // 密码验证函数
+        function checkPassword() {
+            const inputVal = passwordInput.value.trim();
+            if (inputVal === AUTH_PASSWORD) {
+                // 验证通过，隐藏提示层，显示内容
+                permissionTip.style.display = 'none';
+                passwordModal.style.display = 'none';
+                errorTip.style.display = 'none';
+                passwordInput.value = '';
+                // 移除隐藏按钮
+                secretBtn.style.display = 'none';
+            } else {
+                // 密码错误
+                errorTip.style.display = 'block';
+                passwordInput.focus();
+                // 输入框抖动效果
+                passwordInput.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    passwordInput.style.animation = '';
+                }, 500);
+            }
+        }
+
+        // 回车触发密码验证
+        passwordInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        // 添加抖动动画样式
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                20%, 60% { transform: translateX(-5px); }
+                40%, 80% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // 原有页面逻辑
+        const headers = document.querySelectorAll('.accordion-header');
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                header.classList.toggle('active');
+                const body = header.nextElementSibling;
+                body.style.maxHeight = body.style.maxHeight ? null : body.scrollHeight + 400 + 'px';
+            });
+        });
+
+        function openModal(src) {
+            document.getElementById("imgModal").style.display = "flex";
+            document.getElementById("modalImg").src = src;
+        }
+        function closeModal() {
+            document.getElementById("imgModal").style.display = "none";
+        }
+    </script>
 </body>
 </html>

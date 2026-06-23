@@ -25,6 +25,65 @@
             color: var(--dark);
             background: #fff;
         }
+        /* 密码验证弹窗样式 */
+        .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .password-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        .password-box h2 {
+            color: var(--linde-blue);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .password-box input {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 20px 0;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 18px;
+            outline: none;
+        }
+        .password-box input:focus {
+            border-color: var(--linde-blue);
+        }
+        .password-box button {
+            background: var(--red);
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .password-box button:hover {
+            background: #a80e25;
+            transform: translateY(-2px);
+        }
+        .error-message {
+            color: var(--red);
+            margin-top: 10px;
+            font-size: 14px;
+            display: none;
+        }
         /* 导航栏 - 修复垂直居中问题 */
 .navbar {
     position: fixed;
@@ -218,6 +277,16 @@
             .btn { padding: 14px 32px; font-size: 16px; }
             .nav-wrap { padding: 0 20px; }
             .nav-links { gap: 14px; font-size: 14px; }
+            /* 移动端密码弹窗适配 */
+            .password-box {
+                padding: 30px 20px;
+            }
+            .password-box h2 {
+                font-size: 20px;
+            }
+            .password-box input {
+                font-size: 16px;
+            }
         }
 /* 新增：下拉菜单样式 */
 .dropdown {
@@ -321,6 +390,16 @@
     </style>
 </head>
 <body>
+<!-- 密码验证弹窗 -->
+<div class="password-modal" id="passwordModal">
+    <div class="password-box">
+        <h2>请输入访问密码</h2>
+        <input type="password" id="passwordInput" placeholder="请输入密码">
+        <button onclick="checkPassword()">确认</button>
+        <div class="error-message" id="errorMessage">密码错误，请重新输入</div>
+    </div>
+</div>
+
 <div class="navbar">
     <div class="nav-wrap">
         <div class="logo-box">
@@ -390,7 +469,41 @@
 </footer>
 
 <script>
-    // 背景轮播 6张本地图片，3秒切换一次
+    // 密码验证功能
+    function checkPassword() {
+        const correctPassword = "57950505";
+        const inputPassword = document.getElementById("passwordInput").value;
+        const errorMessage = document.getElementById("errorMessage");
+        const passwordModal = document.getElementById("passwordModal");
+
+        if (inputPassword === correctPassword) {
+            // 密码正确，隐藏弹窗
+            passwordModal.style.display = "none";
+            // 允许页面交互
+            document.body.style.overflow = "auto";
+        } else {
+            // 密码错误，显示错误提示
+            errorMessage.style.display = "block";
+            // 清空输入框
+            document.getElementById("passwordInput").value = "";
+            // 3秒后隐藏错误提示
+            setTimeout(() => {
+                errorMessage.style.display = "none";
+            }, 3000);
+        }
+    }
+
+    // 按下回车键也能验证密码
+    document.getElementById("passwordInput").addEventListener("keypress", function(e) {
+        if (e.key === "Enter") {
+            checkPassword();
+        }
+    });
+
+    // 页面加载时禁止滚动，只有输入正确密码后才允许
+    document.body.style.overflow = "hidden";
+
+    // 背景轮播 6张本地图片，3秒切换一次（原代码中是300000毫秒=5分钟，保持不变）
     const slides = document.querySelectorAll('.hero-slide');
     let currentSlide = 0;
     if (slides.length) {
