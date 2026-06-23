@@ -522,24 +522,73 @@
 </audio>
 
 <script>
-    // 固定 50 张图
-    const slidesContainer = document.getElementById('heroSlides');
-    const totalSlides = 50;
-    slidesContainer.innerHTML = '';
+const imageList = [
+  "c (1).jpg",
+  "c (2).jpg",
+  "c (3).jpg",
+  "c (4).jpg",
+  "c (5).jpg",
+  "c (6).jpg",
+  "c (7).jpg",
+  "c (8).jpg",
+  "c (9).jpg",
+  "c (10).jpg",
+  "c (11).jpg",
+  "c (12).jpg",
+  "c (13).jpg",
+  "c (14).jpg",
+  "c (15).jpg",
+  "c (16).jpg",
+  "c (17).jpg",
+  "c (18).jpg",
+  "c (19).jpg",
+  "c (20).jpg",
+  "c (21).jpg",
+  "c (22).jpg",
+  "c (23).jpg",
+  "c (24).jpg",
+  "c (25).jpg",
+  "c (26).jpg",
+  "c (27).jpg",
+  "c (28).jpg",
+  "c (29).jpg",
+  "c (30).jpg",
+  "c (31).jpg",
+  "c (32).jpg",
+  "c (33).jpg",
+  "c (34).jpg",
+  "c (35).jpg",
+  "c (36).jpg",
+  "c (37).jpg",
+  "c (38).jpg",
+  "c (39).jpg",
+  "c (40).jpg",
+  "c (41).jpg",
+  "c (42).jpg",
+  "c (43).jpg",
+  "c (44).jpg",
+  "c (45).jpg",
+  "c (46).jpg",
+  "c (47).jpg",
+  "c (48).jpg",
+  "c (49).jpg",
+  "c (50).jpg"
+];
 
-    // 生成 50 张轮播图
-    for (let i = 1; i <= totalSlides; i++) {
-        const slide = document.createElement('div');
-        slide.className = 'hero-slide';
-        const imgPath = `c (${i}).jpg`;
+const slidesContainer = document.getElementById('heroSlides');
+slidesContainer.innerHTML = '';
 
-        // 核心：把图片地址直接写在 DOM 上
-        slide.setAttribute('data-img', imgPath);
-        slide.style.backgroundImage = `linear-gradient(rgba(0,83,155,0.2), rgba(200,16,46,0.2)), url('${imgPath}')`;
+for (let i = 0; i < imageList.length; i++) {
+  const slide = document.createElement('div');
+  slide.className = 'hero-slide';
+  const imgPath = imageList[i];
 
-        if (i === 1) slide.classList.add('active');
-        slidesContainer.appendChild(slide);
-    }
+  slide.setAttribute('data-img', imgPath);
+  slide.style.backgroundImage = `linear-gradient(rgba(0,83,155,0.2), rgba(200,16,46,0.2)), url('${imgPath}')`;
+
+  if (i === 0) slide.classList.add('active');
+  slidesContainer.appendChild(slide);
+}
 
     // 全局变量
     const slides = document.querySelectorAll('.hero-slide');
