@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>荣誉沉淀 | 上海石化林德气体有限责任公司（BSG）</title>
+    <!-- Font Awesome for icons (保留但导航栏不再使用图标) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -82,17 +84,6 @@
 .nav-links a:hover {
     opacity: 0.8;
 }
-/* 高亮新项目签约按钮 */
-.nav-links a:last-child {
-    background: var(--red);
-    padding: 6px 14px;
-    border-radius: 40px;
-    transition: all 0.3s;
-}
-.nav-links a:last-child:hover {
-    background: #a00d26;
-    opacity: 1;
-}
 
 /* 响应式适配 */
 @media (max-width: 768px) {
@@ -170,6 +161,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             overflow: hidden;
             transition: transform 0.3s;
+            cursor: pointer; /* 增加鼠标指针样式 */
         }
         .photo-card:hover {
             transform: translateY(-5px);
@@ -192,15 +184,9 @@
         .photo-card:hover .photo-img img {
             scale: 1.05;
         }
+        /* 移除照片描述区域样式 */
         .photo-desc {
-            padding: 15px 20px;
-            color: var(--text);
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        .photo-desc strong {
-            color: var(--blue);
-            font-size: 15px;
+            display: none;
         }
         footer {
             background: var(--dark);
@@ -219,6 +205,153 @@
             .honor-photos { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
             .photo-img { height: 160px; }
         }
+/* 新增：下拉菜单样式 */
+.dropdown {
+    position: relative;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--linde-blue);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 9999;
+    min-width: 200px;
+    padding: 8px 0;
+    margin-top: 8px;
+}
+.dropdown-menu::before {
+    /* 下拉菜单小三角 */
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--linde-blue);
+}
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0;
+}
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+.dropdown-menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+ .nav-drop-title {
+                color: #fff !important;
+                font-weight: 500;
+                font-size: 16px;
+                padding: 8px 0;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+            }
+ .nav-drop-title .arrow-icon {
+                font-size: 12px;
+                transition: transform 0.3s ease;
+            }
+ .dropdown:hover .nav-drop-title .arrow-icon {
+                transform: rotate(180deg);
+            }
+            .nav-drop-title:hover {
+                color: #f0f0f0 !important;
+}
+ .nav-drop-titlee {
+                color: #fff !important;
+                font-weight: 500;
+                font-size: 16px;
+                padding: 8px 0;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+            }
+ .nav-drop-titlee .arrow-icon {
+                font-size: 12px;
+                transition: transform 0.3s ease;
+            }
+ .dropdown:hover .nav-drop-titlee .arrow-icon {
+                transform: rotate(180deg);
+            }
+/* 移动端适配下拉 */
+@media (max-width:768px) {
+    .dropdown-menu {
+        min-width: 160px;
+    }
+    .dropdown-menu a {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+    .nav-drop-title .arrow-icon,
+    .nav-drop-titlee .arrow-icon {
+        font-size: 10px;
+    }
+}
+
+/* 照片放大弹窗样式 */
+.photo-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.photo-modal.active {
+    display: flex;
+}
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+}
+.modal-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+.close-modal {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+.close-modal:hover {
+    background: rgba(255,255,255,0.4);
+}
+
     </style>
 </head>
 <body>
@@ -232,14 +365,36 @@
             <div>上海石化林德气体有限责任公司 <span style="font-size:14px;">✦ 20周年 ✦</span></div>
         </div>
         <div class="nav-links">
-            <a href="index.html"><i class="fas fa-home"></i> 首页</a>
-            <a href="about.html"><i class="fas fa-building"></i> 公司简介</a>
-            <a href="team.html"><i class="fas fa-users"></i> 团队风采</a>
-            <a href="history.html"><i class="fas fa-timeline"></i> 发展历程</a>
-            <a href="culture.html"><i class="fas fa-leaf"></i> 企业文化</a>
-            <a href="honor.html"><i class="fas fa-medal"></i> 荣誉积累</a>
-            <a href="end.html"><i class="fas fa-medal"></i> 廿载寄语</a>
-            <a href="program.html" style="background: var(--red); padding: 6px 14px; border-radius: 40px;">✨ 6.2 新空分项目签约仪式</a>
+            <a href="index.html">首页</a>
+            <a href="about.html">公司简介</a>
+            <a href="team.html">团队风采</a>
+            <!-- 改造发展历程为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-title">发展历程 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="history.html"><i class="fas fa-sitemap"></i> 历年大事件</a>
+                    <a href="idex.html"><i class="fas fa-chart-line"></i> 2020-2025生产运行近况</a>
+                </div>
+            </div>
+            <!-- 改造公司二十周年庆为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-titlee">✨20周年大事件与活动 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="red.html">✨5.22党建、团建、妇女节活动</a>
+                    <a href="program.html">✨6.2新空分项目签约仪式</a>
+                    <a href="retiree.html">✨6.18退休职工恳谈会</a>
+                </div>
+            </div>
+            <!-- 改造公司文化为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-title">公司文化 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="culture.html"></i> 核心文化</a>
+                    <a href="honor.html"></i> 荣誉积累</a>
+                </div>
+            </div>
+            <a href="picture.html">照片放映厅</a>
+            <a href="end.html">廿载寄语</a>
         </div>
     </div>
 </div>
@@ -248,129 +403,134 @@
     <h2 class="title">荣誉殿堂</h2>
     <div class="honor-list">
         <div class="honor-item">金山区首家医用氧生产企业</div>
-        <div class="honor-item">安全标准化达标企业</div>
-        <div class="honor-item">节能改造示范项目</div>
-        <div class="honor-item">安全生产先进单位</div>
-        <div class="honor-item">诚信经营示范单位</div>
+        <div class="honor-item">上海市金山区特种设备管理协会理事</div>
+        <div class="honor-item">上海市金山区安全生产协会副会长单位</div>
+        <div class="honor-item">金山区百强企业</div>
+        <div class="honor-item">金山区工商企业50强</div>
         <div class="honor-item">优秀合资企业奖</div>
-        <div class="honor-item">质量体系认证企业</div>
+        <div class="honor-item">节能改造示范项目</div>
         <div class="honor-item">环保先进单位</div>
     </div>
 
     <h2 class="title" style="margin-top:80px;">荣誉照片</h2>
-    <div class="safety-content">
-        <p><strong>2026年6月1日</strong>，......................................</p>
-        <p style="margin-top:16px;">........................................................</p>
-        <p style="margin-top:16px;">....................................................</p>
-    </div>
 
     <!-- 新增10个荣誉照片栏 -->
     <div class="honor-photos">
         <!-- 照片1 -->
-        <div class="photo-card">
+        <div class="photo-card" data-img="h01.jpg">
             <div class="photo-img">
-                <img src="001.jpg" alt="111">
-            </div>
-            <div class="photo-desc">
-                <strong>2021年泄漏应急演练</strong><br>
-                8#空分2000M³液氧储槽充装现场泄漏应急演练总指挥部署工作
+                <img src="h01.jpg" alt="荣誉照片1">
             </div>
         </div>
         <!-- 照片2 -->
-        <div class="photo-card">
+        <div class="photo-card" data-img="h02.jpg">
             <div class="photo-img">
-                <img src="001.jpg" alt="111">
-            </div>
-            <div class="photo-desc">
-                <strong>安全标准化达标授牌</strong><br>
-                公司荣获安全标准化达标企业称号，相关领导出席授牌仪式
+                <img src="h02.jpg" alt="荣誉照片2">
             </div>
         </div>
         <!-- 照片3 -->
-        <div class="photo-card">
+        <div class="photo-card" data-img="h03.jpg">
             <div class="photo-img">
-                <img src="001.jpg" alt="111">
-            </div>
-            <div class="photo-desc">
-                <strong>医用氧生产资质认证</strong><br>
-                成为金山区首家获得医用氧生产企业资质的授牌现场
+                <img src="h03.jpg" alt="荣誉照片3">
             </div>
         </div>
         <!-- 照片4 -->
-        <div class="photo-card">
+        <div class="photo-card" data-img="h04.jpg">
             <div class="photo-img">
-                <img src="001.jpg" alt="111">
-            </div>
-            <div class="photo-desc">
-                <strong>节能改造示范项目验收</strong><br>
-                节能改造示范项目顺利通过验收，专家团队现场核查
+                <img src="h04.jpg" alt="荣誉照片4">
             </div>
         </div>
         <!-- 照片5 -->
-        <div class="photo-card">
+        <div class="photo-card" data-img="h05.jpg">
             <div class="photo-img">
-                <img src="001.jpg" alt="111">
-            </div>
-            <div class="photo-desc">
-                <strong>安全生产先进单位表彰</strong><br>
-                年度安全生产先进单位表彰大会，公司代表上台领奖
+                <img src="h05.jpg" alt="荣誉照片5">
             </div>
         </div>
         <!-- 照片6 -->
-        <div class="photo-card">
+        <div class="photo-card" data-img="h06.jpg">
             <div class="photo-img">
-                <img src="001.jpg" alt="111">
-            </div>
-            <div class="photo-desc">
-                <strong>诚信经营示范单位授牌</strong><br>
-                荣获年度诚信经营示范单位，政府部门领导现场授牌
+                <img src="h06.jpg" alt="荣誉照片6">
             </div>
         </div>
         <!-- 照片7 -->
-        <div class="photo-card">
+        <div class="photo-card" data-img="h07.jpg">
             <div class="photo-img">
-                <img src="001.jpg" alt="111">
-            </div>
-            <div class="photo-desc">
-                <strong>优秀合资企业奖颁奖</strong><br>
-                荣获优秀合资企业奖，中外方管理层共同出席颁奖盛典
+                <img src="h07.jpg" alt="荣誉照片7">
             </div>
         </div>
         <!-- 照片8 -->
-        <div class="photo-card">
+        <div class="photo-card" data-img="h08.jpg">
             <div class="photo-img">
-                <img src="001.jpg" alt="111">
-            </div>
-            <div class="photo-desc">
-                <strong>质量体系认证审核</strong><br>
-                质量体系认证现场审核，审核组与公司管理层沟通交流
+                <img src="h08.jpg" alt="荣誉照片8">
             </div>
         </div>
         <!-- 照片9 -->
-        <div class="photo-card">
+        <div class="photo-card" data-img="h09.jpg">
             <div class="photo-img">
-                <img src="001.jpg" alt="111">
-            </div>
-            <div class="photo-desc">
-                <strong>环保先进单位表彰</strong><br>
-                获评环保先进单位，代表上台分享环保治理经验
+                <img src="h09.jpg" alt="荣誉照片9">
             </div>
         </div>
         <!-- 照片10 -->
-        <div class="photo-card">
+        <div class="photo-card" data-img="h10.jpg">
             <div class="photo-img">
-                <img src="001.jpg" alt="111">
-            </div>
-            <div class="photo-desc">
-                <strong>20周年合资纪念仪式</strong><br>
-                公司合资20周年纪念仪式，中外方股东代表共同见证
+                <img src="h10.jpg" alt="荣誉照片10">
             </div>
         </div>
+    </div>
+</div>
+
+<!-- 照片放大弹窗 -->
+<div class="photo-modal" id="photoModal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <img id="modalImg" src="" alt="放大的照片">
     </div>
 </div>
 
 <footer>
     <p>上海石化林德气体有限责任公司（BSG）• 合资20周年纪念 ©2026</p>
 </footer>
+
+<script>
+    // 获取弹窗元素
+    const modal = document.getElementById('photoModal');
+    const modalImg = document.getElementById('modalImg');
+    const closeModal = document.getElementById('closeModal');
+    const photoCards = document.querySelectorAll('.photo-card');
+
+    // 为每个照片卡片添加点击事件
+    photoCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const imgSrc = this.getAttribute('data-img');
+            modalImg.src = imgSrc;
+            modal.classList.add('active');
+            // 禁止页面滚动
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // 关闭弹窗
+    closeModal.addEventListener('click', function() {
+        modal.classList.remove('active');
+        // 恢复页面滚动
+        document.body.style.overflow = 'auto';
+    });
+
+    // 点击弹窗空白处关闭
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // 按ESC键关闭弹窗
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+</script>
 </body>
 </html>

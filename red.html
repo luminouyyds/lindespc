@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>企业文化 | 上海石化林德气体有限责任公司（BSG）| 合资20周年</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Roboto, sans-serif;
+        }
+        :root {
+            --red: #c8102e;
+            --blue: #00539b;
+            --gray: #f5f7fa;
+            --dark: #1e2a36;
+            --text: #4a5568;
+            --linde-blue: #002855;
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.05), 0 2px 6px rgba(0,0,0,0.03);
+            --shadow-md: 0 12px 28px rgba(0,0,0,0.08);
+        }
+        body {
+            color: var(--dark);
+            background: #fff;
+            padding-top: 90px;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--linde-blue);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            z-index: 999;
+            padding: 12px 0;
+        }
+        .nav-wrap {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            flex-wrap: wrap;
+        }
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            line-height: 1.2;
+        }
+        .logo-icon {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .logo-icon img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            font-size: 16px;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+        }
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 10px 0; }
+            .nav-wrap { padding: 0 20px; gap: 12px; justify-content: center; }
+            .logo-icon img { height: 32px; }
+            .logo-box { font-size: 14px; }
+            .nav-links { gap: 12px; justify-content: center; margin-top: 0; }
+            .nav-links a:last-child { padding: 4px 12px; font-size: 14px; }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        .title {
+            text-align: center;
+            font-size: 36px;
+            color: var(--blue);
+            margin-bottom: 48px;
+            position: relative;
+            font-weight: 600;
+        }
+        .title::after {
+            content: '';
+            width: 90px;
+            height: 4px;
+            background: var(--red);
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        .video-section {
+            margin-bottom: 80px;
+            width: 100%;
+        }
+        .fullwidth-video {
+            width: 100%;
+            background: #000;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.2s;
+        }
+        .fullwidth-video video {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            max-height: 70vh;
+            background: #000;
+        }
+        .video-caption {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 1rem;
+            color: var(--text);
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+        .text-img-section {
+            margin-bottom: 80px;
+        }
+        .text-img-item {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+            background: #fff;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+        }
+        .text-img-item.reverse {
+            flex-direction: row-reverse;
+        }
+        .text-img-content {
+            flex: 1;
+        }
+        .text-img-content h3 {
+            color: var(--blue);
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .text-img-content p {
+            line-height: 1.8;
+            color: var(--text);
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+        .text-img-img {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .text-img-img img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .text-img-img:hover img {
+            transform: scale(1.02);
+        }
+        .idea {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 36px;
+            margin-bottom: 80px;
+        }
+        .card {
+            padding: 36px 28px;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border: 1px solid rgba(0,83,155,0.08);
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .card h3 {
+            color: var(--blue);
+            margin-bottom: 16px;
+            font-size: 26px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .card p {
+            line-height: 1.7;
+            color: var(--text);
+            font-size: 1rem;
+        }
+        .gallery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+        .photo-count {
+            font-size: 0.9rem;
+            background: #eef2f6;
+            padding: 6px 14px;
+            border-radius: 40px;
+            color: var(--blue);
+            font-weight: 500;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+        .g-item {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.25s, box-shadow 0.25s;
+            cursor: pointer;
+            background: #fff;
+            position: relative;
+            aspect-ratio: 4 / 3;
+        }
+        .g-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        .g-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .g-item:hover img {
+            transform: scale(1.02);
+        }
+        .load-more-btn {
+            display: block;
+            margin: 20px auto 50px;
+            background: var(--blue);
+            color: white;
+            border: none;
+            padding: 14px 36px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.25s;
+            box-shadow: var(--shadow-sm);
+            width: fit-content;
+        }
+        .load-more-btn:hover {
+            background: var(--linde-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .load-more-btn:active {
+            transform: translateY(1px);
+        }
+        .loading-indicator {
+            text-align: center;
+            margin: 20px auto;
+            color: var(--blue);
+            font-weight: 500;
+            display: none;
+        }
+        .loading-indicator.show {
+            display: block;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .modal-img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 16px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .modal-desc {
+            color: #fff;
+            font-size: 1rem;
+            margin-top: 20px;
+            text-align: center;
+            background: rgba(0,0,0,0.6);
+            padding: 10px 24px;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+        }
+        .close-btn {
+            position: absolute;
+            top: -48px;
+            right: 0;
+            color: #fff;
+            font-size: 38px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: 0.2s;
+            background: rgba(0,0,0,0.5);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .close-btn:hover {
+            background: var(--red);
+            transform: scale(1.05);
+        }
+        footer {
+            background: var(--dark);
+            color: #fff;
+            text-align: center;
+            padding: 32px 20px;
+            font-size: 14px;
+            margin-top: 70px;
+        }
+        footer p:first-child {
+            margin-bottom: 8px;
+        }
+        @media (max-width: 860px) {
+            body { padding-top: 80px; }
+            .container { padding: 40px 20px; }
+            .logo-icon img { height: 35px; }
+            .nav-wrap { padding: 0 20px; flex-wrap: wrap; gap: 10px; }
+            .nav-links { gap: 16px; flex-wrap: wrap; justify-content: center; }
+            .logo-box { font-size: 14px; }
+            .title { font-size: 28px; }
+            .idea { grid-template-columns: 1fr; gap: 24px; }
+            .card { padding: 28px 20px; }
+            .gallery { grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 20px; }
+            .g-item { aspect-ratio: 4/3; }
+            .modal-desc { font-size: 14px; }
+            .text-img-item {
+                flex-direction: column;
+                gap: 20px;
+                padding: 24px;
+            }
+            .text-img-item.reverse {
+                flex-direction: column;
+            }
+            .text-img-img img {
+                height: 220px;
+            }
+            .text-img-content h3 {
+                font-size: 20px;
+            }
+            .text-img-content p {
+                font-size: 14px;
+            }
+        }
+        @media (max-width: 480px) {
+            .fullwidth-video video {
+                max-height: 50vh;
+            }
+            .text-img-img img {
+                height: 180px;
+            }
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--linde-blue);
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 9999;
+            min-width: 200px;
+            padding: 8px 0;
+            margin-top: 8px;
+        }
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid var(--linde-blue);
+        }
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 0;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        .dropdown-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        .nav-drop-title {
+            color: #fff !important;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 0;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .nav-drop-title .arrow-icon {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+        .dropdown:hover .nav-drop-title .arrow-icon {
+            transform: rotate(180deg);
+        }
+        .nav-drop-title:hover {
+            color: #f0f0f0 !important;
+        }
+        .nav-drop-titlee {
+            color: #fff !important;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 0;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .nav-drop-titlee .arrow-icon {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+        .dropdown:hover .nav-drop-titlee .arrow-icon {
+            transform: rotate(180deg);
+        }
+        @media (max-width:768px) {
+            .dropdown-menu {
+                min-width: 160px;
+            }
+            .dropdown-menu a {
+                font-size: 12px;
+                padding: 8px 15px;
+            }
+            .nav-drop-title .arrow-icon,
+            .nav-drop-titlee .arrow-icon {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <div class="nav-wrap">
+        <div class="logo-box">
+            <div class="logo-icon">
+                <img src="spclogo.jpg" alt="中国石化">
+                <img src="lindelogo.jpg" alt="林德">
+            </div>
+            <div>上海石化林德气体有限责任公司 <span style="font-size:14px;">✦ 20周年 ✦</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">首页</a>
+            <a href="about.html">公司简介</a>
+            <a href="team.html">团队风采</a>
+            <!-- 改造发展历程为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-title">发展历程 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="history.html"><i class="fas fa-sitemap"></i> 历年大事件</a>
+                    <a href="idex.html"><i class="fas fa-chart-line"></i> 2020-2025生产运行近况</a>
+                </div>
+            </div>
+            <!-- 改造公司二十周年庆为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-titlee">✨20周年大事件与活动 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="red.html">✨5.22党建、团建、妇女节活动</a>
+                    <a href="program.html">✨6.2新空分项目签约仪式</a>
+                    <a href="retiree.html">✨6.18退休职工恳谈会</a>
+                </div>
+            </div>
+            <!-- 改造公司文化为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-title">公司文化 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="culture.html"></i> 核心文化</a>
+                    <a href="honor.html"></i> 荣誉积累</a>
+                </div>
+            </div>
+            <a href="picture.html">照片放映厅</a>
+            <a href="end.html">廿载寄语</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="title">20周年党建</h2>
+    <div class="video-section">
+        <div class="fullwidth-video">
+            <video controls autoplay muted loop playsinline>
+                <source src="000.mp4" type="video/mp4">
+                您的浏览器不支持 video 标签。
+            </video>
+        </div>
+        <div class="video-caption">党建领航 · 二十载聚力前行 | 上海石化林德气体合资20周年红色之旅纪实</div>
+    </div>
+
+    <h2 class="title">党建引领 · 团队风采</h2>
+    <div class="text-img-section">
+        <div class="text-img-item">
+            <div class="text-img-content">
+                <h3>红色研学守初心 砥砺奋进担使命</h3>
+                <p>为传承红色基因、弘扬英烈精神，持续深化党史学习教育，增强企业团队凝聚力与战斗力，2026年5 月 22 日，上海石化林德公司党支部组织党员干部、团员青年、妇女代表共计 31 人，前往奉贤区新四军淞沪支队陈列馆开展红色主题党日活动，通过实地沉浸式研学，砥砺初心使命、夯实理想信念根基。</p>
+                <p>新四军淞沪支队陈列馆地处奉贤区金钱公路 3030 号向南 50 米，紧邻奉贤区烈士陵园，于 2025 年 12 月 29 日正式对外开放。场馆融合烈士事迹陈列、新四军淞沪支队历史展示两大板块，形成烈士陵园 “一园两馆” 英烈纪念体系，是当地开展爱国主义、革命传统教育的重要红色实景教学基地。</p>
+            </div>
+            <div class="text-img-img">
+                <img src="d01.jpg" alt="党建活动现场">
+            </div>
+        </div>
+
+        <div class="text-img-item reverse">
+            <div class="text-img-content">
+                <h3>追忆淞沪抗日岁月 汲取英烈奋进力量</h3>
+                <p>在讲解员带领下，大家依次参观展厅，馆内史料、文物与复原场景完整展现新四军淞沪支队在沪郊艰苦抗日的全过程，鲜活再现先辈浴血保家的峥嵘岁月，让全体人员深切体会革命先辈深厚的家国情怀。</p>
+                 <p>此次红色研学是一次深刻的爱国主义教育，更是一场直击心灵、触及灵魂的精神洗礼。全体人员沉浸式重温革命先烈的奋斗征程，深刻感悟红色政权来之不易、美好生活来之不易，进一步筑牢了信仰之基、补足了精神之钙、把稳了思想之舵。</p>
+                 <p>大家纷纷表示，将永远铭记革命先烈的牺牲与奉献，把对英烈的崇敬之心、缅怀之情、感恩之意，转化为爱岗敬业、履职尽责、攻坚克难、干事创业的强大动力，以坚定的理想信念、务实的工作作风投身企业发展各项工作中。</p>
+            </div>
+            <div class="text-img-img">
+                <img src="d02.jpg" alt="团队风采展示">
+            </div>
+        </div>
+
+        <div class="text-img-item">
+            <div class="text-img-content">
+                <h3>红韵铸魂聚合力 同心筑梦庆廿载</h3>
+                <p>红色主题党日结束后，公司组织 31 名参与职工前往上海之鱼开展周年团建，丰富员工业余生活，拉近同事距离、凝聚团队合力。</p>
+               <p>本次团建以协作奋进、共庆公司成立二十周年为主题，大家随机分为三支小队，借助盲打互动拉开帷幕，随后开展长绳、投壶等协作竞赛。各小队紧密配合、互相鼓劲，在趣味竞技中舒缓工作压力，加深跨部门沟通，充分展现员工昂扬向上的精神面貌。</p>
+                <p>本次 “红色研学 + 周年团建” 融合活动，既以红色教育筑牢全员理想信念、压实责任担当，也有效提升团队凝聚力。下一步，全体职工将传承红色精神，立足岗位实干攻坚，以饱满姿态推动公司高质量发展，献礼合资二十周年。</p>
+            </div>
+            <div class="text-img-img">
+                <img src="d03.jpg" alt="红色传承活动">
+            </div>
+        </div>
+    </div>
+
+    <h2 class="title">各类活动 · 精彩瞬间</h2>
+    <div class="gallery-header">
+        <div class="photo-count" id="photoCountDisplay">📸 共加载 0 张精彩瞬间</div>
+        <div style="font-size:0.85rem; color: var(--text);">点击图片可放大查看</div>
+    </div>
+    <div class="gallery" id="activityGallery"></div>
+    <button class="load-more-btn" id="loadMoreBtn">📷 加载更多照片</button>
+    <div class="loading-indicator" id="loadingIndicator">⏳ 加载中，请稍后...</div>
+
+<div class="modal" id="imgModal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <img class="modal-img" id="modalImg" src="" alt="放大图片">
+        <div class="modal-desc" id="modalDesc"></div>
+    </div>
+</div>
+
+<footer>
+    <p>上海石化林德气体有限责任公司（BSG）• 合资20周年纪念 ©2026</p>
+    <p>党建引领新征程 · 同心共筑廿载梦</p>
+</footer>
+
+<script>
+    // 照片总数：24张，从d01 ~ d24，无任何描述
+    const allActivityImages = [
+        { img: "a02.jpg", desc: "" },
+        { img: "d01.jpg", desc: "" },
+        { img: "d04.jpg", desc: "" },
+        { img: "d05.jpg", desc: "" },
+        { img: "d06.jpg", desc: "" },
+        { img: "d07.jpg", desc: "" },
+        { img: "d02.jpg", desc: "" },
+        { img: "d08.jpg", desc: "" },
+        { img: "d09.jpg", desc: "" },
+        { img: "d10.jpg", desc: "" },
+        { img: "d11.jpg", desc: "" },
+        { img: "d12.jpg", desc: "" },
+        { img: "d13.jpg", desc: "" },
+        { img: "d14.jpg", desc: "" },
+        { img: "d15.jpg", desc: "" },
+        { img: "d16.jpg", desc: "" },
+        { img: "d17.jpg", desc: "" },
+        { img: "d03.jpg", desc: "" },
+        { img: "d21.jpg", desc: "" },
+        { img: "d22.jpg", desc: "" },
+        { img: "d18.jpg", desc: "" },
+        { img: "d19.jpg", desc: "" },
+        { img: "d20.jpg", desc: "" },
+        { img: "d23.jpg", desc: "" }
+    ];
+
+    let currentLoadedCount = 0;
+    const PAGE_SIZE = 12;
+    let galleryContainer = document.getElementById('activityGallery');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    const photoCountDisplay = document.getElementById('photoCountDisplay');
+
+    function renderCurrentGallery() {
+        if (!galleryContainer) return;
+        galleryContainer.innerHTML = '';
+        const itemsToShow = allActivityImages.slice(0, currentLoadedCount);
+        itemsToShow.forEach((item, idx) => {
+            const gItem = document.createElement('div');
+            gItem.className = 'g-item';
+            const imgElement = document.createElement('img');
+            imgElement.src = item.img;
+            imgElement.alt = `活动照片 ${idx+1}`;
+            imgElement.loading = "lazy";
+            gItem.appendChild(imgElement);
+            gItem.addEventListener('click', () => {
+                openModal(item.img, item.desc);
+            });
+            galleryContainer.appendChild(gItem);
+        });
+        const total = allActivityImages.length;
+        photoCountDisplay.innerHTML = `📸 已展示 ${currentLoadedCount} / ${total} 张精彩瞬间`;
+        loadMoreBtn.style.display = currentLoadedCount >= total ? 'none' : 'block';
+    }
+
+    function loadMore() {
+        loadingIndicator.classList.add('show');
+        setTimeout(() => {
+            let newCount = currentLoadedCount + PAGE_SIZE;
+            if (newCount > allActivityImages.length) newCount = allActivityImages.length;
+            currentLoadedCount = newCount;
+            renderCurrentGallery();
+            loadingIndicator.classList.remove('show');
+        }, 120);
+    }
+
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalDesc = document.getElementById('modalDesc');
+    const closeBtnModal = document.getElementById('closeBtn');
+
+    function openModal(imgSrc, descText) {
+        modalImg.src = imgSrc;
+        modalDesc.textContent = descText;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModalFunc() {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    closeBtnModal.addEventListener('click', closeModalFunc);
+    modal.addEventListener('click', (e) => { if(e.target === modal) closeModalFunc(); });
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModalFunc(); });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        currentLoadedCount = Math.min(PAGE_SIZE, allActivityImages.length);
+        renderCurrentGallery();
+        loadMoreBtn.addEventListener('click', loadMore);
+    });
+</script>
+</body>
+</html>

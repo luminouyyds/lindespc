@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>二十周年退休职工恳谈会 | 上海石化林德气体有限责任公司</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --red: #c8102e;
+            --blue: #00539b;
+            --gray: #f5f7fa;
+            --dark: #1e2a36;
+            --text: #4a5568;
+            --linde-blue: #002855;
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.05), 0 2px 6px rgba(0,0,0,0.03);
+            --shadow-md: 0 12px 28px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.12);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 32px;
+            --spacing-xl: 48px;
+        }
+
+        body {
+            color: var(--dark);
+            background: #f9fafb;
+            padding-top: 90px;
+            font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Roboto, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* 导航栏 - 保留原有样式 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--linde-blue);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            z-index: 999;
+            padding: 12px 0;
+        }
+        .nav-wrap {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            flex-wrap: wrap;
+        }
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            line-height: 1.2;
+        }
+        .logo-icon {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .logo-icon img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            font-size: 16px;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+        }
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* 重新设计的容器和布局 */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* 页面头部横幅 */
+        .page-header {
+            margin: var(--spacing-xl) 0;
+            text-align: center;
+            position: relative;
+        }
+        .page-header::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 4px;
+            background: var(--red);
+            margin: var(--spacing-md) auto 0;
+            border-radius: 2px;
+        }
+        .page-title {
+            font-size: 40px;
+            color: var(--linde-blue);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+        .page-subtitle {
+            font-size: 18px;
+            color: var(--text);
+            font-weight: 400;
+            margin-bottom: var(--spacing-md);
+        }
+        .event-date {
+            display: inline-block;
+            background: var(--gray);
+            color: var(--red);
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-top: var(--spacing-xs);
+        }
+
+        /* 核心内容区 - 网格布局 */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        /* 恳谈会介绍卡片 */
+        .intro-card {
+            background: #fff;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 0;
+            border-top: 8px solid var(--red);
+        }
+        
+        /* 通用会话卡片 - 左右布局 */
+        .session-card {
+            background: #fff;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr; /* 默认左图右文 */
+            gap: 0;
+            border-top: 8px solid var(--red);
+        }
+        
+        /* 右文左图的卡片样式 */
+        .session-card.right-img {
+            grid-template-columns: 1.2fr 1fr; /* 左文右图 */
+        }
+        
+        /* 会话卡片内容容器 */
+        .session-content-wrap {
+            padding: var(--spacing-lg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        /* 会话卡片图片容器 */
+        .session-img-wrap {
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .session-img-wrap:hover {
+            background: #f0f4f8;
+        }
+        
+        .session-img-wrap img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            object-fit: cover;
+            aspect-ratio: 4/3;
+        }
+
+        .intro-text {
+            padding: var(--spacing-xl);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .intro-text h3 {
+            font-size: 28px;
+            color: var(--linde-blue);
+            margin-bottom: var(--spacing-md);
+            font-weight: 600;
+        }
+        .intro-text p {
+            font-size: 16px;
+            color: var(--text);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.8;
+        }
+        .intro-text p strong {
+            color: var(--linde-blue);
+            font-weight: 600;
+        }
+        .intro-image {
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .intro-image:hover {
+            background: #f0f4f8;
+        }
+        .intro-image img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            object-fit: cover;
+            aspect-ratio: 4/3;
+        }
+
+        .session-title {
+            font-size: 24px;
+            color: var(--linde-blue);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid var(--gray);
+        }
+        .session-title i {
+            color: var(--red);
+            font-size: 20px;
+        }
+        .session-content {
+            font-size: 16px;
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .session-content p {
+            margin-bottom: var(--spacing-sm);
+        }
+        .session-content strong {
+            color: var(--linde-blue);
+            font-weight: 600;
+        }
+
+        /* 视频板块 */
+        .video-card {
+            background: #fff;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            padding: var(--spacing-lg);
+        }
+        .section-title {
+            font-size: 24px;
+            color: var(--linde-blue);
+            margin-bottom: var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        .section-title i {
+            color: var(--red);
+            font-size: 20px;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            aspect-ratio: 16/9;
+            background: #000;
+        }
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .video-caption {
+            text-align: center;
+            margin-top: var(--spacing-md);
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        /* 照片画廊 - 重新设计 */
+        .gallery-card {
+            background: #fff;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            padding: var(--spacing-lg);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+        }
+        .gallery-item {
+            background: #f9fafb;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--red);
+        }
+.gallery-info {
+    padding: var(--spacing-md);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /* 新增：让标题居中 */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+        .gallery-title {
+            font-size: 16px;
+            color: var(--linde-blue);
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* 模态框优化 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.94);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .modal-img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: var(--radius-md);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.4);
+            border: 4px solid rgba(255,255,255,0.1);
+        }
+        .modal-desc {
+            color: #fff;
+            font-size: 1rem;
+            margin-top: var(--spacing-md);
+            text-align: center;
+            background: rgba(0,0,0,0.6);
+            padding: 12px 24px;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+            max-width: 80%;
+        }
+        .close-btn {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: #fff;
+            font-size: 38px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: 0.2s;
+            background: rgba(0,0,0,0.5);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .close-btn:hover {
+            background: var(--red);
+            transform: scale(1.05);
+        }
+
+        /* 页脚优化 */
+        footer {
+            background: var(--dark);
+            color: #fff;
+            text-align: center;
+            padding: var(--spacing-lg) 20px;
+            font-size: 14px;
+            margin-top: var(--spacing-xl);
+            border-top: 4px solid var(--red);
+        }
+
+/* 新增：下拉菜单样式 */
+.dropdown {
+    position: relative;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--linde-blue);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 9999;
+    min-width: 200px;
+    padding: 8px 0;
+    margin-top: 8px;
+}
+.dropdown-menu::before {
+    /* 下拉菜单小三角 */
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--linde-blue);
+}
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0;
+}
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+.dropdown-menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+ .nav-drop-title {
+                color: #fff !important;
+                font-weight: 500;
+                font-size: 16px;
+                padding: 8px 0;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+            }
+ .nav-drop-title .arrow-icon {
+                font-size: 12px;
+                transition: transform 0.3s ease;
+            }
+ .dropdown:hover .nav-drop-title .arrow-icon {
+                transform: rotate(180deg);
+            }
+            .nav-drop-title:hover {
+                color: #f0f0f0 !important;
+}
+ .nav-drop-titlee {
+                color: #fff !important;
+                font-weight: 500;
+                font-size: 16px;
+                padding: 8px 0;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+            }
+ .nav-drop-titlee .arrow-icon {
+                font-size: 12px;
+                transition: transform 0.3s ease;
+            }
+ .dropdown:hover .nav-drop-titlee .arrow-icon {
+                transform: rotate(180deg);
+            }
+/* 移动端适配下拉 */
+@media (max-width:768px) {
+    .dropdown-menu {
+        min-width: 160px;
+    }
+    .dropdown-menu a {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+    .nav-drop-title .arrow-icon,
+    .nav-drop-titlee .arrow-icon {
+        font-size: 10px;
+    }
+}
+
+        /* 响应式适配 */
+        @media (max-width: 1024px) {
+            .intro-card, .session-card, .session-card.right-img {
+                grid-template-columns: 1fr;
+            }
+            .intro-image, .session-img-wrap {
+                order: -1;
+            }
+            .page-title {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body { 
+                padding-top: 80px; 
+                padding-bottom: var(--spacing-md);
+            }
+            .nav-wrap { 
+                padding: 0 20px; 
+                gap: 12px; 
+                justify-content: center; 
+            }
+            .logo-icon img { 
+                height: 32px; 
+            }
+            .nav-links { 
+                gap: 12px; 
+                justify-content: center; 
+            }
+            .nav-links a:last-child { 
+                padding: 4px 12px; 
+                font-size: 14px; 
+            }
+            .navbar { 
+                padding: 10px 0; 
+            }
+            
+            .main-container {
+                padding: 0 var(--spacing-sm);
+            }
+            .page-title {
+                font-size: 28px;
+            }
+            .page-subtitle {
+                font-size: 16px;
+            }
+            .intro-text, .session-content-wrap {
+                padding: var(--spacing-md);
+            }
+            .intro-text h3, .session-title {
+                font-size: 22px;
+            }
+            .video-card, .gallery-card {
+                padding: var(--spacing-md);
+            }
+            .section-title {
+                font-size: 20px;
+                margin-bottom: var(--spacing-md);
+            }
+            .gallery-grid {
+                gap: var(--spacing-sm);
+            }
+            .gallery-img {
+                height: 160px;
+            }
+            .modal-desc {
+                max-width: 90%;
+                font-size: 0.9rem;
+                padding: 10px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .page-header {
+                margin: var(--spacing-lg) 0;
+            }
+            .content-grid {
+                gap: var(--spacing-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <div class="nav-wrap">
+        <div class="logo-box">
+            <div class="logo-icon">
+                <img src="spclogo.jpg" alt="中国石化">
+                <img src="lindelogo.jpg" alt="林德">
+            </div>
+            <div>上海石化林德气体有限责任公司 <span style="font-size:14px;">✦ 20周年 ✦</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">首页</a>
+            <a href="about.html">公司简介</a>
+            <a href="team.html">团队风采</a>
+            <!-- 改造发展历程为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-title">发展历程 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="history.html"><i class="fas fa-sitemap"></i> 历年大事件</a>
+                    <a href="idex.html"><i class="fas fa-chart-line"></i> 2020-2025生产运行近况</a>
+                </div>
+            </div>
+            <!-- 改造公司二十周年庆为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-titlee">✨20周年大事件与活动 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="red.html">✨5.22党建、团建、妇女节活动</a>
+                    <a href="program.html">✨6.2新空分项目签约仪式</a>
+                    <a href="retiree.html">✨6.18退休职工恳谈会</a>
+                </div>
+            </div>
+            <!-- 改造公司文化为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-title">公司文化 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="culture.html"></i> 核心文化</a>
+                    <a href="honor.html"></i> 荣誉积累</a>
+                </div>
+            </div>
+            <a href="picture.html">照片放映厅</a>
+            <a href="end.html">廿载寄语</a>
+        </div>
+    </div>
+</div>
+
+<div class="main-container">
+    <!-- 页面头部 -->
+    <div class="page-header">
+        <h1 class="page-title">合资二十周年·退休职工恳谈会</h1>
+        <p class="page-subtitle">二十载薪火相传，共叙空分初心 | 致敬为企业发展奉献的前辈</p>
+        <div class="event-date">2026年6月18日 · 上海·金山</div>
+    </div>
+
+    <!-- 核心内容网格 -->
+    <div class="content-grid">
+        <!-- 恳谈会介绍卡片 - 右图 -->
+        <div class="intro-card">
+            <div class="intro-text">
+                <h3>恳谈会温情启幕</h3>
+                <p>2026年6月18日上午，会议中心门前花团锦簇，暖意融融，一场以“同行忆韶华，相聚话温情”为主题的上海石化林德气体有限责任公司合资二十周年退休职工恳谈会，在这里温情启幕。</p>
+                <p>从各地赶回来的退休老职工们欢声笑语，步履轻快地踏入会场，不少人刚见面就紧紧握住老同事的手，笑着细数彼此鬓边新增的白发，空气中满是久别重逢的暖意。</p>
+            </div>
+            <div class="intro-image" onclick="openModal(this.querySelector('img').src, '退休职工恳谈会现场 | 花团锦簇的会议中心，老同事们久别重逢')">
+                <img src="r001.jpg" alt="退休职工恳谈会现场" onerror="this.src='https://picsum.photos/id/28/800/600'">
+            </div>
+        </div>
+
+        <!-- 嘉宾入场与集体合影 - 左图 -->
+        <div class="session-card">
+            <div class="session-img-wrap" onclick="openModal(this.querySelector('img').src, '嘉宾入场与集体合影 | 退休老领导与职工代表们完成签到并合影留念')">
+                <img src="tk01.jpg" alt="嘉宾入场与集体合影" onerror="this.src='https://picsum.photos/id/65/800/600'">
+            </div>
+            <div class="session-content-wrap">
+                <h3 class="session-title"><i class="fas fa-users"></i> 嘉宾入场与集体合影</h3>
+                <div class="session-content">
+                    <p>上午九点半，退休老领导张铮、杨先顺、王承红、陈尧舜与退休职工代表们陆续完成签到。<p>
+                     <p>在工作人员的引导下步入会场外的合影区，大家自发排成错落的队列。<p>
+                    <p>有人抬手整理衣襟，有人笑着招呼身边多年未见的老伙伴，随着快门按下，一张张带着笑意的面孔被定格在镜头里，为这场跨越二十年的相聚留下了珍贵的集体记忆。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 公司生产经营情况通报 - 右图 -->
+        <div class="session-card right-img">
+            <div class="session-content-wrap">
+                <h3 class="session-title"><i class="fas fa-chart-bar"></i> 公司生产经营情况通报</h3>
+                <div class="session-content">
+                    <p>会议正式开始后，BSG代表沈国强总经理首先登台，向在座的老职工们致以诚挚的问候。他从二十年前合资公司挂牌的历史时刻讲起，细数了企业从初期装置调试到如今实现安全稳定长周期运行的发展历程。</p>
+                    <p>他提到，近年6年来BSG依托上海石化的产业基础与林德的技术优势，持续优化工业气体生产供应体系，在生产运行，利润经营等方面均取得了亮眼成果。</p>
+                    <p>每讲到一处关键节点，台下的老前辈们都纷纷点头，这些他们当年亲手参与搭建、调试的装置，如今仍在平稳运行，这份跨越时光的联结让所有人都心生感慨。</p>
+                </div>
+            </div>
+            <div class="session-img-wrap" onclick="openModal(this.querySelector('img').src, '公司生产经营情况通报 | 沈国强总经理向老职工们介绍企业发展成果')">
+                <img src="r002.jpg" alt="公司生产经营情况通报" onerror="this.src='https://picsum.photos/id/66/800/600'">
+            </div>
+        </div>
+
+        <!-- 9号空分新装置进展介绍 - 左图 -->
+        <div class="session-card">
+            <div class="session-img-wrap" onclick="openModal(this.querySelector('img').src, '9号空分新装置进展 | 沈国强总经理展示新装置现场实拍图片')">
+                <img src="tk100.jpg" alt="9号空分新装置进展" onerror="this.src='https://picsum.photos/id/67/800/600'">
+            </div>
+            <div class="session-content-wrap">
+                <h3 class="session-title"><i class="fas fa-industry"></i> 9号空分新装置进展介绍</h3>
+                <div class="session-content">
+                    <p>紧接着，沈国强总经理向老职工们重点通报了大家一直牵挂的9号空分新装置项目进展。</p>
+                    </p>他介绍道，就在今年6月2日，上海石化与林德已正式签署《9号空分项目合作意向书》，这意味着股东双方多年的精诚合作，再次迈上新台阶，达成双方战略协同发展的全新里程碑。</p>
+                    <p>二十年携手同行、深耕合作，双方始终坚守高质量发展理念。本次9号空分新装置将以行业最高标准规划建设、运维管理，重点打造安全可靠、高效节能、绿色低碳的现代化空分装置。</p>
+                    <p>台下不少曾参与多套老空分装置建设的老前辈，看着照片里的新项目落地，眼里满是欣慰与骄傲。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 退休职工恳谈环节 - 右图 -->
+        <div class="session-card right-img">
+            <div class="session-content-wrap">
+                <h3 class="session-title"><i class="fas fa-comments"></i> 退休职工恳谈环节</h3>
+                <div class="session-content">
+                    <p>在自由恳谈环节，老职工们纷纷发言，有人回忆起合资初期，与同事一起摸索梳理操作规程的往事；有人讲起当年8#空分装置首次开车时，守在现场激动的经历；还有人拿出自己珍藏多年的照片，分享那些在十几年前参与公司团建活动的喜悦。</p>
+                    <p>大家你一言我一语，既有对往昔岁月的深情回忆，也毫不避讳地为当下的生产运行、员工培养、设备设施等方面提出了实打实的建议，会场里时而响起共鸣的笑声，时而响起热烈的掌声，两代空分人的初心在交流中紧紧相融。</p>
+                </div>
+            </div>
+            <div class="session-img-wrap" onclick="openModal(this.querySelector('img').src, '退休职工恳谈环节 | 老同事们畅所欲言，共忆峥嵘岁月')">
+                <img src="tk08.jpg" alt="退休职工恳谈环节" onerror="this.src='https://picsum.photos/id/68/800/600'">
+            </div>
+        </div>
+
+        <!-- 老领导寄语环节 - 左图 -->
+        <div class="session-card">
+            <div class="session-img-wrap" onclick="openModal(this.querySelector('img').src, '老领导寄语环节 | 张铮老领导为企业发展送上寄语')">
+                <img src="tk200.jpg" alt="老领导寄语环节" onerror="this.src='https://picsum.photos/id/69/800/600'">
+            </div>
+            <div class="session-content-wrap">
+                <h3 class="session-title"><i class="fas fa-bullhorn"></i> 老领导寄语环节</h3>
+                <div class="session-content">
+                    <p>随后，老领导张铮、杨先顺、王承红、陈尧舜依次发言送上寄语。张铮女士回顾了合资谈判初期的难忘历程，叮嘱大家要守住“安全是底线”的老传统，把空分事业的接力棒稳稳传下去；杨先顺先生结合自己多年的装置管理经验，提醒在场的年轻管理者要多向一线取经，永远不能脱离生产实际；</p>
+                    <p>王承红女士从技术传承的角度出发，希望企业能搭建更多老职工与青年技术骨干的交流平台，让老一辈积累的宝贵经验能更好地传承下去；陈尧舜先生则祝福所有老职工都能保重身体，常回“家”看看，继续做企业发展的“最强后盾”。</p>
+                    <p>四位老领导的话语朴实厚重，满是对企业未来的期许，让在场所有人都深受触动。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 席间休息与交流 - 右图 -->
+        <div class="session-card right-img">
+            <div class="session-content-wrap">
+                <h3 class="session-title"><i class="fas fa-coffee"></i> 席间休息与交流</h3>
+                <div class="session-content">
+                    <p>寄语环节结束后，进入半小时的席间休息时间。会场外的休息区准备了清茶与水果，老职工与在职同事们三两成群围坐在一起，翻看会场陈列的二十年发展历程图片展，对着老照片辨认当年的同事，聊着各自退休后的生活，不少人还掏出手机互相添加联系方式，约着之后要组队游历大江南北。</p>
+                    <p>在欢声笑语里，这场跨越二十年的重逢，为上海石化林德气体二十载的奋斗史画上了一段温情的注脚，也为下一个二十年的全新征程攒满了来自老一辈的温暖力量。</p>
+                </div>
+            </div>
+            <div class="session-img-wrap" onclick="openModal(this.querySelector('img').src, '席间休息与交流 | 老同事们翻看老照片，回忆美好时光')">
+                <img src="tk110.jpg" alt="席间休息与交流" onerror="this.src='https://picsum.photos/id/70/800/600'">
+            </div>
+        </div>
+
+        <!-- 视频板块 -->
+        <div class="video-card">
+            <h3 class="section-title"><i class="fas fa-video"></i> 恳谈会现场视频</h3>
+            <div class="video-container">
+                <video controls width="100%">
+                    <source src="kth.mp4" type="video/mp4">
+                </video>
+            </div>
+            <p class="video-caption">🎥 二十周年退休职工恳谈会纪实 | BSG</p>
+        </div>
+
+        <!-- 照片画廊 -->
+        <div class="gallery-card">
+            <h3 class="section-title"><i class="fas fa-images"></i> 恳谈会精彩瞬间</h3>
+            <div class="gallery-grid" id="ceremonyGallery">
+                <!-- 动态生成照片 -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 图片放大模态框 -->
+<div class="modal" id="imgModal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <img class="modal-img" id="modalImg" src="" alt="放大影像">
+        <div class="modal-desc" id="modalDesc"></div>
+    </div>
+</div>
+
+<footer>
+    <p>上海石化林德气体有限责任公司（BSG）• 合资20周年纪念 ©2026 | 薪火相传 感恩有您</p>
+</footer>
+
+<script>
+    // 退休职工恳谈会照片数据 - 扩充至28张（新增4张）
+    const ceremonyPhotos = [
+        { img: "tk01.jpg", title: "恳谈会嘉宾大合影", desc: "二十周年退休职工恳谈会圆满落幕，新老同事共同合影留念，定格温馨瞬间。" },
+        { img: "tk02.jpg", title: "入场签到", desc: "恳谈会现场精心布置，充满温馨氛围，迎接退休老领导、老同事回家。" },
+        { img: "tk03.jpg", title: "沈国强总经理致辞", desc: "BSG总经理沈国强致辞，感谢退休职工为企业发展做出的卓越贡献。" },
+        { img: "tk04.jpg", title: "张铮老领导发言", desc: "张铮老领导分享工作经历，寄语企业未来发展越来越好。" },
+        { img: "tk05.jpg", title: "杨先顺老领导交流心得", desc: "杨先顺老领导畅谈往昔工作点滴，回忆与企业共同成长的岁月。" },
+        { img: "tk06.jpg", title: "王承红老领导建言献策", desc: "王承红老领导为企业高质量发展提出宝贵建议。" },
+        { img: "tk07.jpg", title: "陈尧舜老领导分享经验", desc: "陈尧舜老领导分享空分事业发展历程，传承实干担当的精神。" },
+        { img: "tk30.jpg", title: "退休职工观看照片", desc: "老同事们聚精会神看照片回顾，共忆峥嵘岁月。" },
+        { img: "tk09.jpg", title: "陆子栋先生恳谈", desc: "退休职工有序签到，领取二十周年纪念册，感受企业的温暖。" },
+        { img: "tk10.jpg", title: "孙洪良先生恳谈", desc: "恳谈会会场精心布置，摆放着企业发展历程展板，回顾二十年奋斗之路。" },
+        { img: "tk11.jpg", title: "林慕咏先生恳谈", desc: "退休老职工驻足观看企业发展展板，回忆共同奋斗的时光。" },
+        { img: "tk12.jpg", title: "顾巧林先生恳谈", desc: "在职员工与退休老职工亲切交流，请教工作经验，传承空分精神。" },
+        { img: "tk13.jpg", title: "金列平先生分享老照片", desc: "为退休职工送上定制纪念礼品，感谢他们为企业发展的辛勤付出。" },
+        { img: "tk14.jpg", title: "生产工艺部经理钟卫国发言", desc: "茶歇时间，老同事们围坐在一起，畅谈退休生活与企业发展。" },
+        { img: "tk15.jpg", title: "人事行政部经理余毅骏发言", desc: "技术人员向老职工讲解9号空分新装置规划，展示企业发展新蓝图。" },
+        { img: "tk16.jpg", title: "采购经理张廉发言", desc: "退休职工分享珍藏的老照片，回忆合资初期的创业时光。" },
+        { img: "tk17.jpg", title: "HSE经理徐铮发言", desc: "新老员工共同切下二十周年纪念蛋糕，庆祝企业发展里程碑。" },
+        { img: "tk18.jpg", title: "销售部经理杨永生发言", desc: "展示企业二十年获得的各类荣誉奖牌，见证发展成果。" },
+        { img: "tk19.jpg", title: "生产工艺部副经理朱荣辉发言", desc: "在职职工代表发言，感谢老前辈的付出，承诺传承优良传统。" },
+        { img: "tk20.jpg", title: "工会主席胡雪赟发言", desc: "老领导与在职管理团队合影，记录珍贵时刻。" },
+        { img: "tk21.jpg", title: "在职职工热烈鼓掌", desc: "恳谈会会场全景，布置温馨而庄重，充满感恩与温情。" },
+        { img: "tk22.jpg", title: "杨志平与杨先顺前辈友好交流", desc: "二十周年定制纪念品展示，镌刻企业与职工的深厚情谊。" },
+        { img: "tk23.jpg", title: "金列平与两位经理叙旧", desc: "恳谈会结束，在职员工送别老职工，相约常回“家”看看。" },
+        { img: "tk24.jpg", title: "张晔与两位老领导攀谈", desc: "企业二十年发展成果展板，展现空分事业的辉煌历程。" },
+        // 新增4张照片
+        { img: "tk25.jpg", title: "相聚话温情", desc: "退休老职工现场展示书法才艺，书写“薪火相传”赠予企业留念。" },
+        { img: "tk26.jpg", title: "仇静萍与邬悦辉女士", desc: "青年技术骨干向老职工请教空分装置维护经验，传承宝贵技术财富。" },
+        { img: "tk27.jpg", title: "秦志良与何林龙先生", desc: "老职工重访生产厂区，见证装置升级改造后的崭新面貌。" },
+        { img: "tk28.jpg", title: "会议旗帜", desc: "企业为每位退休职工准备的暖心伴手礼，满载二十年的感恩与祝福。" }
+    ];
+
+    // 渲染照片画廊
+function renderCeremonyGallery() {
+    const galleryContainer = document.getElementById('ceremonyGallery');
+    if (!galleryContainer) return;
+    galleryContainer.innerHTML = '';
+    
+    ceremonyPhotos.forEach(photo => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        // 移除了 <p class="gallery-desc">${photo.desc}</p> 这一行
+        item.innerHTML = `
+            <img src="${photo.img}" alt="${photo.title}" class="gallery-img" loading="lazy" onerror="this.src='https://picsum.photos/id/${64 + parseInt(photo.img.replace('tk','').replace('.jpg',''))}/600/400'">
+            <div class="gallery-info">
+                <h4 class="gallery-title">${photo.title}</h4>
+            </div>
+        `;
+        item.addEventListener('click', () => {
+            // 可选：如果想保留弹窗中的描述，保留这行；如果弹窗也不要描述，改为 openModal(photo.img, photo.title)
+            openModal(photo.img, photo.title);
+        });
+        galleryContainer.appendChild(item);
+    });
+}
+
+    // 模态框逻辑
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalDesc = document.getElementById('modalDesc');
+    const closeBtn = document.getElementById('closeBtn');
+
+    function openModal(imgSrc, descText) {
+        if (!modal || !modalImg) return;
+        modalImg.src = imgSrc;
+        modalImg.alt = descText || '恳谈会影像';
+        modalDesc.textContent = descText || '上海石化林德气体二十周年退休职工恳谈会珍贵时刻';
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        
+        modalImg.onerror = function() {
+            this.src = "https://picsum.photos/id/42/800/600";
+            modalDesc.textContent = descText + " (图片加载中，此为辅助影像)";
+        };
+    }
+
+    function closeModal() {
+        if (modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                if (modalImg) modalImg.src = '';
+            }, 200);
+        }
+    }
+
+    // 绑定模态框事件
+    if (closeBtn) closeBtn.addEventListener('click', (e) => { 
+        e.stopPropagation(); 
+        closeModal(); 
+    });
+    
+    if (modal) modal.addEventListener('click', (e) => { 
+        if (e.target === modal) closeModal(); 
+    });
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+            closeModal();
+        }
+    });
+
+    // 视频错误处理
+    function initVideoErrorHandling() {
+        const video = document.querySelector('.video-container video');
+        if (!video) return;
+        
+        video.muted = true;
+        video.play().catch(e => console.log('自动播放被阻止，用户交互后可播放'));
+        
+        video.addEventListener('error', function() {
+            const container = this.parentElement;
+            if (container.querySelector('.video-error-fallback')) return;
+            
+            const fallback = document.createElement('div');
+            fallback.className = 'video-error-fallback';
+            fallback.style.cssText = `
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                height: 100%;
+                width: 100%;
+                background: #1a1a2e;
+                color: #fff;
+                text-align: center;
+                padding: var(--spacing-lg);
+                gap: var(--spacing-md);
+            `;
+            fallback.innerHTML = `
+                <i class="fas fa-video" style="font-size: 48px; color: var(--red);"></i>
+                <h4 style="font-size: 18px; margin-bottom: 8px;">视频暂无法播放</h4>
+                <p style="font-size: 14px; max-width: 80%;">
+                    退休职工恳谈会视频即将上线，敬请期待<br>
+                    或联系行政部门获取完整记录
+                </p>
+            `;
+            
+            this.style.display = 'none';
+            container.appendChild(fallback);
+        });
+    }
+
+    // 页面加载完成初始化
+    window.addEventListener('DOMContentLoaded', () => {
+        renderCeremonyGallery();
+        initVideoErrorHandling();
+        
+        // 主图加载失败处理
+        const mainImg = document.querySelector('.intro-image img');
+        if (mainImg && mainImg.complete && mainImg.naturalWidth === 0) {
+            mainImg.src = 'https://picsum.photos/id/104/800/600';
+        }
+    });
+</script>
+</body>
+</html>

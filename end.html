@@ -90,17 +90,7 @@
 .nav-links a:hover {
     opacity: 0.8;
 }
-/* 高亮新项目签约按钮 */
-.nav-links a:last-child {
-    background: var(--red);
-    padding: 6px 14px;
-    border-radius: 40px;
-    transition: all 0.3s;
-}
-.nav-links a:last-child:hover {
-    background: #a00d26;
-    opacity: 1;
-}
+
 
 /* 响应式适配 */
 @media (max-width: 768px) {
@@ -456,6 +446,105 @@
             vertical-align: middle;
             display: inline-block;
         }
+/* 新增：下拉菜单样式 */
+.dropdown {
+    position: relative;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--linde-blue);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 9999;
+    min-width: 200px;
+    padding: 8px 0;
+    margin-top: 8px;
+}
+.dropdown-menu::before {
+    /* 下拉菜单小三角 */
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--linde-blue);
+}
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0;
+}
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+.dropdown-menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+ .nav-drop-title {
+                color: #fff !important;
+                font-weight: 500;
+                font-size: 16px;
+                padding: 8px 0;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+            }
+ .nav-drop-title .arrow-icon {
+                font-size: 12px;
+                transition: transform 0.3s ease;
+            }
+ .dropdown:hover .nav-drop-title .arrow-icon {
+                transform: rotate(180deg);
+            }
+            .nav-drop-title:hover {
+                color: #f0f0f0 !important;
+}
+ .nav-drop-titlee {
+                color: #fff !important;
+                font-weight: 500;
+                font-size: 16px;
+                padding: 8px 0;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+            }
+ .nav-drop-titlee .arrow-icon {
+                font-size: 12px;
+                transition: transform 0.3s ease;
+            }
+ .dropdown:hover .nav-drop-titlee .arrow-icon {
+                transform: rotate(180deg);
+            }
+/* 移动端适配下拉 */
+@media (max-width:768px) {
+    .dropdown-menu {
+        min-width: 160px;
+    }
+    .dropdown-menu a {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+    .nav-drop-title .arrow-icon,
+    .nav-drop-titlee .arrow-icon {
+        font-size: 10px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -472,11 +561,33 @@
             <a href="index.html">首页</a>
             <a href="about.html">公司简介</a>
             <a href="team.html">团队风采</a>
-            <a href="history.html">发展历程</a>
-            <a href="culture.html">企业文化</a>
-            <a href="honor.html">荣誉积累</a>
+            <!-- 改造发展历程为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-title">发展历程 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="history.html"><i class="fas fa-sitemap"></i> 历年大事件</a>
+                    <a href="idex.html"><i class="fas fa-chart-line"></i> 2020-2025生产运行近况</a>
+                </div>
+            </div>
+            <!-- 改造公司二十周年庆为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-titlee">✨20周年大事件与活动 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="red.html">✨5.22党建、团建、妇女节活动</a>
+                    <a href="program.html">✨6.2新空分项目签约仪式</a>
+                    <a href="retiree.html">✨6.18退休职工恳谈会</a>
+                </div>
+            </div>
+            <!-- 改造公司文化为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-title">公司文化 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="culture.html"></i> 核心文化</a>
+                    <a href="honor.html"></i> 荣誉积累</a>
+                </div>
+            </div>
+            <a href="picture.html">照片放映厅</a>
             <a href="end.html">廿载寄语</a>
-            <a href="program.html" style="background: var(--red); padding: 6px 14px; border-radius: 40px;">✨ 6.2 新空分项目签约仪式</a>
         </div>
     </div>
 </div>
@@ -505,8 +616,8 @@
                         <div class="leader-name">沈国强</div>
                         <div class="leader-title">上海石化林德气体有限责任公司 总经理</div>
                         <div class="leader-message">
-                            <p><span class="quote-icon">“</span>二十年风雨兼程，我们与上海石化、林德集团携手并进，从初创探索到行业标杆，每一步都凝聚着全体BSG人的智慧与汗水。安全是企业的生命线，创新是发展的引擎，合作共赢是我们不变的底色。值此合资二十周年之际，我谨代表公司管理层，向每一位辛勤付出的员工、向所有信任我们的客户与股东，致以最诚挚的敬意！</p>
-                            <p>展望未来，我们将继续深耕气体领域，以更高效、更低碳、更安全的解决方案赋能区域产业升级，为金山及长三角的工业血脉注入绿色动能。志合越山海，聚力共前行，期待下一个二十年的壮阔航程！</p>
+                            <p><span class="quote-icon">“</span>二十年风雨兼程，我们与上海石化、林德集团携手并进，每一步都凝聚着全体BSG人的智慧与汗水。安全是企业的生命线，工艺是发展的引擎，合作共赢是我们不变的底色。值此合资二十周年之际，我谨代表公司管理层，向每一位辛勤付出的员工、向所有信任我们的客户与股东，致以最诚挚的敬意！</p>
+                            <p>展望未来，我们将继续深耕气体领域，以更高效、更低碳、更安全的解决方案赋能区域产业升级，为金山的工业血脉注入绿色动能。志合越山海，聚力共前行，期待下一个二十年的壮阔航程！</p>
                         </div>
                         <div class="signature-line">总经理办公室 · 2026年仲春</div>
                     </div>
@@ -521,8 +632,8 @@
                         <div class="leader-name">郑保才</div>
                         <div class="leader-title">上海石化林德气体有限责任公司 副总经理</div>
                         <div class="leader-message">
-                            <p><span class="quote-icon">“</span>二十年来，BSG始终将安全视为第一生命线，实现连续多年无重大事故，建立国际一流的安全管理体系。从双重预防机制到数字化智能巡检，我们用责任铸就信任。未来，我们将持续践行“安全零容忍”理念，推动安全文化深入每个岗位，打造行业安全新标杆，为所有员工和周边社区保驾护航。</p>
-                            <p>廿载已是基石，更要以归零心态面对每一天。让安全成为BSG最亮丽的名片！</p>
+                            <p><span class="quote-icon">“</span>合资公司二十年的成长，离不开每一个岗位、每一位员工的默默耕耘。安全运营、稳定保供、技术创新、供应链协同、人才培育，各条战线环环相扣、相辅相成，共同构筑公司发展的坚实根基。多年来，我们融合股东双方先进管理体系，兼顾经营效益、安全底线与社会责任，搭建多元成长平台，陪伴全体职工与公司同步成长。站在新的发展起点，希望全体同仁坚守初心、凝心聚力，持续践行绿色低碳发展路线，以协同合力破解发展难题，携手奔赴更长远的高质量发展之路。</p>
+                            <p>廿载是基石，要以归零心态面对每一天，笃行不怠，共启新篇！<p>
                         </div>
                         <div class="signature-line">副总经理办公室 · 2026年仲春</div>
                     </div>
@@ -537,8 +648,8 @@
                         <div class="leader-name">钟卫国</div>
                         <div class="leader-title">总工程师 生产工艺部经理</div>
                         <div class="leader-message">
-                            <p><span class="quote-icon">“</span>二十年合资硕果累累，股东价值持续提升，BSG资产回报率稳居行业前列。这得益于双方股东的深度信任和团队精益运营。站在新起点，我们将继续优化资本结构，聚焦绿色氢能、高纯气体等高增长领域，以稳健财务支撑宏图战略，为股东创造可持续回报，也为地方税收和就业做出更大贡献。</p>
-                            <p>数字背后是每一位员工的拼搏，向全体BSG奋斗者致敬！</p>
+                            <p><span class="quote-icon">“</span>工艺是稳定供气的核心内核。二十载深耕产线，一代代工艺人员扎根装置一线，反复优化操作参数、攻关能耗瓶颈、严控产品品质。从新手熟悉流程到独立统筹生产，大家在一次次调试、复盘、技改中积累经验、实现成长。部门持续搭建工艺研讨、技能实训平台，鼓励全员立足岗位创新突破，以标准化、精细化管控守住安全与低碳两条底线。往后我们将持续深挖工艺潜力，以技术优化驱动高效绿色生产，以实干书写工艺人的责任与荣光。</p>
+                            <p>廿载精工，稳供致远；精进不休，共赴新程！</p>
                         </div>
                         <div class="signature-line">生产工艺部</div>
                     </div>
@@ -569,8 +680,8 @@
                         <div class="leader-name">徐军</div>
                         <div class="leader-title">设备维修部经理</div>
                         <div class="leader-message">
-                            <p><span class="quote-icon">“</span>人才是企业发展的根脉。二十年薪火相传，我们见证了数百名员工从青涩到骨干的蜕变。BSG致力于打造“家文化”与职业发展双通道，让每位奋斗者拥有归属感与成长平台。未来，我们将加大青年人才引进，构建学习型组织，让梦想在这里生根，让价值彼此成就。</p>
-                            <p>廿载同行，感恩有你；未来已来，我们同舟共济！</p>
+                            <p><span class="quote-icon">“</span>设备安稳运行，是企业高质量发展的底气。二十载风雨相伴，我们始终坚守在生产保障最前线，用专业、责任与匠心守护每一套装置、每一台设备。从日常巡检到精密检修，从技能传承到创新攻坚，BSG 设备维修人用坚守诠释担当，用实干筑牢根基。</p>
+                           <p>未来，我们将持续锤炼过硬本领，强化设备全生命周期管理，为公司安全稳定运行保驾护航，让匠心传承不息，让坚守成就不凡！ </p>
                         </div>
                         <div class="signature-line">设备维修部</div>
                     </div>
@@ -601,8 +712,8 @@
                         <div class="leader-name">杨永生</div>
                         <div class="leader-title">销售部经理</div>
                         <div class="leader-message">
-                            <p><span class="quote-icon">“</span>廿载同行，BSG从金山起步，辐射长三角，与上千家客户建立了深厚的战略合作。我们以稳定可靠的液体供应和高纯气体方案，赢得市场美誉。未来我们将加速布局氢能、电子特气等新赛道，深化与新兴行业的链接，以客户价值为中心，打造气体服务生态圈。聚力二十载，再创新蓝图，市场先锋团队整装待发！</p>
-                            <p>期待与更多伙伴跨越周期，共赢未来，让BSG的品牌焕发更耀眼的光芒。</p>
+                            <p><span class="quote-icon">“</span>廿载同行，BSG依托公司供气、低碳工艺优势，以稳定可靠的液体供应和高纯气体方案，赢得市场美誉。未来我们将牢抓产品质量，拓宽气体市场，协调与政府的每一次合作，做好每一个项目，以客户价值为中心，打造气体服务生态圈。聚力二十载，再创新蓝图，销售先锋团队整装待发！</p>
+                            <p>期待与更多伙伴跨越周期，共赢未来，让BSG的品牌名号焕发更耀眼的光芒。</p>
                         </div>
                         <div class="signature-line">销售部</div>
                     </div>
@@ -611,14 +722,14 @@
                 <!-- ========= 新增 领导 8: 张廉 采购经理 ========= -->
                 <div class="leader-item">
                     <div class="leader-photo" id="photo-zhaoyq">
-                        <img src="001.jpg" alt="张廉照片" onerror="handlePhotoError(this, '赵')">
+                        <img src="b10.jpg" alt="张廉照片" onerror="handlePhotoError(this, '赵')">
                     </div>
                     <div class="leader-details">
                         <div class="leader-name">张廉</div>
                         <div class="leader-title">采购经理</div>
                         <div class="leader-message">
-                            <p><span class="quote-icon">“</span>二十年稳健经营，BSG资产规模增长6倍，现金流持续优化，连续十年实现股东回报超额达成。财务团队始终坚持合规底线与价值创造并重，支撑公司战略转型。面向未来，我们将围绕数智化财务、绿色投融资及全面预算体系，为低碳升级和新兴业务提供坚实财务保障。每一组数据都见证奋斗，让我们携手书写下一个辉煌篇章。</p>
-                            <p>诚信为本，精益为魂，助力BSG扬帆万里。</p>
+                            <p><span class="quote-icon">“</span>供应链稳，则企业发展稳。二十载携手同行，采购部始终以公司战略为引领，以价值创造为目标，坚持阳光合规、诚信共赢，用心搭建高效可靠的供应链体系。从寻源谈判到履约保障，从成本优化到品质管控，我们以专业服务生产，以协同助力发展。</p>
+                            <p>我们将继续深化内外合作，提升供应链韧性与竞争力，为公司持续发展注入强劲动力，让每一份信任都不负所托！</p>
                         </div>
                         <div class="signature-line">采购部</div>
                     </div>
@@ -633,7 +744,7 @@
                         <div class="leader-name">徐铮</div>
                         <div class="leader-title">HSE经理</div>
                         <div class="leader-message">
-                            <p><span class="quote-icon">“</span>安全是BSG不可逾越的红线。二十年来我们构建了覆盖全链条的SHE管理体系，实现连续超7000天无损工事件记录。未来我们将依托数字化风险预警平台，持续培育“本质安全”文化。每一位员工的安全，是我们最大的承诺；每一个家庭的笑容，是我们守护的价值。</p>
+                            <p><span class="quote-icon">“</span>安全是BSG不可逾越的红线。二十年来我们构建了覆盖全链条的HSE管理体系，实现连续超7000天无损工事件记录。未来我们将依托数字化风险预警平台，持续培育“本质安全”文化。每一位员工的安全，是我们最大的承诺；每一个家庭的笑容，是我们守护的价值。</p>
                             <p>安全没有终点，只有每一个崭新的起点。愿BSG下一个二十年，安全根基坚如磐石，平安成为常态，幸福永伴左右。</p>
                         </div>
                         <div class="signature-line">HSE部</div>

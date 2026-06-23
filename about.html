@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>公司简介 | 上海石化林德气体有限责任公司（BSG）</title>
+  <!-- Font Awesome for icons (保留但导航栏不再使用图标) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -81,17 +83,6 @@
 }
 .nav-links a:hover {
     opacity: 0.8;
-}
-/* 高亮新项目签约按钮 */
-.nav-links a:last-child {
-    background: var(--red);
-    padding: 6px 14px;
-    border-radius: 40px;
-    transition: all 0.3s;
-}
-.nav-links a:last-child:hover {
-    background: #a00d26;
-    opacity: 1;
 }
 
 /* 响应式适配 */
@@ -275,6 +266,105 @@
                 height: 200px;
             }
         }
+
+/* 新增：下拉菜单样式 */
+.dropdown {
+    position: relative;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--linde-blue);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 9999;
+    min-width: 200px;
+    padding: 8px 0;
+    margin-top: 8px;
+}
+.dropdown-menu::before {
+    /* 下拉菜单小三角 */
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--linde-blue);
+}
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0;
+}
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+.dropdown-menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+ .nav-drop-title {
+                color: #fff !important;
+                font-weight: 500;
+                font-size: 16px;
+                padding: 8px 0;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+            }
+ .nav-drop-title .arrow-icon {
+                font-size: 12px;
+                transition: transform 0.3s ease;
+            }
+ .dropdown:hover .nav-drop-title .arrow-icon {
+                transform: rotate(180deg);
+            }
+            .nav-drop-title:hover {
+                color: #f0f0f0 !important;
+}
+ .nav-drop-titlee {
+                color: #fff !important;
+                font-weight: 500;
+                font-size: 16px;
+                padding: 8px 0;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+            }
+ .nav-drop-titlee .arrow-icon {
+                font-size: 12px;
+                transition: transform 0.3s ease;
+            }
+ .dropdown:hover .nav-drop-titlee .arrow-icon {
+                transform: rotate(180deg);
+            }
+/* 移动端适配下拉 */
+@media (max-width:768px) {
+    .dropdown-menu {
+        min-width: 160px;
+    }
+    .dropdown-menu a {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+    .nav-drop-title .arrow-icon,
+    .nav-drop-titlee .arrow-icon {
+        font-size: 10px;
+    }
+}
     </style>
 </head>
 <body>
@@ -288,14 +378,36 @@
             <div>上海石化林德气体有限责任公司 <span style="font-size:14px;">✦ 20周年 ✦</span></div>
         </div>
         <div class="nav-links">
-            <a href="index.html"><i class="fas fa-home"></i> 首页</a>
-            <a href="about.html"><i class="fas fa-building"></i> 公司简介</a>
-            <a href="team.html"><i class="fas fa-users"></i> 团队风采</a>
-            <a href="history.html"><i class="fas fa-timeline"></i> 发展历程</a>
-            <a href="culture.html"><i class="fas fa-leaf"></i> 企业文化</a>
-            <a href="honor.html"><i class="fas fa-medal"></i> 荣誉积累</a>
-            <a href="end.html"><i class="fas fa-medal"></i> 廿载寄语</a>
-            <a href="program.html" style="background: var(--red); padding: 6px 14px; border-radius: 40px;">✨ 6.2 新空分项目签约仪式</a>
+            <a href="index.html">首页</a>
+            <a href="about.html">公司简介</a>
+            <a href="team.html">团队风采</a>
+            <!-- 改造发展历程为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-title">发展历程 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="history.html"><i class="fas fa-sitemap"></i> 历年大事件</a>
+                    <a href="idex.html"><i class="fas fa-chart-line"></i> 2020-2025生产运行近况</a>
+                </div>
+            </div>
+            <!-- 改造公司二十周年庆为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-titlee">✨20周年大事件与活动 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="red.html">✨5.22党建、团建、妇女节活动</a>
+                    <a href="program.html">✨6.2新空分项目签约仪式</a>
+                    <a href="retiree.html">✨6.18退休职工恳谈会</a>
+                </div>
+            </div>
+            <!-- 改造公司文化为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-title">公司文化 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="culture.html"></i> 核心文化</a>
+                    <a href="honor.html"></i> 荣誉积累</a>
+                </div>
+            </div>
+            <a href="picture.html">照片放映厅</a>
+            <a href="end.html">廿载寄语</a>
         </div>
     </div>
 </div>
@@ -330,7 +442,7 @@
             <h3>股权结构与控制权</h3>
             <p>合资方：上海石化投资发展有限公司（中方）与林德（中国）投资有限公司（外资方）共同投资，双方各持股50%，属于国有参股企业。</p>
         </div>
-        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/9cbc10fc6801418c93ff5144c4d7ee0d.png~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=20260526135519D2CFAB0447383D45B17C&rrcfp=d52e923b&x-expires=1780379719&x-signature=ULC7LlkD46R%2BVBXWs%2BBbNuHa5h0%3D" alt="股权结构合作图" class="equity-img">
+        <img src="about01.png" alt="股权结构合作图" class="equity-img">
     </div>
 
     <h2 class="title" style="margin-top:60px;">合资双方股东介绍</h2>
@@ -343,8 +455,8 @@
                 <p>公司以“金山精神”凝聚团队，秉承“挑战先进，精细管理”的理念，依托创新文化推动企业高质量发展；坚持求实进取、精益求精的发展作风，践行职业行为规范，实现企业、员工与社会的协同发展、互利共赢。</p>
             </div>
             <div class="share-img-group">
-                <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/d63ea1a14b0147d5b83de4b2539e2b5c.jpg~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=202605261456520BA0D95D0D094C71514A&rrcfp=d52e923b&x-expires=1780383413&x-signature=dWCXhCGicstETCWMQdvittGPh%2Bg%3D" alt="林德集团中国区总部">
-                <img src="https://p6-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/2316c7255cdb4c589a47700fdaaf1525.png~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=202605261456520BA0D95D0D094C71514A&rrcfp=d52e923b&x-expires=1780383413&x-signature=PA9QZ4RguUjPR3z2Jmkf76er3hg%3D" alt="上海石化厂区大门">
+                <img src="about02.jpg" alt="林德集团中国区总部">
+                <img src="about03.png" alt="上海石化厂区大门">
             </div>
         </div>
         <!-- 林德集团股东卡片 -->
@@ -355,8 +467,8 @@
                 <p>林德于上世纪80年代进入中国，大中华区总部位于上海，布局约50家全资及合资公司、100多个生产现场，深耕多领域头部客户；坚守安全、环保、品质承诺，以零事故为目标，为客户提供高效、可靠、绿色可持续的气体解决方案。</p>
             </div>
             <div class="share-img-group">
-                <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/c23714ba9d4f4e5aa3f82fb8d3801d4a.jpg~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=202605261456520BA0D95D0D094C71514A&rrcfp=d52e923b&x-expires=1780383413&x-signature=UWNJ7FAlbnBrUX4DvWGfcZsjfiU%3D" alt="上海石化办公大楼">
-                <img src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/63139c5e7d00444991467d4b851b5b60.png~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=202605261456520BA0D95D0D094C71514A&rrcfp=d52e923b&x-expires=1780383413&x-signature=DB2DatY9jn9MTW5d353gIVxQA1U%3D" alt="林德集团生产基地">
+                <img src="about03.jpg" alt="上海石化办公大楼">
+                <img src="about04.png" alt="林德集团生产基地">
             </div>
         </div>
     </div>

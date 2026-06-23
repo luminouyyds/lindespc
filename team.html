@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>团队风采 | 上海石化林德气体有限责任公司 | 核心团队</title>
+  <!-- Font Awesome for icons (保留但导航栏不再使用图标) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -87,17 +89,6 @@
 }
 .nav-links a:hover {
     opacity: 0.8;
-}
-/* 高亮新项目签约按钮 */
-.nav-links a:last-child {
-    background: var(--red);
-    padding: 6px 14px;
-    border-radius: 40px;
-    transition: all 0.3s;
-}
-.nav-links a:last-child:hover {
-    background: #a00d26;
-    opacity: 1;
 }
 
 /* 响应式适配 */
@@ -345,6 +336,104 @@
             background: var(--red);
             transform: scale(1.05);
         }
+/* 新增：下拉菜单样式 */
+.dropdown {
+    position: relative;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--linde-blue);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 9999;
+    min-width: 200px;
+    padding: 8px 0;
+    margin-top: 8px;
+}
+.dropdown-menu::before {
+    /* 下拉菜单小三角 */
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--linde-blue);
+}
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0;
+}
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+.dropdown-menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+ .nav-drop-title {
+                color: #fff !important;
+                font-weight: 500;
+                font-size: 16px;
+                padding: 8px 0;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+            }
+ .nav-drop-title .arrow-icon {
+                font-size: 12px;
+                transition: transform 0.3s ease;
+            }
+ .dropdown:hover .nav-drop-title .arrow-icon {
+                transform: rotate(180deg);
+            }
+            .nav-drop-title:hover {
+                color: #f0f0f0 !important;
+}
+ .nav-drop-titlee {
+                color: #fff !important;
+                font-weight: 500;
+                font-size: 16px;
+                padding: 8px 0;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+            }
+ .nav-drop-titlee .arrow-icon {
+                font-size: 12px;
+                transition: transform 0.3s ease;
+            }
+ .dropdown:hover .nav-drop-titlee .arrow-icon {
+                transform: rotate(180deg);
+            }
+/* 移动端适配下拉 */
+@media (max-width:768px) {
+    .dropdown-menu {
+        min-width: 160px;
+    }
+    .dropdown-menu a {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+    .nav-drop-title .arrow-icon,
+    .nav-drop-titlee .arrow-icon {
+        font-size: 10px;
+    }
+}
 
         /* 响应式：平板每行显示3个，手机显示1个，同时保证卡片不过度拥挤 */
         @media (max-width: 1300px) {
@@ -394,7 +483,18 @@
             .dept-item img {
                 height: 210px;
             }
-        }
+            .nav-drop-title {
+                color: #fff !important;
+                font-weight: 500;
+                font-size: 16px;
+                padding: 8px 0;
+                cursor: pointer;
+                display: inline-block;
+            }
+            .nav-drop-title:hover {
+                color: #f0f0f0 !important;
+         }
+}
     </style>
 </head>
 <body>
@@ -411,11 +511,33 @@
             <a href="index.html">首页</a>
             <a href="about.html">公司简介</a>
             <a href="team.html">团队风采</a>
-            <a href="history.html">发展历程</a>
-            <a href="culture.html">企业文化</a>
-            <a href="honor.html">荣誉积累</a>
+            <!-- 改造发展历程为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-title">发展历程 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="history.html"><i class="fas fa-sitemap"></i> 历年大事件</a>
+                    <a href="idex.html"><i class="fas fa-chart-line"></i> 2020-2025生产运行近况</a>
+                </div>
+            </div>
+            <!-- 改造公司二十周年庆为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-titlee">✨20周年大事件与活动 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="red.html">✨5.22党建、团建、妇女节活动</a>
+                    <a href="program.html">✨6.2新空分项目签约仪式</a>
+                    <a href="retiree.html">✨6.18退休职工恳谈会</a>
+                </div>
+            </div>
+            <!-- 改造公司文化为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-title">公司文化 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="culture.html"></i> 核心文化</a>
+                    <a href="honor.html"></i> 荣誉积累</a>
+                </div>
+            </div>
+            <a href="picture.html">照片放映厅</a>
             <a href="end.html">廿载寄语</a>
-            <a href="program.html" style="background: var(--red); padding: 6px 14px; border-radius: 40px;">✨ 6.2 新空分项目签约仪式</a>
         </div>
     </div>
 </div>
@@ -436,10 +558,6 @@
         <div class="dept-grid" id="deptGallery"></div>
     </div>
 
-    <!-- 员工风采 -->
-    <h2 class="title gallery-title">员工风采</h2>
-    <div class="gallery" id="staffGallery"></div>
-</div>
 
 <!-- 图片放大模态框 -->
 <div class="modal" id="imgModal">
@@ -490,22 +608,13 @@
         { name: "胡雪赟", position: "人事行政部副经理 工会主席", brief: "负责工会组织建设、职工权益保障及文体活动开展，搭建员工与企业沟通桥梁，营造和谐奋进的大家庭氛围。", img: "b08.jpg", alt: "胡主席" }
     ];
 
-    // 员工风采图片集
-    const staffImages = [
-        { img: "001.jpg", desc: "岗位上认真工作的员工，以高度的责任心完成每一项任务，严谨把控生产细节。" },
-        { img: "001.jpg", desc: "团队协作完成项目攻坚，展现了良好的团队凝聚力，跨部门协同攻克技术难题。" },
-        { img: "001.jpg", desc: "技术人员现场调试设备，确保生产工艺稳定运行，提升装置智能化水平。" },
-        { img: "001.jpg", desc: "客服人员耐心解答客户问题，提供优质的售后服务，持续提升客户满意度。" },
-        { img: "001.jpg", desc: "安全巡检人员日常排查安全隐患，筑牢安全防线，杜绝违章行为。" },
-        { img: "001.jpg", desc: "行政人员精心组织公司各类活动，保障员工福利，营造和谐职场氛围。" }
-    ];
 
     // 部门合影数据：完整保留15项
     const deptPhotos = [
-        { name: "管理团队", img: "001.jpg", desc: "管理团队合影：公司核心管理层汇聚一堂，引领企业战略航向，共绘高质量发展蓝图。", defaultPic: "https://picsum.photos/id/104/600/400" },
+        { name: "管理团队", img: "c515.jpg", desc: "管理团队合影：公司核心管理层汇聚一堂，引领企业战略航向，共绘高质量发展蓝图。", defaultPic: "https://picsum.photos/id/104/600/400" },
         { name: "生产工艺部", img: "日班合照.png", desc: "生产工艺部合影：精耕细作，精益求精，保障生产工艺稳定，持续优化装置效能。", defaultPic: "https://picsum.photos/id/20/600/400" },
         { name: "人事行政部", img: "c0050.jpg", desc: "人事行政部合影：团结协作，高效服务，支撑公司整体运营，打造充满活力的职场文化。", defaultPic: "https://picsum.photos/id/21/600/400" },
-        { name: "设备维修部", img: "001.jpg", desc: "设备维修部合影：专业保障，快速响应，守护设备稳定运行，降低故障率提升可靠性。", defaultPic: "https://picsum.photos/id/22/600/400" },
+        { name: "设备维修部", img: "c55.jpg", desc: "设备维修部合影：专业保障，快速响应，守护设备稳定运行，降低故障率提升可靠性。", defaultPic: "https://picsum.photos/id/22/600/400" },
         { name: "财务部", img: "a04.jpg", desc: "财务部合影：精准把控，合规运营，为公司发展保驾护航，严控成本创造价值。", defaultPic: "https://picsum.photos/id/23/600/400" },
         { name: "销售部", img: "b01.jpg", desc: "销售部合影：抓质量，稳充装，建立高效销售条线，持续拓展气体市场版图。", defaultPic: "https://picsum.photos/id/24/600/400" },
         { name: "HSE部", img: "c07.jpg", desc: "HSE部合影：安全第一，预防为主，筑牢安全生产防线，实现零事故安全目标。", defaultPic: "https://picsum.photos/id/25/600/400" },

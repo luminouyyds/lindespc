@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上海石化林德气体有限责任公司 | 合资20周年纪念</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+        }
+        :root {
+            --red: #c8102e;
+            --blue: #00539b;
+            --gray: #f5f7fa;
+            --dark: #333;
+            --text: #666;
+            --linde-blue: #002855;
+        }
+        body {
+            color: var(--dark);
+            background: #fff;
+        }
+        /* 导航栏 - 修复垂直居中问题 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--linde-blue);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            z-index: 999;
+            padding: 12px 0;
+        }
+        .nav-wrap {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            flex-wrap: wrap;
+        }
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            line-height: 1.2;
+        }
+        .logo-icon {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .logo-icon img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            font-size: 16px;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+        }
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .navbar { padding: 10px 0; }
+            .nav-wrap { padding: 0 20px; gap: 12px; justify-content: center; }
+            .logo-icon img { height: 32px; }
+            .logo-box { font-size: 14px; }
+            .nav-links { gap: 12px; justify-content: center; margin-top: 0; }
+            .nav-links a:last-child { padding: 4px 12px; font-size: 14px; }
+        }
+        
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding-top: 22vh;
+        }
+        .hero-slides {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            pointer-events: none; /* 关键：未激活图片不能点击 */
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
+        .hero-slide.active {
+            opacity: 1;
+            pointer-events: auto; /* 关键：只有当前激活图能被点击 */
+        }
+        /* 统一轮播图渐变样式，适配50张图片 */
+        .hero-slide {
+            background-image: linear-gradient(rgba(0, 83, 155, 0.2), rgba(200, 16, 46, 0.2));
+        }
+        
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            text-align: center;
+            padding: 15px 20px;
+            font-size: 14px;
+            z-index: 10;
+        }
+        
+        /* 轮播控制按钮样式 */
+        .carousel-controls {
+            position: fixed;
+            bottom: 3px;
+            left: 95%;
+            transform: translateX(-50%);
+            z-index: 20;
+            display: flex;
+            gap: 10px;
+        }
+        .control-btn {
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .control-btn:hover {
+            background: var(--red);
+        }
+
+        /* 左右箭头 上一张 / 下一张 */
+        .carousel-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 30;
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.5);
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .carousel-arrow:hover {
+            background: var(--red);
+        }
+        .prev-btn {
+            left: 30px;
+        }
+        .next-btn {
+            right: 30px;
+        }
+        
+        /* 大图预览模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close-modal:hover {
+            color: var(--red);
+        }
+
+        /* 新增：开始放映按钮样式 */
+        .start-play-btn {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 40;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            border: 2px solid var(--red);
+            padding: 15px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .start-play-btn:hover {
+            background: var(--red);
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        /* 调整音乐按钮样式 - 移除原有右上角音乐播放器 */
+        .music-control-btn {
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .music-control-btn:hover {
+            background: var(--red);
+        }
+
+        /* 新增：图片放大提示 */
+        .zoom-tip {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            color: #fff;
+            background: rgba(0,0,0,0.6);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: none;
+        }
+        .hero-slide.active + .zoom-tip {
+            display: block;
+        }
+
+        @media (max-width:768px) {
+            .hero { padding-top: 18vh; }
+            .logo-icon img { height: 35px; }
+            .hero-box h1 { font-size: 42px; letter-spacing: 4px; }
+            .hero-box p { font-size: 24px; }
+            .btn-box {
+                bottom: 80px;
+                right: 20px;
+            }
+            .btn { padding: 14px 32px; font-size: 16px; }
+            .nav-wrap { padding: 0 20px; }
+            .nav-links { gap: 14px; font-size: 14px; }
+            .control-btn, .music-control-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            .prev-btn { left: 10px; }
+            .next-btn { right: 10px; }
+            .close-modal {
+                font-size: 30px;
+                top: 10px;
+                right: 20px;
+            }
+            .start-play-btn {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+        }
+
+        /* 新增：下拉菜单样式 */
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--linde-blue);
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 9999;
+            min-width: 200px;
+            padding: 8px 0;
+            margin-top: 8px;
+        }
+        .dropdown-menu::before {
+            /* 下拉菜单小三角 */
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid var(--linde-blue);
+        }
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 0;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        .dropdown-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .nav-drop-title {
+            color: #fff !important;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 0;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .nav-drop-title .arrow-icon {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+        .dropdown:hover .nav-drop-title .arrow-icon {
+            transform: rotate(180deg);
+        }
+        .nav-drop-title:hover {
+            color: #f0f0f0 !important;
+        }
+        .nav-drop-titlee {
+            color: #fff !important;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 0;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .nav-drop-titlee .arrow-icon {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+        .dropdown:hover .nav-drop-titlee .arrow-icon {
+            transform: rotate(180deg);
+        }
+        /* 移动端适配下拉 */
+        @media (max-width:768px) {
+            .dropdown-menu {
+                min-width: 160px;
+            }
+            .dropdown-menu a {
+                font-size: 12px;
+                padding: 8px 15px;
+            }
+            .nav-drop-title .arrow-icon,
+            .nav-drop-titlee .arrow-icon {
+                font-size: 10px;
+            }
+        }
+    </style>
+    <!-- 引入字体图标（用于播放/暂停图标） -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="navbar">
+    <div class="nav-wrap">
+        <div class="logo-box">
+            <div class="logo-icon">
+                <img src="spclogo.jpg" alt="中国石化">
+                <img src="lindelogo.jpg" alt="林德">
+            </div>
+            <div>上海石化林德气体有限责任公司 <span style="font-size:14px;">✦ 20周年 ✦</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">首页</a>
+            <a href="about.html">公司简介</a>
+            <a href="team.html">团队风采</a>
+            <!-- 改造发展历程为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-title">发展历程 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="history.html"><i class="fas fa-sitemap"></i> 历年大事件</a>
+                    <a href="idex.html"><i class="fas fa-chart-line"></i> 2020-2025生产运行近况</a>
+                </div>
+            </div>
+            <!-- 改造公司二十周年庆为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-titlee">✨20周年大事件与活动 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="red.html">✨5.22党建、团建、妇女节活动</a>
+                    <a href="program.html">✨6.2新空分项目签约仪式</a>
+                    <a href="retiree.html">✨6.18退休职工恳谈会</a>
+                </div>
+            </div>
+            <!-- 改造公司文化为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-title">公司文化 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="culture.html"></i> 核心文化</a>
+                    <a href="honor.html"></i> 荣誉积累</a>
+                </div>
+            </div>
+            <a href="picture.html">照片放映厅</a>
+            <a href="end.html">廿载寄语</a>
+        </div>
+    </div>
+</div>
+<section class="hero">
+    <div class="hero-slides" id="heroSlides">
+        <!-- 动态生成50张轮播图容器，脚本会自动填充背景图 -->
+    </div>
+    <div class="hero-overlay">
+        <div class="hero-box">
+            <h1>携手廿载 共筑华章</h1>
+            <p>上海石化林德气体有限责任公司 • 合资20周年纪念</p>
+        </div>
+    </div>
+    <!-- 新增：开始放映按钮 -->
+    <button class="start-play-btn" id="startPlayBtn">开始放映</button>
+</section>
+
+<!-- 左右箭头：上一张 / 下一张 -->
+<button class="carousel-arrow prev-btn" id="prevBtn">←</button>
+<button class="carousel-arrow next-btn" id="nextBtn">→</button>
+
+<!-- 轮播控制按钮 - 新增音乐控制按钮 -->
+<div class="carousel-controls">
+    <button id="pauseBtn" class="control-btn" style="display: none;">暂停播放</button>
+    <button id="playBtn" class="control-btn" style="display: none;">继续播放</button>
+    <button id="musicControlBtn" class="music-control-btn" style="display: none;">
+        <i class="fas fa-play" id="musicControlIcon"></i> 音乐
+    </button>
+</div>
+
+<!-- 大图预览模态框 -->
+<div id="imageModal" class="modal">
+    <span class="close-modal" id="closeModal">&times;</span>
+    <img class="modal-content" id="modalImage">
+</div>
+
+<!-- 图片放大提示 -->
+<div class="zoom-tip">点击图片可放大查看</div>
+
+<footer>
+    <p>上海石化林德气体有限责任公司 • 合资20周年纪念 ©2026</p>
+</footer>
+
+<!-- 音频元素 -->
+<audio id="backgroundMusic" loop>
+    <!-- 替换为你的音乐文件路径，支持mp3格式 -->
+    <source src="fy.mp3" type="audio/mpeg">
+    您的浏览器不支持音频播放
+</audio>
+
+<script>
+    // 固定 50 张图
+    const slidesContainer = document.getElementById('heroSlides');
+    const totalSlides = 50;
+    slidesContainer.innerHTML = '';
+
+    // 生成 50 张轮播图
+    for (let i = 1; i <= totalSlides; i++) {
+        const slide = document.createElement('div');
+        slide.className = 'hero-slide';
+        const imgPath = `c (${i}).jpg`;
+
+        // 核心：把图片地址直接写在 DOM 上
+        slide.setAttribute('data-img', imgPath);
+        slide.style.backgroundImage = `linear-gradient(rgba(0,83,155,0.2), rgba(200,16,46,0.2)), url('${imgPath}')`;
+
+        if (i === 1) slide.classList.add('active');
+        slidesContainer.appendChild(slide);
+    }
+
+    // 全局变量
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+    let slideInterval;
+    let isPlaying = false;
+    const intervalTime = 2500;
+
+    // 音乐
+    const bgMusic = document.getElementById('backgroundMusic');
+    const musicControlBtn = document.getElementById('musicControlBtn');
+    const musicControlIcon = document.getElementById('musicControlIcon');
+
+    // 轮播核心 - 修改showSlide函数，增加一轮播放完成判断
+    function showSlide(index) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (index + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+        
+        // 判断是否播放完一轮（回到第一张）
+        if (currentSlide === 0 && isPlaying) {
+            pause(); // 停止轮播
+            document.getElementById('startPlayBtn').style.display = 'block'; // 显示开始放映按钮
+        }
+    }
+    
+    function prev() { 
+        pause(); 
+        showSlide(currentSlide - 1); 
+    }
+    
+    function next() { 
+        pause(); 
+        showSlide(currentSlide + 1); 
+    }
+    
+    function autoPlay() {
+        if (isPlaying) return;
+        isPlaying = true;
+        slideInterval = setInterval(() => showSlide(currentSlide + 1), intervalTime);
+        document.getElementById('pauseBtn').style.display = 'inline-block';
+        document.getElementById('playBtn').style.display = 'none';
+        document.getElementById('startPlayBtn').style.display = 'none';
+        // 显示音乐控制按钮
+        document.getElementById('musicControlBtn').style.display = 'inline-block';
+    }
+    
+    function pause() {
+        isPlaying = false;
+        clearInterval(slideInterval);
+        document.getElementById('playBtn').style.display = 'inline-block';
+        document.getElementById('pauseBtn').style.display = 'none';
+    }
+
+    // 按钮绑定
+    document.getElementById('startPlayBtn').addEventListener('click', () => {
+        autoPlay();
+        // 处理音乐播放的异常（比如浏览器自动播放限制）
+        bgMusic.play().catch((err) => {
+            console.log('音乐播放失败:', err);
+            alert('浏览器限制自动播放音乐，请手动点击音乐播放按钮');
+        });
+        musicControlIcon.className = 'fas fa-pause';
+    });
+    
+    document.getElementById('pauseBtn').addEventListener('click', pause);
+    document.getElementById('playBtn').addEventListener('click', autoPlay);
+    document.getElementById('prevBtn').addEventListener('click', prev);
+    document.getElementById('nextBtn').addEventListener('click', next);
+
+    // 大图预览（修复版）
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeModal = document.getElementById('closeModal');
+
+    // 为每个轮播图绑定点击事件
+    slides.forEach((slide) => {
+      slide.addEventListener('click', function () {
+        // 暂停轮播
+        pause();
+        // 获取当前点击图片的地址
+        const imgSrc = this.getAttribute('data-img');
+        if (imgSrc) {
+            modalImg.src = imgSrc;
+            modal.classList.add('active');
+        } else {
+            alert('图片地址不存在');
+        }
+      });
+    });
+
+    // 关闭模态框
+    closeModal.addEventListener('click', () => {
+        modal.classList.remove('active');
+    });
+    
+    // 点击模态框背景关闭
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+        }
+    });
+    
+    // ESC键关闭
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+        }
+    });
+
+    // 右下角音乐控制按钮事件
+    musicControlBtn.addEventListener('click', () => {
+        if (bgMusic.paused) { 
+            bgMusic.play().catch((err) => {
+                console.log('音乐播放失败:', err);
+                alert('请允许浏览器播放音频');
+            });
+            musicControlIcon.className = 'fas fa-pause'; 
+        } else { 
+            bgMusic.pause(); 
+            musicControlIcon.className = 'fas fa-play'; 
+        }
+    });
+    
+    // 音乐进度条移除（因为原右上角播放器已删除）
+</script>
+</body>
+</html>

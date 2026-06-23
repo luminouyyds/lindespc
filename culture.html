@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>企业文化 | 上海石化林德气体有限责任公司（BSG）| 合资20周年</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -14,10 +15,11 @@
         :root {
             --red: #c8102e;
             --blue: #00539b;
+            --linde-blue: #002855;
             --gray: #f5f7fa;
             --dark: #1e2a36;
             --text: #4a5568;
-            --linde-blue: #002855;
+            --safety-yellow: #ffcc00;
             --shadow-sm: 0 8px 20px rgba(0,0,0,0.05), 0 2px 6px rgba(0,0,0,0.03);
             --shadow-md: 0 12px 28px rgba(0,0,0,0.08);
         }
@@ -25,88 +27,144 @@
             color: var(--dark);
             background: #fff;
             padding-top: 90px;
+            line-height: 1.8;
         }
-/* 导航栏 - 修复垂直居中问题 */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: var(--linde-blue);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-    z-index: 999;
-    padding: 12px 0;
-}
-.nav-wrap {
-    max-width: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40px;
-    flex-wrap: wrap;
-}
-.logo-box {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #fff;
-    line-height: 1.2;
-}
-.logo-icon {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-}
-.logo-icon img {
-    height: 45px;
-    width: auto;
-    object-fit: contain;
-    display: block;
-}
-.nav-links {
-    display: flex;
-    gap: 28px;
-    flex-wrap: wrap;
-    align-items: center;
-}
-.nav-links a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 500;
-    transition: opacity 0.3s;
-    font-size: 16px;
-    line-height: 1;
-    display: inline-flex;
-    align-items: center;
-}
-.nav-links a:hover {
-    opacity: 0.8;
-}
-/* 高亮新项目签约按钮 */
-.nav-links a:last-child {
-    background: var(--red);
-    padding: 6px 14px;
-    border-radius: 40px;
-    transition: all 0.3s;
-}
-.nav-links a:last-child:hover {
-    background: #a00d26;
-    opacity: 1;
-}
+        /* 导航栏样式 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--linde-blue);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            z-index: 999;
+            padding: 12px 0;
+        }
+        .nav-wrap {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            flex-wrap: wrap;
+            min-height: 60px;
+            align-content: center;
+        }
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            line-height: 1.2;
+            flex-shrink: 0;
+            min-width: 0;
+        }
+        .logo-icon {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            max-width: 100%;
+            overflow: visible;
+            flex-shrink: 0;
+        }
+        .logo-icon img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+            max-width: none;
+            flex-shrink: 0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            align-items: center;
+            flex-shrink: 1;
+            justify-content: flex-end;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            font-size: 16px;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+        }
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        /* 下拉菜单样式 */
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--linde-blue);
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 9999;
+            min-width: 200px;
+            padding: 8px 0;
+            margin-top: 8px;
+        }
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid var(--linde-blue);
+        }
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 0;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        .dropdown-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        .nav-drop-title, .nav-drop-titlee {
+            color: #fff !important;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 0;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .nav-drop-title .arrow-icon, .nav-drop-titlee .arrow-icon {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+        .dropdown:hover .nav-drop-title .arrow-icon,
+        .dropdown:hover .nav-drop-titlee .arrow-icon {
+            transform: rotate(180deg);
+        }
 
-/* 响应式适配 */
-@media (max-width: 768px) {
-    .navbar { padding: 10px 0; }
-    .nav-wrap { padding: 0 20px; gap: 12px; justify-content: center; }
-    .logo-icon img { height: 32px; }
-    .logo-box { font-size: 14px; }
-    .nav-links { gap: 12px; justify-content: center; margin-top: 0; }
-    .nav-links a:last-child { padding: 4px 12px; font-size: 14px; }
-}
+        /* 容器与标题样式 */
         .container {
-            max-width: 1200px;   /* 改为与 honor.html 一致的宽度 */
+            max-width: 1400px;
             margin: 0 auto;
             padding: 60px 40px;
         }
@@ -129,209 +187,342 @@
             transform: translateX(-50%);
             border-radius: 2px;
         }
-        /* 视频专区 - 全幅展示 + 圆润质感 */
-        .video-section {
-            margin-bottom: 80px;
-            width: 100%;
+        .sub-title {
+            font-size: 24px;
+            color: var(--linde-blue);
+            margin: 40px 0 20px;
+            padding-left: 12px;
+            border-left: 4px solid var(--red);
         }
-        .fullwidth-video {
-            width: 100%;
-            background: #000;
-            border-radius: 28px;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: transform 0.2s;
-        }
-        .fullwidth-video video {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-            max-height: 70vh;
-            background: #000;
-        }
-        .video-caption {
+
+        /* 核心文化头部 */
+        .culture-header {
+            background: var(--gray);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 60px;
             text-align: center;
-            margin-top: 18px;
-            font-size: 1rem;
-            color: var(--text);
-            letter-spacing: 1px;
-            font-weight: 500;
         }
-        /* 企业文化卡片 */
-        .idea {
+        .culture-header h3 {
+            font-size: 22px;
+            color: var(--linde-blue);
+            margin-bottom: 20px;
+        }
+        .culture-header p {
+            font-size: 18px;
+            color: var(--text);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* 安全核心模块 */
+        .safety-core {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 36px;
-            margin-bottom: 80px;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
         }
-        .card {
-            padding: 36px 28px;
+        @media (max-width: 768px) {
+            .safety-core {
+                grid-template-columns: 1fr;
+            }
+        }
+        .safety-card {
             background: #fff;
-            border-radius: 24px;
+            border-radius: 16px;
+            padding: 30px;
             box-shadow: var(--shadow-sm);
-            text-align: center;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            border: 1px solid rgba(0,83,155,0.08);
+            border-top: 5px solid var(--linde-blue);
         }
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-md);
+        .safety-card.safety-yellow {
+            border-top-color: var(--safety-yellow);
         }
-        .card h3 {
-            color: var(--blue);
-            margin-bottom: 16px;
-            font-size: 26px;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-        .card p {
-            line-height: 1.7;
-            color: var(--text);
-            font-size: 1rem;
-        }
-        /* 活动画廊模块：支持大量图片 瀑布流/网格布局 + 加载更多按钮 */
-        .gallery-header {
+        .safety-card h4 {
+            font-size: 20px;
+            color: var(--linde-blue);
+            margin-bottom: 20px;
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            margin-bottom: 24px;
+            align-items: center;
+            gap: 10px;
         }
-        .photo-count {
-            font-size: 0.9rem;
-            background: #eef2f6;
-            padding: 6px 14px;
-            border-radius: 40px;
-            color: var(--blue);
+        .safety-card h4 i {
+            color: var(--red);
+            font-size: 22px;
+        }
+        .safety-card ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .safety-card li {
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+        .safety-card .data-box {
+            background: var(--gray);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .safety-card .data-box .num {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--linde-blue);
+        }
+        .safety-card .data-box .desc {
+            font-size: 16px;
+            color: var(--text);
+            margin-top: 8px;
+        }
+
+        /* 安全图片展示区 */
+        .safety-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+        .gallery-item {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-item .gallery-desc {
+            padding: 16px;
+            font-size: 14px;
+            color: var(--text);
+            text-align: center;
+        }
+
+        /* HSE政策模块 */
+        .hse-policy {
+            background: var(--linde-blue);
+            color: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 60px 0;
+        }
+        .hse-policy h4 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .hse-policy .policy-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            .hse-policy .policy-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        .hse-policy .policy-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .hse-policy .policy-item h5 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: var(--safety-yellow);
+        }
+        .hse-policy .policy-item p,
+        .hse-policy .policy-item ul {
+            font-size: 15px;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+        .hse-policy .policy-item ul {
+            padding-left: 20px;
+        }
+
+        /* 企业目标模块 */
+        .company-target {
+            background: var(--gray);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 60px 0;
+            text-align: center;
+        }
+        .company-target h4 {
+            font-size: 22px;
+            color: var(--linde-blue);
+            margin-bottom: 30px;
+        }
+        .company-target .target-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .company-target .target-item {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            min-width: 180px;
+        }
+        .company-target .target-item .cn {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--linde-blue);
+        }
+        .company-target .target-item .en {
+            font-size: 14px;
+            color: var(--text);
+            margin-top: 4px;
+        }
+
+        /* 安全绩效模块 */
+        .safety-performance {
+            margin: 60px 0;
+        }
+        .performance-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .performance-table th,
+        .performance-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .performance-table th {
+            background: var(--linde-blue);
+            color: #fff;
             font-weight: 500;
         }
-        .gallery {
+        .performance-table tr:last-child td {
+            border-bottom: none;
+        }
+        .performance-table tr:nth-child(even) {
+            background: var(--gray);
+        }
+        .performance-table .value {
+            text-align: center;
+            font-weight: bold;
+            color: var(--linde-blue);
+        }
+
+        /* 五大核心价值观模块 */
+        .value-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 28px;
-            margin-bottom: 40px;
+            gap: 24px;
+            margin: 40px 0;
         }
-        .g-item {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.25s, box-shadow 0.25s;
-            cursor: pointer;
-            background: #fff;
-            position: relative;
-            aspect-ratio: 4 / 3;
+        .value-item {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 24px;
+            border-top: 4px solid var(--red);
+            display: flex;
+            flex-direction: column;
         }
-        .g-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
+        .value-item h4 {
+            font-size: 18px;
+            color: var(--linde-blue);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
         }
-        .g-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.4s ease;
+        .value-item p {
+            font-size: 15px;
+            color: #333;
+            line-height: 1.7;
+            flex: 1;
         }
-        .g-item:hover img {
-            transform: scale(1.02);
-        }
-        /* 加载更多按钮 +  loading */
-        .load-more-btn {
-            display: block;
-            margin: 20px auto 50px;
-            background: var(--blue);
-            color: white;
-            border: none;
-            padding: 14px 36px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 60px;
-            cursor: pointer;
-            transition: all 0.25s;
-            box-shadow: var(--shadow-sm);
-            width: fit-content;
-        }
-        .load-more-btn:hover {
-            background: var(--linde-blue);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-        .load-more-btn:active {
-            transform: translateY(1px);
-        }
-        .loading-indicator {
-            text-align: center;
-            margin: 20px auto;
-            color: var(--blue);
-            font-weight: 500;
-            display: none;
-        }
-        .loading-indicator.show {
-            display: block;
-        }
-        /* 模态框（图片放大） */
-        .modal {
-            display: none;
+
+        /* 弹窗样式（图片放大） */
+        .photo-modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(8px);
-            z-index: 2000;
-            justify-content: center;
+            background: rgba(0,0,0,0.85);
+            z-index: 99999;
+            display: none;
             align-items: center;
+            justify-content: center;
             padding: 20px;
         }
-        .modal-content {
-            position: relative;
-            max-width: 90vw;
-            max-height: 90vh;
+        .photo-modal.active {
             display: flex;
-            flex-direction: column;
-            align-items: center;
         }
-        .modal-img {
-            max-width: 100%;
-            max-height: 80vh;
-            border-radius: 16px;
-            box-shadow: 0 20px 35px rgba(0,0,0,0.3);
-            border: 2px solid rgba(255,255,255,0.2);
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
         }
-        .modal-desc {
-            color: #fff;
-            font-size: 1rem;
-            margin-top: 20px;
-            text-align: center;
-            background: rgba(0,0,0,0.6);
-            padding: 10px 24px;
-            border-radius: 60px;
-            backdrop-filter: blur(4px);
+        .modal-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
         }
-        .close-btn {
+        .close-modal {
             position: absolute;
-            top: -48px;
+            top: -40px;
             right: 0;
             color: #fff;
-            font-size: 38px;
-            font-weight: 300;
+            font-size: 30px;
             cursor: pointer;
-            transition: 0.2s;
-            background: rgba(0,0,0,0.5);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transition: background 0.3s;
         }
-        .close-btn:hover {
-            background: var(--red);
-            transform: scale(1.05);
+        .close-modal:hover {
+            background: rgba(255,255,255,0.4);
         }
 
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .navbar { padding: 10px 0; }
+            .nav-wrap { padding: 0 20px; gap: 12px; justify-content: center; }
+            .logo-icon img { height: 38px; max-width: 100px; }
+            .logo-box { font-size: 14px; width: 100%; justify-content: center; margin-bottom: 8px; }
+            .nav-links { gap: 12px; justify-content: center; width: 100%; }
+            
+            .container { padding: 40px 20px; }
+            .title { font-size: 30px; }
+            .sub-title { font-size: 20px; }
+            
+            .culture-header { padding: 20px; }
+            .safety-card { padding: 20px; }
+            .hse-policy { padding: 20px; }
+            .company-target { padding: 20px; }
+            
+            .performance-table th, .performance-table td { padding: 10px 8px; font-size: 14px; }
+            .value-grid { grid-template-columns: 1fr; }
+        }
+
+        /* 页脚样式 */
         footer {
             background: var(--dark);
             color: #fff;
@@ -343,28 +534,10 @@
         footer p:first-child {
             margin-bottom: 8px;
         }
-        @media (max-width: 860px) {
-            body { padding-top: 80px; }
-            .container { padding: 40px 20px; }
-            .logo-icon img { height: 35px; }
-            .nav-wrap { padding: 0 20px; flex-wrap: wrap; gap: 10px; }
-            .nav-links { gap: 16px; flex-wrap: wrap; justify-content: center; }
-            .logo-box { font-size: 14px; }
-            .title { font-size: 28px; }
-            .idea { grid-template-columns: 1fr; gap: 24px; }
-            .card { padding: 28px 20px; }
-            .gallery { grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 20px; }
-            .g-item { aspect-ratio: 4/3; }
-            .modal-desc { font-size: 14px; }
-        }
-        @media (max-width: 480px) {
-            .fullwidth-video video {
-                max-height: 50vh;
-            }
-        }
     </style>
 </head>
 <body>
+<!-- 导航栏 -->
 <div class="navbar">
     <div class="nav-wrap">
         <div class="logo-box">
@@ -378,266 +551,277 @@
             <a href="index.html">首页</a>
             <a href="about.html">公司简介</a>
             <a href="team.html">团队风采</a>
-            <a href="history.html">发展历程</a>
-            <a href="culture.html">企业文化</a>
-            <a href="honor.html">荣誉积累</a>
+            <div class="dropdown">
+                <span class="nav-drop-title">发展历程 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="history.html"><i class="fas fa-sitemap"></i> 历年大事件</a>
+                    <a href="idex.html"><i class="fas fa-chart-line"></i> 2020-2025生产运行近况</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <span class="nav-drop-titlee">✨20周年大事件与活动 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="red.html">✨5.22党建、团建、妇女节活动</a>
+                    <a href="program.html">✨6.2新空分项目签约仪式</a>
+                    <a href="retiree.html">✨6.18退休职工恳谈会</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <span class="nav-drop-title">公司文化 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="culture.html"></i> 核心文化</a>
+                    <a href="honor.html"></i> 荣誉积累</a>
+                </div>
+            </div>
+            <a href="picture.html">照片放映厅</a>
             <a href="end.html">廿载寄语</a>
-            <a href="program.html" style="background: var(--red); padding: 6px 14px; border-radius: 40px;">✨ 6.2 新空分项目签约仪式</a>
         </div>
     </div>
 </div>
 
+<!-- 主内容区 -->
 <div class="container">
-    <!-- 视频栏目 -->
-    <h2 class="title">20周年党建活动</h2>
-    <div class="video-section">
-        <div class="fullwidth-video">
-            <video controls autoplay muted loop playsinline>
-                <source src="000.mp4" type="video/mp4">
-                您的浏览器不支持 video 标签。
-            </video>
+    <h1 class="title">企业文化</h1>
+
+    <!-- 核心文化引言 -->
+    <div class="culture-header">
+        <h3>安全为基 · 融合共赢 · 持续发展</h3>
+        <p>上海石化林德气体有限责任公司融合中石化与林德集团的核心文化理念，以<span style="color: var(--red); font-weight: bold;">安全</span>为第一准则，以HSE（健康、安全、环境）管理体系为核心，打造兼具中外特色的合资企业安全文化体系，实现零事故、高效率、可持续的发展目标。</p>
+    </div>
+
+    <!-- 安全核心文化模块 -->
+    <h2 class="sub-title">安全核心文化</h2>
+    <div class="safety-core">
+        <div class="safety-card">
+            <h4><i class="fas fa-shield-alt"></i> 林德救命法则（Life-Saving Rules）</h4>
+            <ul>
+                <li>驾驶与车辆：安全操作车辆，规范使用安全设备</li>
+                <li>工作许可证：危险作业必须办理许可证，管控风险</li>
+                <li>上锁/挂牌（LOTO）：设备检修时确保能量/设备隔离</li>
+                <li>危险气氛：识别、检测、消除潜在危险气氛</li>
+                <li>升高作业活动：落实防坠落措施，安全开展高处/吊装作业</li>
+                <li>承包商管理：严格选聘、监督，确保符合林德安全要求</li>
+                <li>变更管理（MOC）：变更前完成安全风险评估与流程审批</li>
+                <li>个人防护设备（PPE）：按需选择、维护合格的防护装备</li>
+                <li>安全设备和装置：维护设备完整性，不擅自修改/旁路</li>
+            </ul>
         </div>
-        <div class="video-caption">党建领航 · 二十载聚力前行 | 上海石化林德气体合资20周年党建活动纪实</div>
+        <div class="safety-card safety-yellow">
+            <h4><i class="fas fa-calendar-check"></i> 安全绩效成果</h4>
+            <p>公司始终坚守“零事故”目标，安全管理成效显著：</p>
+            <div class="data-box">
+                <div class="num">超过7000</div>
+                <div class="desc">零伤害事故连续天数</div>
+            </div>
+            <ul>
+                <li>重大事件数、潜在致命事件、损失工作日事件均为 0</li>
+                <li>可记录伤害事件、商用车/非商用车事故均为 0</li>
+                <li>工艺安全事故为 0，管道气/液体产品合格率 100%</li>
+            </ul>
+        </div>
     </div>
 
-    <!-- 各类活动板块 - 支持大量照片的动态加载 -->
-    <h2 class="title">各类活动 · 党建与团队风采</h2>
-    <div class="gallery-header">
-        <div class="photo-count" id="photoCountDisplay">📸 共加载 0 张精彩瞬间</div>
-        <div style="font-size:0.85rem; color: var(--text);">点击图片可放大查看</div>
+    <!-- 安全文化图片展示 -->
+    <h2 class="sub-title">安全文化落地场景</h2>
+    <div class="safety-gallery">
+        <div class="gallery-item" data-img="safety_board.jpg">
+            <img src="cu00.jpg" alt="安全公告栏">
+            <div class="gallery-desc">安全公告栏（零伤害事故连续7358天）</div>
+        </div>
+        <div class="gallery-item" data-img="life_saving_rules.jpg">
+            <img src="cu03.jpg" alt="林德救命法则">
+            <div class="gallery-desc">林德救命法则（9大核心安全准则）</div>
+        </div>
+        <div class="gallery-item" data-img="safety_poster.jpg">
+            <img src="cu02.png" alt="知行合一 守护安全">
+            <div class="gallery-desc">2026全球安全承诺：知行合一 守护安全</div>
+        </div>
+        <div class="gallery-item" data-img="hse_policy.jpg">
+            <img src="cu01.png" alt="质量方针">
+            <div class="gallery-desc">林德质量方针</div>
+        </div>
     </div>
-    <div class="gallery" id="activityGallery"></div>
-    <button class="load-more-btn" id="loadMoreBtn">📷 加载更多照片</button>
-    <div class="loading-indicator" id="loadingIndicator">⏳ 加载中，请稍后...</div>
 
-    <!-- 企业文化板块 -->
-    <h2 class="title">企业文化</h2>
-    <div class="idea">
-        <div class="card"><h3>企业理念</h3><p>兼容并蓄，中外交融</p><p>吸收发扬股东双方优秀文化精髓，凝聚发展合力</p></div>
-        <div class="card"><h3>工作原则</h3><p>安全第一，确保供应</p><p>坚守可靠性运行，追求持续改进，精益求精</p></div>
-        <div class="card"><h3>公司愿景</h3><p>为上海石化提供安全、稳定、可靠气体供应</p><p>对外输出高品质液体供应资源，成为行业标杆</p></div>
-        <div class="card"><h3>员工愿景</h3><p>打造团结、和谐的发展空间</p><p>助力每一位员工实现理想与价值，共同成长</p></div>
+    <!-- HSE政策模块 -->
+    <h2 class="sub-title">健康安全环境（HSE）政策</h2>
+    <div class="hse-policy">
+        <h4>Making our world more productive</h4>
+        <div class="policy-content">
+            <div class="policy-item">
+                <h5>我们的目标（Our Goal）</h5>
+                <p>在林德，我们必须确保我们的活动不会对人、环境或我们从事业务的社区造成伤害。<br>At Linde, we are driven to ensure no harm comes from our actions to people, the environment or the communities in which we operate.</p>
+            </div>
+            <div class="policy-item">
+                <h5>我们的价值观和承诺（Our Values & Commitments）</h5>
+                <ul>
+                    <li>健康、安全与环境责任是林德的核心价值观，是工作的一部分</li>
+                    <li>遵守适用法律、法规和林德政策，是员工/承包商的准入许可</li>
+                    <li>通过可见的、示范的领导力彰显健康安全环境职责</li>
+                    <li>与员工、行业协会合作，持续推进产品/装置安全管理</li>
+                </ul>
+            </div>
+            <div class="policy-item">
+                <h5>我们的HSE原则（Our HSE Principles）</h5>
+                <ul>
+                    <li>所有事故和伤害都是可以预防的</li>
+                    <li>各级管理层对健康、安全和环境负有管理责任</li>
+                    <li>对自己和周围他人的安全负责任</li>
+                    <li>员工/承包商有义务制止/拒绝不安全作业</li>
+                    <li>必须报告所有HSE事故，并从中吸取教训</li>
+                    <li>对HSE的承诺和努力终将取得成果</li>
+                    <li>安全表现是雇佣/供应商合同的前提条件</li>
+                </ul>
+            </div>
+            <div class="policy-item">
+                <h5>政策实施</h5>
+                <p>本政策是林德业务战略的组成部分，执行领导层致力于本健康安全环境政策的全面实施，要求员工、承包商和合作伙伴信奉并践行这些原则。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 企业发展目标 -->
+    <h2 class="sub-title">企业核心目标</h2>
+    <div class="company-target">
+        <h4>致力于成为 Sinopec 和 Linde 集团中的典范</h4>
+        <div class="target-list">
+            <div class="target-item">
+                <div class="cn">安全</div>
+                <div class="en">Safety</div>
+            </div>
+            <div class="target-item">
+                <div class="cn">装置可靠高效</div>
+                <div class="en">Plant Reliability / Efficiency</div>
+            </div>
+            <div class="target-item">
+                <div class="cn">财务回报</div>
+                <div class="en">Finance return</div>
+            </div>
+            <div class="target-item">
+                <div class="cn">员工发展</div>
+                <div class="en">People's development</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 安全绩效数据 -->
+    <h2 class="sub-title">SHEQ 绩效数据</h2>
+    <div class="safety-performance">
+        <table class="performance-table">
+            <thead>
+                <tr>
+                    <th>SHEQ 指标</th>
+                    <th>绩效表现</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>重大事件数 (Severe incidents, ME)</td>
+                    <td class="value">0</td>
+                </tr>
+                <tr>
+                    <td>潜在致命事件 (Potential Fatal Event, FPE)</td>
+                    <td class="value">0</td>
+                </tr>
+                <tr>
+                    <td>损失工作日事件 (Loss working day incidents, LWC)</td>
+                    <td class="value">0</td>
+                </tr>
+                <tr>
+                    <td>可记录伤害事件总数 (Total recordable injury incidents, RIAR)</td>
+                    <td class="value">0</td>
+                </tr>
+                <tr>
+                    <td>商用车事故 (Commercial vehicle accidents, CVI)</td>
+                    <td class="value">0</td>
+                </tr>
+                <tr>
+                    <td>非商用车事故 (Non commercial vehicle accidents, NCVI)</td>
+                    <td class="value">0</td>
+                </tr>
+                <tr>
+                    <td>工艺安全事故 (Process safety accidents, PSI)</td>
+                    <td class="value">0</td>
+                </tr>
+                <tr>
+                    <td>管道气、液体产品合格率 (Qualified pipe gas and liquid products, PQR)</td>
+                    <td class="value">100%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 五大核心价值观（保留原有核心，强化安全） -->
+    <h2 class="sub-title">五大核心价值观（全员行为底线）</h2>
+    <div class="value-grid">
+        <div class="value-item">
+            <h4><i class="fas fa-shield-alt"></i> 安全第一 Safety</h4>
+            <p>所有事故均可预防，目标实现人员、社区、环境零伤害；推行“Zero Today”零事故文化，全员参与风险排查、标准化HSE管理，是化工气体企业生存底线。</p>
+        </div>
+        <div class="value-item">
+            <h4><i class="fas fa-balance-scale"></i> 诚信正直 Integrity</h4>
+            <p>恪守商业道德、合规透明，对内对外尊重公平，严格执行商业行为准则，杜绝违规操作、隐瞒隐患。</p>
+        </div>
+        <div class="value-item">
+            <h4><i class="fas fa-users"></i> 社区共建 Community</h4>
+            <p>扎根金山本地厂区，联动周边社区开展安全科普、公益志愿、应急联动，履行属地环保与民生责任。</p>
+        </div>
+        <div class="value-item">
+            <h4><i class="fas fa-handshake"></i> 多元包容 Inclusion</h4>
+            <p>中外员工平等协作，包容不同专业、年龄、性别视角；搭建青年社团、女性发展平台，激发多元人才活力。</p>
+        </div>
+        <div class="value-item">
+            <h4><i class="fas fa-flag-checkered"></i> 责任担当 Accountability</h4>
+            <p>个人与团队对结果、过程双重负责，主动解决问题，直面生产、安全、环保各类挑战。</p>
+        </div>
     </div>
 </div>
 
-<!-- 图片放大模态框 -->
-<div class="modal" id="imgModal">
+<!-- 图片放大弹窗 -->
+<div class="photo-modal" id="photoModal">
     <div class="modal-content">
-        <span class="close-btn" id="closeBtn">&times;</span>
-        <img class="modal-img" id="modalImg" src="" alt="放大图片">
-        <div class="modal-desc" id="modalDesc"></div>
+        <span class="close-modal" id="closeModal">&times;</span>
+        <img id="modalImg" src="" alt="放大的照片">
     </div>
 </div>
 
+<!-- 页脚 -->
 <footer>
     <p>上海石化林德气体有限责任公司（BSG）• 合资20周年纪念 ©2026</p>
-    <p>党建引领新征程 · 同心共筑廿载梦</p>
+    <p>党建引领新征程 · 同心共筑廿载梦 · 安全护航每一天</p>
 </footer>
 
+<!-- 图片放大脚本 -->
 <script>
-    // ---------- 海量照片数据设计（模拟数十张至上百张，包含不同类别）----------
-    // 为了真实展现可以容纳上百张图片的能力，我们构建一个包含 96 张图片的数组。
-    // 其中包含原始已有图片和富有变化的扩展图片（使用稳定的高质量占位图与实际可配置外部链接或本地路径）。
-    // 为了演示效果且图片美观，采用来自真实活动图库占位 + 可配置替换。
-    // 由于原始只有部分真实图片，我们将原始有效图片保留，同时扩展新图片使用同样的公司文化风格占位（可用模拟真实静态资源或云端图片）。
-    // 为了保证演示时所有图片可展示且不破碎，除了既有的实际图片URL之外，我们额外创建一批带描述的高质量演示图片（统一使用来自可靠图片源的展示占位且风格一致）。
-    // 注意：原文件里已存在 http 图片地址以及 200.jpg,300.png 等相对路径，为了让上百张全部可见，我将扩展一批图片采用 “https://picsum.photos/400/300?random=xx” 并配上公司相关主题描述。
-    // 同时保留原有的全部6张图片，拓展至总数 86 张以上（方便展示加载更多机制）。这样确保任何访客都能看到大量图片并流畅滚动。
-    
-    // 构建完整活动图片库：合并原有活动照片 + 新增大批量（总共 100 张左右）
-    const baseActivityImages = [
-        { img: "https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/705b1be766d94adca3e9c0c66143e10d.jpg~tplv-a9rns2rl98-24:720:720.jpeg?lk3s=8e244e95&rcl=20260526122535C8B97D1DFBCD5C66B747&rrcfp=d52e923b&x-expires=1780374336&x-signature=SU%2B%2F5wXO%2Fb3bLZ5UPY1YrUJEK48%3D", desc: "【党建活动】公司党支部组织党员参观红色教育基地，重温入党誓词，强化使命担当，凝心铸魂。" },
-        { img: "200.jpg", desc: "【退休欢送】岁月如歌，情怀依旧。欢送退休员工茶话会，感谢老同志数十年辛勤奉献，温情流淌。" },
-        { img: "300.png", desc: "【HSE安全活动】安全月应急演练：模拟气体泄漏精准处置，提升全员风险防范与团队协作能力。" },
-        { img: "400.jpg", desc: "【青年团建】活力青春，筑梦起航。青年员工趣味拓展活动，增强凝聚力，激发拼搏热情。" },
-        { img: "500.jpg", desc: "【党建参观】铭记历史·砥砺前行。党员代表参观抗日纪念馆，传承红色基因，坚定理想信念。" },
-        { img: "600.jpg", desc: "【红色之旅】不忘初心，牢记使命。党支部红色教育主题党日，从革命精神中汲取奋进力量。" }
-    ];
-    
-    // 生成大量补充图片（风格为党建、团建、HSE、文体活动、团队志愿等，总数达到100张左右）
-    // 为了保持图片可用且美观，使用稳定的 loremflick 风格但为了不依赖外链可靠性，采用 picsum 固定id+随机种子但是保证统一视觉 + 公司题材描述。
-    // 生成从第7张到第100张，共94张左右，使总数达到100张精彩图片库，演示加载更多分批显示。
-    const extraCount = 94;  // 扩展94张，一共100张，完美演示大容量相册
-    const extraImages = [];
-    const activityThemes = [
-        "【党建共建】区域化党建联建会议，共话高质量发展新篇章",
-        "【巾帼风采】三八妇女节插花活动，展现女性员工优雅与力量",
-        "【技术比武】岗位技能大赛，锤炼过硬本领，匠心保障安全供气",
-        "【志愿行动】学雷锋日社区服务，彰显企业责任担当",
-        "【文体活动】羽毛球友谊赛，燃动团队拼搏热情",
-        "【安全文化】消防技能竞赛，筑牢安全防火墙",
-        "【员工关怀】夏送清凉慰问一线，点滴关爱沁人心",
-        "【专题党课】学习二十大精神专题党课，汲取奋进力量",
-        "【环保公益】植树节义务植树，践行绿色低碳发展理念",
-        "【迎新活动】新员工入职培训暨破冰之旅，融合大家庭温暖",
-        "【七一表彰】优秀党员表彰大会，榜样引领砥砺前行",
-        "【创新沙龙】青年技术论坛，激发创新思维火花",
-        "【职工运动会】拔河比赛，展现团队凝聚力与昂扬斗志",
-        "【红色观影】观看革命历史题材影片，赓续红色血脉",
-        "【廉洁教育】廉洁文化主题演讲，筑牢思想防线"
-    ];
-    
-    for (let i = 1; i <= extraCount; i++) {
-        // 随机选择一个主题描述，加入编号使其丰富
-        const themeIndex = i % activityThemes.length;
-        let customDesc = `${activityThemes[themeIndex]} | 精彩瞬间记录 (${i})`;
-        if (i % 7 === 0) customDesc = "【党建活动】党员政治生日暨初心故事分享会，砥砺初心再出发 · 影像记录";
-        if (i % 11 === 0) customDesc = "【HSE活动】安全知识竞赛，以赛促学，夯实安全根基";
-        if (i % 13 === 0) customDesc = "【文体娱乐】职工摄影展，光影记录公司发展二十年变迁";
-        
-        // 为了确保图片始终可访问，使用 picsum 结合不同种子展示高质量图片（模拟各类活动照片），同时保证图片主题风格统一。
-        // 额外使用本地 fallback 但是 picsum 安全稳定，并且支持 https。
-        const seed = 1000 + i;
-        // 使用宽高比 4:3 风格
-        const imgUrl = `https://picsum.photos/id/${(seed % 150) + 1}/400/300`; 
-        // 部分使用特定 id 达到不同风格, 同时完美展示所有图片不破碎。
-        // 为了增加真实企业感, 添加备注如果某些图片未加载成功，显示占位文字但 picsum 基本100%可用。
-        extraImages.push({
-            img: imgUrl,
-            desc: customDesc + " (合资20周年纪念影像)"
-        });
-    }
-    
-    // 合并全部图片库 (原有的基础6张 + 扩展的94张 = 共100张)
-    let allActivityImages = [...baseActivityImages, ...extraImages];
-    // 注意修正路径可能存在的本地图片 (200.jpg等) 如果确实不存在会产生断裂，但我们在onerror里会显示备选，为了更好体验，检测本地图片自动替换为 picsum fallback
-    // 更好兼容，后续渲染时增加img的错误处理优雅降级。
-    
-    // 分页/分批加载策略：每批加载12张照片，初始加载12张，点击“加载更多”追加12张，直到全部显示。
-    let currentLoadedCount = 0;
-    const PAGE_SIZE = 12;      // 每次加载12张，提升浏览体验，支持大量照片逐步加载
-    let galleryContainer = document.getElementById('activityGallery');
-    const loadMoreBtn = document.getElementById('loadMoreBtn');
-    const loadingIndicator = document.getElementById('loadingIndicator');
-    const photoCountDisplay = document.getElementById('photoCountDisplay');
-    
-    // 渲染当前应该显示的图片（从0到currentLoadedCount）
-    function renderCurrentGallery() {
-        if (!galleryContainer) return;
-        // 清空容器，但保留已有图片的最佳实践：重新渲染全部已加载部分（便于维护状态，简单可靠）
-        galleryContainer.innerHTML = '';
-        const itemsToShow = allActivityImages.slice(0, currentLoadedCount);
-        itemsToShow.forEach((item, idx) => {
-            const gItem = document.createElement('div');
-            gItem.className = 'g-item';
-            gItem.setAttribute('data-img', item.img);
-            gItem.setAttribute('data-desc', item.desc);
-            const imgElement = document.createElement('img');
-            imgElement.src = item.img;
-            imgElement.alt = `公司活动影像 ${idx+1}`;
-            imgElement.loading = "lazy";
-            // 图片容错：如果加载失败（相对路径或网络问题），替换成高质量占位图片并保留描述
-            imgElement.onerror = function() {
-                // 如果当前图片不是 picsum 或者本地图片加载失败，替换成稳定的公司主题占位图
-                if (!this.src.includes('picsum') && !this.src.includes('placekitten')) {
-                    this.src = `https://picsum.photos/id/42/400/300`;  // 经典办公场景占位
-                    this.alt = "图片加载替换,精彩继续";
-                } else if (this.src.includes('picsum') && this.src !== `https://picsum.photos/id/42/400/300`) {
-                    this.src = `https://picsum.photos/id/26/400/300`; // 备用
-                }
-            };
-            gItem.appendChild(imgElement);
-            // 添加点击放大
-            gItem.addEventListener('click', (e) => {
-                e.stopPropagation();
-                openModal(item.img, item.desc);
-                // 如果原图加载失败，模态框内也可展示友好信息，但仍传递原地址
-            });
-            galleryContainer.appendChild(gItem);
-        });
-        // 更新照片计数展示
-        const total = allActivityImages.length;
-        photoCountDisplay.innerHTML = `📸 已展示 ${currentLoadedCount} / ${total} 张精彩瞬间`;
-        // 控制加载更多按钮显示/隐藏
-        if (currentLoadedCount >= total) {
-            loadMoreBtn.style.display = 'none';
-        } else {
-            loadMoreBtn.style.display = 'block';
-        }
-    }
-    
-    // 加载更多功能
-    function loadMore() {
-        if (currentLoadedCount >= allActivityImages.length) {
-            if (loadMoreBtn) loadMoreBtn.style.display = 'none';
-            return;
-        }
-        // 显示loading
-        loadingIndicator.classList.add('show');
-        // 模拟异步渲染（为了让大量图片渲染不至于卡死，使用setTimeout模拟微任务）
-        setTimeout(() => {
-            let newCount = currentLoadedCount + PAGE_SIZE;
-            if (newCount > allActivityImages.length) newCount = allActivityImages.length;
-            currentLoadedCount = newCount;
-            renderCurrentGallery();
-            loadingIndicator.classList.remove('show');
-            // 如果全部加载完，隐藏按钮
-            if (currentLoadedCount >= allActivityImages.length) {
-                loadMoreBtn.style.display = 'none';
-            }
-        }, 120);
-    }
-    
-    // 模态框逻辑 (复用改进)
-    const modal = document.getElementById('imgModal');
+    // 获取弹窗元素
+    const modal = document.getElementById('photoModal');
     const modalImg = document.getElementById('modalImg');
-    const modalDesc = document.getElementById('modalDesc');
-    const closeBtnModal = document.getElementById('closeBtn');
-    
-    function openModal(imgSrc, descText) {
-        if (!modal || !modalImg) return;
-        modalImg.src = imgSrc;
-        modalImg.alt = descText || '活动精彩瞬间';
-        modalDesc.textContent = descText || '上海石化林德气体党建引领与企业文化影像';
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-        modalImg.onerror = function() {
-            this.src = "https://picsum.photos/id/1/600/400";
-            modalDesc.textContent = descText + " (图片加载中，此为辅助影像)";
-        };
-    }
-    
-    function closeModalFunc() {
-        if (modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = '';
-            setTimeout(() => {
-                if (modalImg) modalImg.src = '';
-            }, 200);
-        }
-    }
-    
-    if (closeBtnModal) closeBtnModal.addEventListener('click', closeModalFunc);
-    if (modal) modal.addEventListener('click', (e) => { if(e.target === modal) closeModalFunc(); });
-    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && modal && modal.style.display === 'flex') closeModalFunc(); });
-    
-    // 初始加载第一组图片
-    function initGallery() {
-        currentLoadedCount = Math.min(PAGE_SIZE, allActivityImages.length);
-        renderCurrentGallery();
-        // 如果总数小于等于初始加载数，则隐藏加载更多
-        if (currentLoadedCount >= allActivityImages.length) loadMoreBtn.style.display = 'none';
-        else loadMoreBtn.style.display = 'block';
-    }
-    
-    // 绑定加载更多事件
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', loadMore);
-    }
-    
-    // 视频处理 & 页面启动
-    window.addEventListener('DOMContentLoaded', () => {
-        initGallery();
-        const videoElem = document.querySelector('.fullwidth-video video');
-        if (videoElem) {
-            videoElem.muted = true;
-            videoElem.setAttribute('playsinline', '');
-            videoElem.setAttribute('webkit-playsinline', '');
-            videoElem.addEventListener('error', () => console.log("视频文件请检查路径"));
-        }
-        // 额外修正本地图片可能破碎，渲染时onerror已做兜底；全图片总数100张完美支持
-        console.log(`活动相册初始化完成，总数 ${allActivityImages.length} 张图片，支持分批加载`);
+    const closeModal = document.getElementById('closeModal');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    // 为每个图片添加点击放大事件
+    galleryItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const imgSrc = this.getAttribute('data-img');
+            modalImg.src = imgSrc;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // 禁止滚动
+        });
     });
+
+    // 关闭弹窗
+    closeModal.addEventListener('click', closeModalFunc);
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModalFunc();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeModalFunc();
+    });
+
+    // 关闭弹窗函数
+    function closeModalFunc() {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto'; // 恢复滚动
+    }
 </script>
 </body>
 </html>

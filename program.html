@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>新项目签约仪式 | 上海石化林德气体有限责任公司</title>
+  <!-- Font Awesome for icons (保留但导航栏不再使用图标) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -87,17 +89,6 @@
         }
         .nav-links a:hover {
             opacity: 0.8;
-        }
-        /* 高亮新项目签约按钮 */
-        .nav-links a:last-child {
-            background: var(--red);
-            padding: 6px 14px;
-            border-radius: 40px;
-            transition: all 0.3s;
-        }
-        .nav-links a:last-child:hover {
-            background: #a00d26;
-            opacity: 1;
         }
 
         .container {
@@ -361,6 +352,104 @@
             .nav-links a:last-child { padding: 4px 12px; font-size: 14px; }
             .navbar { padding: 10px 0; }
         }
+/* 新增：下拉菜单样式 */
+.dropdown {
+    position: relative;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--linde-blue);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 9999;
+    min-width: 200px;
+    padding: 8px 0;
+    margin-top: 8px;
+}
+.dropdown-menu::before {
+    /* 下拉菜单小三角 */
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--linde-blue);
+}
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0;
+}
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+.dropdown-menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+ .nav-drop-title {
+                color: #fff !important;
+                font-weight: 500;
+                font-size: 16px;
+                padding: 8px 0;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+            }
+ .nav-drop-title .arrow-icon {
+                font-size: 12px;
+                transition: transform 0.3s ease;
+            }
+ .dropdown:hover .nav-drop-title .arrow-icon {
+                transform: rotate(180deg);
+            }
+            .nav-drop-title:hover {
+                color: #f0f0f0 !important;
+}
+ .nav-drop-titlee {
+                color: #fff !important;
+                font-weight: 500;
+                font-size: 16px;
+                padding: 8px 0;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+            }
+ .nav-drop-titlee .arrow-icon {
+                font-size: 12px;
+                transition: transform 0.3s ease;
+            }
+ .dropdown:hover .nav-drop-titlee .arrow-icon {
+                transform: rotate(180deg);
+            }
+/* 移动端适配下拉 */
+@media (max-width:768px) {
+    .dropdown-menu {
+        min-width: 160px;
+    }
+    .dropdown-menu a {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+    .nav-drop-title .arrow-icon,
+    .nav-drop-titlee .arrow-icon {
+        font-size: 10px;
+    }
+}
     </style>
 </head>
 <body>
@@ -377,11 +466,33 @@
             <a href="index.html">首页</a>
             <a href="about.html">公司简介</a>
             <a href="team.html">团队风采</a>
-            <a href="history.html">发展历程</a>
-            <a href="culture.html">企业文化</a>
-            <a href="honor.html">荣誉积累</a>
+            <!-- 改造发展历程为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-title">发展历程 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="history.html"><i class="fas fa-sitemap"></i> 历年大事件</a>
+                    <a href="idex.html"><i class="fas fa-chart-line"></i> 2020-2025生产运行近况</a>
+                </div>
+            </div>
+            <!-- 改造公司二十周年庆为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-titlee">✨20周年大事件与活动 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="red.html">✨5.22党建、团建、妇女节活动</a>
+                    <a href="program.html">✨6.2新空分项目签约仪式</a>
+                    <a href="retiree.html">✨6.18退休职工恳谈会</a>
+                </div>
+            </div>
+            <!-- 改造公司文化为下拉菜单 -->
+            <div class="dropdown">
+                <span class="nav-drop-title">公司文化 <i class="fas fa-chevron-down arrow-icon"></i></span>
+                <div class="dropdown-menu">
+                    <a href="culture.html"></i> 核心文化</a>
+                    <a href="honor.html"></i> 荣誉积累</a>
+                </div>
+            </div>
+            <a href="picture.html">照片放映厅</a>
             <a href="end.html">廿载寄语</a>
-            <a href="program.html" style="background: var(--red); padding: 6px 14px; border-radius: 40px;">✨ 6.2 新空分项目签约仪式</a>
         </div>
     </div>
 </div>
@@ -441,27 +552,21 @@
 <script>
     // 签约仪式照片数据：共21张，涵盖签约、握手、致辞、现场花絮、双方交流、装置效果等丰富环节
     const ceremonyPhotos = [
-        { img: "z01.jpg", title: "签约仪式大合影", desc: "新空分项目意向书顺利完成签约，参会人员集体合影留念，标志着战略合作迈入崭新阶段。" },
-        { img: "z02.jpg", title: "..", desc: ".." },
-        { img: "z03.jpg", title: "..", desc: ".." },
-        { img: "z04.jpg", title: "..", desc: ".." },
-        { img: "z05.jpg", title: "..", desc: ".." },
-        { img: "z06.jpg", title: "..", desc: ".." },
-        { img: "z07.jpg", title: ".", desc: ".." },
-        { img: "z00.jpg", title: "..", desc: ".." },
-        { img: "z08.jpg", title: "..", desc: ".." },
-        { img: "z09.jpg", title: "..", desc: ".." },
-        { img: "z10.jpg", title: "..", desc: ".." },
-        { img: "z11.jpg", title: "..", desc: ".." },
-        { img: "z12.jpg", title: "..", desc: ".." },
-        { img: "z13.jpg", title: "..", desc: ".." },
-        { img: "z14.jpg", title: "..", desc: "..." },
-        { img: "z15.jpg", title: "..", desc: ".." },
-        { img: "z16.jpg", title: "..", desc: ".." },
-        { img: "z18.jpg", title: "..", desc: ".." },
-        { img: "z20.jpg", title: "..", desc: ".." },
-        { img: "z21.jpg", title: "..", desc: ".." },
-        { img: "z24.jpg", title: "..", desc: ".." }
+         { img: "z01.jpg", title: "签约仪式大合影", desc: "新空分项目意向书顺利完成签约，参会人员集体合影留念，标志着战略合作迈入崭新阶段。" },
+        { img: "z18.jpg", title: "三方代表合影", desc: "政府、上海石化、林德三方领导代表登台合影，共见证空分项目战略合作意向落地时刻。" },
+        { img: "z09.jpg", title: "主持人Lisha Zhu宣布仪式正式开始", desc: "签约仪式现场，各方来宾有序落座，主持人Lisha Zhu宣布签约活动启幕。" },
+        { img: "z11.jpg", title: "郭晓军先生讲话", desc: "中国石化上海石油化工股份有限公司党委书记、董事长郭晓军先生上台致辞，阐述本次空分项目合作背景、发展规划与长远合作愿景。" },
+        { img: "z12.jpg", title: "Sean Durbin先生讲话", desc: "林德全球首席运营官Sean Durbin先生发表致辞，分享双方合作基础，展望空分产业协同发展前景。" },
+        { img: "z10.jpg", title: "李臻旻先生讲话", desc: "林德大中华区总裁李臻旻先生现场发言，围绕项目落地价值、产业链共赢与绿色低碳发展展开分享。" },
+        { img: "z00.jpg", title: "沈国强、郑保才先生签名。", desc: "上海石化林德气体有限责任公司两位总经理沈国强、郑保才先生于背景墙完成签名，共同定格本次战略合作重要瞬间。" },
+        { img: "z06.jpg", title: "张春峰先生签字", desc: "上海石化投资发展公司总经理张春峰于签约背景墙完成签名留念。" },
+        { img: "z07.jpg", title: "王琼女士签字", desc: "林德大中华东区总经理王琼女士在签约纪念墙留下签名。" },
+        { img: "z08.jpg", title: "郭晓军先生与 Sean Durbin 先生热情攀谈", desc: "活动现场，郭晓军先生与 Sean Durbin 先生亲切交流，共话产业协同与长期发展规划。" },
+        { img: "z14.jpg", title: "政府与上海石化席位", desc: "政府领导及上海石化相关负责人落座观礼。" },
+        { img: "z13.jpg", title: "林德方席位", desc: "林德集团管理团队出席仪式现场。" },
+        { img: "z15.jpg", title: "签约前准备", desc: "双方代表上海石化副总经理杜军与林德大中华区副总裁鲁荣就位，完成签约文件核对，静待战略合作意向书签署。" },
+        { img: "z16.jpg", title: "签约后握手", desc: "签约完成，双方代表握手致意，正式达成深度产业合作共识。" },
+        { img: "z20.jpg", title: "双方交换信物", desc: "签约仪式尾声，双方代表郭总与Sean Durbin先生互赠纪念礼品，传递长期友好合作的美好期许。" },
     ];
 
     // 渲染签约照片画廊 (21格)
